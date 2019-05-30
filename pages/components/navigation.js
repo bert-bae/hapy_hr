@@ -38,6 +38,16 @@ export default function Navigation() {
           align-items: center;
           padding-left: 20px;
         }
+        .brand-logo {
+          background-image: url('#');
+          background-size: contain;
+          background-position: 50%;
+          background-repeat: no-repeat;
+          height: 75px;
+          width: 75px;
+          margin-right: 25px;
+          background-color: red;
+        }
         .logo {
           color: #FFF;
           margin: 0;

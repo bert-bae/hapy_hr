@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/index.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/trending.js"],{
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js":
 /*!*******************************************************************!*\
@@ -6183,21 +6183,21 @@ exports.formatWithValidation = formatWithValidation;
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2Fhome%2Febae%2FDocuments%2FProjects%2Fhappy-hour%2Fpages%2Findex.js!./":
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2Fhome%2Febae%2FDocuments%2FProjects%2Fhappy-hour%2Fpages%2Findex.js ***!
-  \**********************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Ftrending&absolutePagePath=%2Fhome%2Febae%2FDocuments%2FProjects%2Fhappy-hour%2Fpages%2Ftrending.js!./":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Ftrending&absolutePagePath=%2Fhome%2Febae%2FDocuments%2FProjects%2Fhappy-hour%2Fpages%2Ftrending.js ***!
+  \*********************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-    (window.__NEXT_P=window.__NEXT_P||[]).push(["/", function() {
-      var page = __webpack_require__(/*! ./pages/index.js */ "./pages/index.js")
+    (window.__NEXT_P=window.__NEXT_P||[]).push(["/trending", function() {
+      var page = __webpack_require__(/*! ./pages/trending.js */ "./pages/trending.js")
       if(true) {
-        module.hot.accept(/*! ./pages/index.js */ "./pages/index.js", function() {
-          if(!next.router.components["/"]) return
-          var updatedPage = __webpack_require__(/*! ./pages/index.js */ "./pages/index.js")
-          next.router.update("/", updatedPage.default || updatedPage)
+        module.hot.accept(/*! ./pages/trending.js */ "./pages/trending.js", function() {
+          if(!next.router.components["/trending"]) return
+          var updatedPage = __webpack_require__(/*! ./pages/trending.js */ "./pages/trending.js")
+          next.router.update("/trending", updatedPage.default || updatedPage)
         })
       }
       return { page: page.default || page }
@@ -11509,16 +11509,16 @@ function Navigation() {
 
 /***/ }),
 
-/***/ "./pages/index.js":
-/*!************************!*\
-  !*** ./pages/index.js ***!
-  \************************/
+/***/ "./pages/trending.js":
+/*!***************************!*\
+  !*** ./pages/trending.js ***!
+  \***************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Index; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TrendingPage; });
 /* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-jsx/style */ "./node_modules/styled-jsx/style.js");
 /* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -11526,12 +11526,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/head */ "./node_modules/next-server/dist/lib/head.js");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_navigation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/navigation */ "./pages/components/navigation.js");
-var _jsxFileName = "/home/ebae/Documents/Projects/happy-hour/pages/index.js";
+var _jsxFileName = "/home/ebae/Documents/Projects/happy-hour/pages/trending.js";
 
 
 
 
-function Index() {
+function TrendingPage() {
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "jsx-3587993824",
     __source: {
@@ -11566,22 +11566,22 @@ function Index() {
       lineNumber: 11
     },
     __self: this
-  }), "Homepage", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+  }), "Trending", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
     id: "3587993824",
     __self: this
-  }, "body,html{display:inline-block;position:relative;height:100%;width:100%;margin:0;padding:0;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2ViYWUvRG9jdW1lbnRzL1Byb2plY3RzL2hhcHB5LWhvdXIvcGFnZXMvaW5kZXguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBWWtCLEFBR2dDLHFCQUNILGtCQUNOLFlBQ0QsV0FDRixTQUNDLFVBQ1oiLCJmaWxlIjoiL2hvbWUvZWJhZS9Eb2N1bWVudHMvUHJvamVjdHMvaGFwcHktaG91ci9wYWdlcy9pbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBIZWFkIGZyb20gJ25leHQvaGVhZCc7XG5pbXBvcnQgTmF2aWdhdGlvbiBmcm9tICcuL2NvbXBvbmVudHMvbmF2aWdhdGlvbic7XG5cbmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIEluZGV4KCkge1xuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICA8SGVhZD5cbiAgICAgICAgPHRpdGxlPkhhcHlIciB8IEZpbmQgSGFwcHkgSG91ciBEZWFsczwvdGl0bGU+XG4gICAgICAgIDxtZXRhIGRlc2NyaXB0aW9uPVwiVGVzdGluZyBORVhUIGhlYWRcIj48L21ldGE+XG4gICAgICA8L0hlYWQ+XG4gICAgICA8TmF2aWdhdGlvbi8+XG4gICAgICBIb21lcGFnZVxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgICA6Z2xvYmFsKGJvZHkpLCA6Z2xvYmFsKGh0bWwpIHtcbiAgICAgICAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICAgIGhlaWdodDogMTAwJTtcbiAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgfVxuICAgICAgYH08L3N0eWxlPlxuICAgIDwvZGl2PlxuICApXG59Il19 */\n/*@ sourceURL=/home/ebae/Documents/Projects/happy-hour/pages/index.js */"));
+  }, "body,html{display:inline-block;position:relative;height:100%;width:100%;margin:0;padding:0;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2ViYWUvRG9jdW1lbnRzL1Byb2plY3RzL2hhcHB5LWhvdXIvcGFnZXMvdHJlbmRpbmcuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBWWtCLEFBR2dDLHFCQUNILGtCQUNOLFlBQ0QsV0FDRixTQUNDLFVBQ1oiLCJmaWxlIjoiL2hvbWUvZWJhZS9Eb2N1bWVudHMvUHJvamVjdHMvaGFwcHktaG91ci9wYWdlcy90cmVuZGluZy5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBIZWFkIGZyb20gJ25leHQvaGVhZCc7XG5pbXBvcnQgTmF2aWdhdGlvbiBmcm9tICcuL2NvbXBvbmVudHMvbmF2aWdhdGlvbic7XG5cbmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIFRyZW5kaW5nUGFnZSgpIHtcbiAgcmV0dXJuIChcbiAgICA8ZGl2PlxuICAgICAgPEhlYWQ+XG4gICAgICAgIDx0aXRsZT5IYXB5SHIgfCBGaW5kIEhhcHB5IEhvdXIgRGVhbHM8L3RpdGxlPlxuICAgICAgICA8bWV0YSBkZXNjcmlwdGlvbj1cIlRlc3RpbmcgTkVYVCBoZWFkXCI+PC9tZXRhPlxuICAgICAgPC9IZWFkPlxuICAgICAgPE5hdmlnYXRpb24vPlxuICAgICAgVHJlbmRpbmdcbiAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgICAgOmdsb2JhbChib2R5KSwgOmdsb2JhbChodG1sKSB7XG4gICAgICAgICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICAgICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgICBoZWlnaHQ6IDEwMCU7XG4gICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8L2Rpdj5cbiAgICBcbiAgKVxufSJdfQ== */\n/*@ sourceURL=/home/ebae/Documents/Projects/happy-hour/pages/trending.js */"));
 }
 
 /***/ }),
 
-/***/ 0:
-/*!**************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2Fhome%2Febae%2FDocuments%2FProjects%2Fhappy-hour%2Fpages%2Findex.js ***!
-  \**************************************************************************************************************************************/
+/***/ 2:
+/*!*************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Ftrending&absolutePagePath=%2Fhome%2Febae%2FDocuments%2FProjects%2Fhappy-hour%2Fpages%2Ftrending.js ***!
+  \*************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2Fhome%2Febae%2FDocuments%2FProjects%2Fhappy-hour%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2Fhome%2Febae%2FDocuments%2FProjects%2Fhappy-hour%2Fpages%2Findex.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Ftrending&absolutePagePath=%2Fhome%2Febae%2FDocuments%2FProjects%2Fhappy-hour%2Fpages%2Ftrending.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Ftrending&absolutePagePath=%2Fhome%2Febae%2FDocuments%2FProjects%2Fhappy-hour%2Fpages%2Ftrending.js!./");
 
 
 /***/ }),
@@ -11597,5 +11597,5 @@ module.exports = dll_6dc2816e14fab51b8269;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
-//# sourceMappingURL=index.js.map
+},[[2,"static/runtime/webpack.js"]]]);
+//# sourceMappingURL=trending.js.map
