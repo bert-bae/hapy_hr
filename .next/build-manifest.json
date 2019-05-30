@@ -19,10 +19,6 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/deals": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
