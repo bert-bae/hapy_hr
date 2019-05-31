@@ -50,7 +50,12 @@ class Establishment extends Model {
     return this.query()
       .eager('menu_item')
       .eager('operational_hour');
-  } 
+  }
+
+  // Get a single establishment by id
+  static async getSingleEstablishment(id) {
+    return this.query().where('id', id);
+  }
 }
 
 module.exports = Establishment;
