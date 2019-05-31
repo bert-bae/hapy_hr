@@ -2,7 +2,7 @@
 
 const { Model, raw } = require('objection');
 
-export default class MenuItem extends Model {
+class MenuItem extends Model {
   static get tableName() {
     return 'menu_item';
   }
@@ -14,3 +14,5 @@ export default class MenuItem extends Model {
     }
   }
 }
+
+module.exports = MenuItem;

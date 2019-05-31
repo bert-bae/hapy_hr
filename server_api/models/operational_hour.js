@@ -2,7 +2,7 @@
 
 const { Model, raw } = require('objection');
 
-export default class OperationalHour extends Model {
+class OperationalHour extends Model {
   static get tableName() {
     return 'operational_hour';
   }
@@ -14,3 +14,5 @@ export default class OperationalHour extends Model {
     }
   }
 }
+
+module.exports = OperationalHour;

@@ -1,11 +1,10 @@
 'use strict';
 
-import MenuItem from './menu_item';
-import OperationalHour from './operational_hour';
-
+const MenuItem = require('./menu_item');
+const OperationalHour = require('./operational_hour');
 const { Model, raw } = require('objection');
 
-export default class Establishment extends Model {
+class Establishment extends Model {
   static get tableName() {
     return 'establishment';
   }
@@ -53,3 +52,5 @@ export default class Establishment extends Model {
       .eager('operational_hour');
   } 
 }
+
+module.exports = Establishment;

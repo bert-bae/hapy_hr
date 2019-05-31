@@ -6,8 +6,6 @@ if (env.error) {
 // Update with your config settings.
 
 module.exports = {
-  
-  development: {
     client: 'mysql',
     connection: {
       host : process.env.DB_HOSTNAME,
@@ -18,7 +16,6 @@ module.exports = {
     migrations: {
       tableName: 'knex_migrations'
     }
-  },
 
   // staging: {
   //   client: 'postgresql',
