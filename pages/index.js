@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Head from 'next/head';
 import Navigation from './components/navigation';
 import Jumbotron from './components/jumbotron';

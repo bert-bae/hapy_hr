@@ -1,15 +1,27 @@
+import { useState, useEffect } from 'react';
+
 import Link from 'next/link';
 
 export default function Jumbotron({ imgSrc, mainHeader, subHeader}) {
+  const [addressInput, setAddressInput] = useState("");
+
+  // react hooks do not accept callback or promises to log result, but is async. Use useEffect to see that changes are being applied
+  useEffect(() => {
+    console.log(addressInput);
+  });
+
   return (
     <div>
       <div className="jumbotron-container" style={{backgroundImage: `url('${imgSrc}')`}}>
         <h1>{mainHeader}</h1>
         <p>{subHeader}</p>
         <div className="input-container">
-          <input type="text" placeholder="Search near your address!"></input>
+          <input type="text" 
+            placeholder="Search near your address!" 
+            value={addressInput} 
+            onChange={(e) => {setAddressInput(e.target.value);}}></input>
           <Link href="/deals">
-            <a className="nav-option">Deals</a>
+            <a className="nav-option">Find Deals</a>
           </Link>
         </div>
       </div>
@@ -70,7 +82,7 @@ export default function Jumbotron({ imgSrc, mainHeader, subHeader}) {
         a {
           width: 25%;
           font-weight: 750;
-          border: 2px solid #ffc424;
+          border: 1px solid #ffc424;
           background-color: transparent;
           color: #ffc424;
           text-decoration: none;
