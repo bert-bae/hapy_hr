@@ -20,7 +20,7 @@ export default function Jumbotron({ imgSrc, mainHeader, subHeader}) {
             placeholder="Search near your address!" 
             value={addressInput} 
             onChange={(e) => {setAddressInput(e.target.value);}}></input>
-          <Link href="/deals">
+          <Link href={{ pathname: '/deals/', query: { addressInput: addressInput } }}>
             <a className="nav-option">Find Deals</a>
           </Link>
         </div>
