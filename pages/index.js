@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Navigation from './components/navigation';
+import Jumbotron from './components/jumbotron';
 
 export default function Index() {
   return (
@@ -9,7 +10,7 @@ export default function Index() {
         <meta description="Testing NEXT head"></meta>
       </Head>
       <Navigation/>
-      Homepage
+      <Jumbotron imgSrc={"/static/images/homepage.jpg"} mainHeader={"Explore with Great Happy Hour Deals"} subHeader={"Food & Drink Deals Near You"}></Jumbotron>
       <style jsx>{`
         :global(body), :global(html) {
           display: inline-block;
