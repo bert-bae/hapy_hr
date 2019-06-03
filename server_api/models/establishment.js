@@ -49,7 +49,7 @@ class Establishment extends Model {
   static async getEstablishments() {
     return this.query()
       .eager('menu_item')
-      .eager('operational_hour');
+      .mergeEager('operational_hour');
   }
 
   // Get a single establishment by id

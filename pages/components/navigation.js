@@ -65,8 +65,8 @@ export default function Navigation() {
         }
         a {
           margin-left: 20px;
-          width: 100px;
-          height: 27px;
+          width: 100px!important;
+          height: 27px!important;
           border: 2px solid #DB6218;
           background-color: #EF7F00;
           color: #FFF;
