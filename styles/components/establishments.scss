@@ -12,6 +12,9 @@ $highlights: #ff4823;
 
 .list-container {
   padding: 20px 50px;
+  p {
+    margin: 5px 0 0 0;
+  }
   .card-header {
     color: #FFF;
     background-color: $tertiary-color;
@@ -27,6 +30,15 @@ $highlights: #ff4823;
     flex-flow: row wrap;
     .establishment-menu, .establishment-hours {
       flex: 1 1 50%;
+      hr {
+        display: none;
+        margin-top: 6px;
+      }
+      .subheader {
+        font-weight: bold;
+        opacity: 0.8;
+        margin: 20px 0 10px;
+      }
       .menu-item, .weekday-time {
         display: flex;
         flex-direction: row;
@@ -43,6 +55,17 @@ $highlights: #ff4823;
     padding: 0;
     .establishment-details {
       flex-direction: column;
+      .establishment-menu, .establishment-hours {
+        hr {
+          display: block;
+        }
+        .subheader {
+          margin-top: 30px;
+        }
+        .menu-item, .weekday-time {
+          padding: 0;
+        }
+      }
     }
   }
 }

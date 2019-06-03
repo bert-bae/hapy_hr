@@ -34,13 +34,26 @@ export default function Establishments({ establishments }) {
       return result;
     }
 
-    const formatMenu = place.menu_item.map((item, key) => {
-      return (
-        <div className="menu-item" key={key}>
-          <p className="item">{item.name}</p>
-          <p className="price">${Number(item.price).toFixed(2)}</p>
-        </div>
-      )
+    const formatFoodMenu = place.menu_item.map((item, key) => {
+      if (item.type === "food") {
+        return (
+          <div className="menu-item" key={key}>
+            <p className="item">{item.name}</p>
+            <p className="price">${Number(item.price).toFixed(2)}</p>
+          </div>
+        )
+      }
+    });
+
+    const formatDrinkMenu = place.menu_item.map((item, key) => {
+      if (item.type === "drink") {
+        return (
+          <div className="menu-item" key={key}>
+            <p className="item">{item.name}</p>
+            <p className="price">${Number(item.price).toFixed(2)}</p>
+          </div>
+        )
+      }
     });
 
     const formatHours = sortHours(place.operational_hour);
@@ -57,9 +70,16 @@ export default function Establishments({ establishments }) {
             <hr/>
             <div className="establishment-details">
               <div className="establishment-menu">
-                {formatMenu}
+                <p className="subheader">Drinks</p>
+                <hr/>
+                {formatDrinkMenu}
+                <p className="subheader">Food</p>
+                <hr/>
+                {formatFoodMenu}
               </div>
               <div className="establishment-hours">
+                <p className="subheader">Happy Hours</p>
+                <hr/>
                 {formatHours}
               </div>
             </div>

@@ -9,6 +9,7 @@ exports.seed = function(knex, Promise) {
           id: 1,
           name: "Heineken",
           description: "Beer",
+          type: "drink",
           price: "4",
           establishment_id: "1",
         },
@@ -16,6 +17,7 @@ exports.seed = function(knex, Promise) {
           id: 2,
           name: "Heineken",
           description: "Beer",
+          type: "drink",
           price: "4",
           establishment_id: "2",
         },
@@ -23,6 +25,7 @@ exports.seed = function(knex, Promise) {
           id: 3,
           name: "Heineken",
           description: "Beer",
+          type: "drink",
           price: "4.50",
           establishment_id: "3",
         },
@@ -30,6 +33,7 @@ exports.seed = function(knex, Promise) {
           id: 4,
           name: "Heineken",
           description: "Beer",
+          type: "drink",
           price: "4",
           establishment_id: "4",
         },
@@ -37,24 +41,28 @@ exports.seed = function(knex, Promise) {
           id: 5,
           name: "Kroenenberg Blanc",
           description: "Beer",
+          type: "drink",
           price: "5",
           establishment_id: "1",
         },
         {
           id: 6,
           name: "Kroenenberg Blanc",
+          type: "drink",
           description: "Beer",
           establishment_id: "2",
         },
         {
           id: 7,
           name: "Kroenenberg Blanc",
+          type: "drink",
           description: "Beer",
           establishment_id: "4",
         },
         {
           id: 8,
           name: "Kroenenberg Blanc",
+          type: "drink",
           description: "Beer",
           price: "6",
           establishment_id: "5",
@@ -62,6 +70,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 9,
           name: "Edamame",
+          type: "food",
           description: "Little salty green beans",
           price: "4",
           establishment_id: "1",
@@ -69,6 +78,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 10,
           name: "Edamame",
+          type: "food",
           description: "Little salty green beans",
           price: "5.50",
           establishment_id: "2",
@@ -76,6 +86,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 11,
           name: "Edamame",
+          type: "food",
           description: "Little salty green beans",
           price: "5",
           establishment_id: "3",
@@ -83,6 +94,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 12,
           name: "Edamame",
+          type: "food",
           description: "Little salty green beans",
           price: "5",
           establishment_id: "4",
@@ -90,6 +102,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 13,
           name: "Edamame",
+          type: "food",
           description: "Little salty green beans",
           price: "6",
           establishment_id: "5",
@@ -97,6 +110,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 14,
           name: "Sandwich w/ Fries",
+          type: "food",
           description: "Choice of roast beef, chicken, or veggies.",
           price: "8",
           establishment_id: "1",
@@ -104,6 +118,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 15,
           name: "Sandwich w/ Fries",
+          type: "food",
           description: "Choice of roast beef, chicken, or veggies.",
           price: "10",
           establishment_id: "2",
@@ -111,6 +126,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 16,
           name: "Sandwich w/ Fries",
+          type: "food",
           description: "Choice of roast beef, chicken, or veggies.",
           price: "7",
           establishment_id: "3",
@@ -118,6 +134,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 17,
           name: "Sandwich w/ Fries",
+          type: "food",
           description: "Choice of roast beef, chicken, or veggies.",
           price: "5",
           establishment_id: "4",
@@ -125,6 +142,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 18,
           name: "Sandwich w/ Fries",
+          type: "food",
           description: "Choice of roast beef, chicken, or veggies.",
           price: "8",
           establishment_id: "5",
@@ -132,6 +150,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 19,
           name: "Soup of the day",
+          type: "food",
           description: "Ask your server for the details.",
           price: "4",
           establishment_id: "1",
@@ -139,6 +158,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 20,
           name: "Soup of the day",
+          type: "food",
           description: "Ask your server for the details.",
           price: "6",
           establishment_id: "3",
@@ -146,6 +166,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 21,
           name: "Soup of the day",
+          type: "food",
           description: "Ask your server for the details.",
           price: "6",
           establishment_id: "4",
@@ -153,6 +174,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 22,
           name: "Soup of the day",
+          type: "food",
           description: "Ask your server for the details.",
           price: "8",
           establishment_id: "5",
@@ -160,6 +182,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 23,
           name: "Rotating Beer",
+          type: "drink",
           description: "Ask your server for the details.",
           price: "4.5",
           establishment_id: "1",
@@ -167,6 +190,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 24,
           name: "Rotating Beer",
+          type: "drink",
           description: "Ask your server for the details.",
           price: "5",
           establishment_id: "2",
@@ -174,6 +198,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 25,
           name: "Rotating Beer",
+          type: "drink",
           description: "Ask your server for the details.",
           price: "5",
           establishment_id: "3",
@@ -181,6 +206,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 26,
           name: "Rotating Beer",
+          type: "drink",
           description: "Ask your server for the details.",
           price: "4.5",
           establishment_id: "4",
@@ -188,6 +214,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 27,
           name: "Rotating Beer",
+          type: "drink",
           description: "Ask your server for the details. Special craft beers rotating on tap!",
           price: "7",
           establishment_id: "5",
