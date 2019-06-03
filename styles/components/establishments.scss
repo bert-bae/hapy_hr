@@ -1,0 +1,48 @@
+// color styles... temp location
+// main = DB6218
+// secondary = EF7F00
+// tertiary = FF9914
+// background = EFA700
+// highlights & components = FF4823
+$main-color: #DB6218;
+$secondary-color: #ef7f00;
+$tertiary-color: #ff9914;
+$background-color: #EFA700;
+$highlights: #ff4823;
+
+.list-container {
+  padding: 20px 50px;
+  .card-header {
+    color: #FFF;
+    background-color: $tertiary-color;
+    font-weight: bold;
+    background-image: linear-gradient(to bottom left, $tertiary-color, $main-color);
+  }
+  .card-body {
+    border: 1px solid $tertiary-color;
+  }
+  .establishment-details {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    .establishment-menu, .establishment-hours {
+      flex: 1 1 50%;
+      .menu-item, .weekday-time {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 30px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .list-container {
+    padding: 0;
+    .establishment-details {
+      flex-direction: column;
+    }
+  }
+}

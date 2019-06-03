@@ -1,27 +1,9 @@
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
-
+import '../../styles/components/establishments.scss';
 // react-bootstrap overrides specificity for all bs component styling. Bootstrap specific components are inline styled for this purpose
-const cardStyle = {
-  backgroundColor: '#FF9914',
-  color: '#FFF',
-  fontWeight: 'bold',
-  backgroundImage: 'linear-gradient(to bottom left, #FF9914, #DB6218)'
-}
-const cardBodyStyle = {
-  border: '1px solid #EF7F00',
-}
-
 export default function Establishments({ establishments }) {
   const formatted = establishments.map((place, key) => {
-    const formatMenu = place.menu_item.map((item, key) => {
-      return (
-        <div className="menu-item" key={key}>
-          <p className="item">{item.name}</p>
-          <p className="price">${Number(item.price).toFixed(2)}</p>
-        </div>
-      )
-    });
 
     const sortHours = (opHours) => {
       let sameDay = false;
@@ -43,23 +25,33 @@ export default function Establishments({ establishments }) {
           sameDay = true;
         }
         return (
-          <div className="establishment-hours" key={key}>
-            {!sameDay && <p className="weekday">{weekdays[time.weekday]}</p>}
-            <p className="hour">{time.start} - {time.end}</p>
+          <div className="weekday-time" key={key}>
+            <p className="weekday">{sameDay ? "-" : weekdays[time.weekday]}</p>
+            <p className="time">{time.start} - {time.end}</p>
           </div>
         )
       })
       return result;
     }
-    console.log(place.operational_hour);
+
+    const formatMenu = place.menu_item.map((item, key) => {
+      return (
+        <div className="menu-item" key={key}>
+          <p className="item">{item.name}</p>
+          <p className="price">${Number(item.price).toFixed(2)}</p>
+        </div>
+      )
+    });
+
     const formatHours = sortHours(place.operational_hour);
+
     return (
       <Card key={key}>
-        <Accordion.Toggle as={Card.Header} variant="link" eventKey={key} style={cardStyle}>
+        <Accordion.Toggle as={Card.Header} variant="link" eventKey={key}>
           {place.name}
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={key}>
-          <Card.Body style={cardBodyStyle}>
+          <Card.Body>
             <p className="location">{place.address_line}, {place.city}, {place.province}, {place.postal_code}</p>
             <p className="description">{place.description}</p>
             <hr/>
@@ -81,14 +73,6 @@ export default function Establishments({ establishments }) {
       <Accordion defaultActiveKey="0">
         {formatted}
       </Accordion>
-      <style jsx>{`
-        .list-container {
-          padding: 20px 50px;
-        }
-        .card-header {
-          font-size: 50px;
-        }
-      `}</style>
     </div>
   )
 }

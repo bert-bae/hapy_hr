@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import "../styles/default.scss";
 
 import Head from 'next/head';
 import Navigation from './components/navigation';
@@ -21,19 +21,6 @@ export default function Index() {
       </Head>
       <Navigation/>
       <Jumbotron imgSrc={"/static/images/homepage.jpg"} mainHeader={"Explore with Great Happy Hour Deals"} subHeader={"Food & Drink Deals Near You"}></Jumbotron>
-      <style jsx>{`
-        :global(body), :global(html) {
-          display: inline-block;
-          position: relative;
-          height: 100%;
-          width: 100%;
-          margin: 0;
-          padding: 0;
-        }
-        :global(h1), :global(p) {
-          font-family: 'Roboto', sans-serif!important;
-        }
-      `}</style>
     </div>
   )
 }

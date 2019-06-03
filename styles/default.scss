@@ -1,0 +1,18 @@
+// color styles... temp location
+// main = DB6218
+// secondary = EF7F00
+// tertiary = FF9914
+// background = EFA700
+// highlights & components = FF4823
+
+:global(body), :global(html) {
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+:global(h1), :global(p), :global(a) {
+  font-family: 'Roboto', sans-serif!important;
+}

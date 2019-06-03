@@ -1,3 +1,4 @@
+import '../styles/default.scss';
 import Head from 'next/head';
 import axios from 'axios';
 
@@ -20,19 +21,6 @@ const DealPage = (props) => {
       </Head>
       <Navigation/>
       <Establishments establishments={props.establishments}/>
-      <style jsx>{`
-        :global(body), :global(html) {
-          display: inline-block;
-          position: relative;
-          height: 100%;
-          width: 100%;
-          margin: 0;
-          padding: 0;
-        }
-        :global(h1), :global(p) {
-          font-family: 'Roboto', sans-serif!important;
-        }
-      `}</style>
     </div>
   )
 }
