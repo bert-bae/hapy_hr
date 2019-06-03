@@ -5,7 +5,7 @@ export default function Navigation() {
     <div className="navigation-bar">
       <div className="branding">
         <div className="brand-logo"></div>
-        <h1 className="logo">HapyHr</h1>
+        <h1 className="hapyhr">HapyHr</h1>
       </div>
       <div className="navigation-menu">
         <Link href="/">
@@ -14,9 +14,9 @@ export default function Navigation() {
         <Link href="/deals">
           <a className="nav-option">Deals</a>
         </Link>
-        <Link href="/trending">
+        {/* <Link href="/trending">
           <a className="nav-option">Trending</a>
-        </Link>
+        </Link> */}
         <Link href="/about">
           <a className="nav-option">About</a>
         </Link>
@@ -25,7 +25,7 @@ export default function Navigation() {
         .navigation-bar {
           height: 100px;
           width: 100%;
-          background-color: #FFF;
+          background-color: #EFA700;
           display: flex;
           flex-flow: row wrap;
           align-items:center;
@@ -49,10 +49,13 @@ export default function Navigation() {
           width: 75px;
           margin-right: 25px;
           background-color: red;
+          font-size: 24px;
         }
-        .logo {
-          color: #ffc424;
+        .hapyhr {
+          color: #DB6218;
           margin: 0;
+          font-size: 32px!important;
+          font-weight: 600;
         }
         .navigation-menu {
           padding-right: 20px;
@@ -64,16 +67,17 @@ export default function Navigation() {
           margin-left: 20px;
           width: 100px;
           height: 27px;
-          border: 2px solid black;
-          color: black;
+          border: 2px solid #DB6218;
+          background-color: #EF7F00;
+          color: #FFF;
           text-decoration: none;
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 8px;
+          border-radius: 15px;
         }
         a:hover {
-          background-color: black;
+          background-color: #DB6218;
           color: #FFF;
           transition: 0.2s all;
         }

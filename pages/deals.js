@@ -10,6 +10,7 @@ const DealPage = (props) => {
       <Head>
         <title>HapyHr | Find Happy Hour Deals</title>
         <meta description="HapyHr | Discover new places near you with special happy hour deals!"></meta>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -27,6 +28,9 @@ const DealPage = (props) => {
           width: 100%;
           margin: 0;
           padding: 0;
+        }
+        :global(h1), :global(p) {
+          font-family: 'Roboto', sans-serif!important;
         }
       `}</style>
     </div>

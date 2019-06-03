@@ -7,6 +7,7 @@ export default function TrendingPage() {
       <Head>
         <title>HapyHr | Find Happy Hour Deals</title>
         <meta description="Testing NEXT head"></meta>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
       </Head>
       <Navigation/>
       Trending
@@ -18,6 +19,9 @@ export default function TrendingPage() {
           width: 100%;
           margin: 0;
           padding: 0;
+        }
+        :global(h1), :global(p) {
+          font-family: 'Roboto', sans-serif!important;
         }
       `}</style>
     </div>
