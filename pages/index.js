@@ -4,6 +4,12 @@ import Head from 'next/head';
 import Navigation from './components/navigation';
 import Jumbotron from './components/jumbotron';
 
+// color styles... temp location
+// main = DB6218
+// secondary = EF7F00
+// tertiary = FF9914
+// highlights & components = FF4823
+
 export default function Index() {
   return (
     <div>

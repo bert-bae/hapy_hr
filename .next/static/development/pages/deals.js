@@ -15544,84 +15544,99 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Establishments; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Accordion */ "./node_modules/react-bootstrap/Accordion.js");
-/* harmony import */ var react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Card */ "./node_modules/react-bootstrap/Card.js");
-/* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-jsx/style */ "./node_modules/styled-jsx/style.js");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Accordion */ "./node_modules/react-bootstrap/Accordion.js");
+/* harmony import */ var react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Card */ "./node_modules/react-bootstrap/Card.js");
+/* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_3__);
 var _jsxFileName = "/home/ebae/Documents/Projects/happy-hour/pages/components/establishments.js";
 
 
 
+ // react-bootstrap overrides specificity for all bs component styling. Bootstrap specific components are inline styled for this purpose
+
+var cardStyle = {
+  backgroundColor: '#FF9914',
+  color: '#FFF',
+  fontWeight: 'bold',
+  backgroundImage: 'linear-gradient(to bottom left, #FF9914, #DB6218)'
+};
 function Establishments(_ref) {
   var establishments = _ref.establishments;
   var formatted = establishments.map(function (place, key) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_3___default.a, {
       key: key,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 7
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2___default.a.Header, {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 8
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_1___default.a.Toggle, {
-      as: react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2___default.a.Header,
-      variant: "link",
-      eventKey: key,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 9
-      },
-      __self: this
-    }, place.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_1___default.a.Collapse, {
-      eventKey: key,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 13
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2___default.a.Body, {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 14
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: "location",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 15
       },
       __self: this
-    }, place.address_line, ", ", place.city, ", ", place.province, ", ", place.postal_code), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_2___default.a.Toggle, {
+      as: react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_3___default.a.Header,
+      variant: "link",
+      eventKey: key,
+      style: cardStyle,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 16
       },
       __self: this
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    }, place.name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_2___default.a.Collapse, {
+      eventKey: key,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 19
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_3___default.a.Body, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 20
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+      className: "location",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 21
+      },
+      __self: this
+    }, place.address_line, ", ", place.city, ", ", place.province, ", ", place.postal_code), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("hr", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
       className: "description",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 17
+        lineNumber: 23
       },
       __self: this
     }, place.description))));
   });
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "jsx-1674859208" + " " + "list-container",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_2___default.a, {
     defaultActiveKey: "0",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 31
     },
     __self: this
-  }, formatted);
+  }, formatted), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+    id: "1674859208",
+    __self: this
+  }, ".list-container.jsx-1674859208{padding:20px 50px;}.card-header.jsx-1674859208{font-size:50px;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2ViYWUvRG9jdW1lbnRzL1Byb2plY3RzL2hhcHB5LWhvdXIvcGFnZXMvY29tcG9uZW50cy9lc3RhYmxpc2htZW50cy5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFpQ2tCLEFBRzZCLEFBR0gsZUFDakIsR0FIQSIsImZpbGUiOiIvaG9tZS9lYmFlL0RvY3VtZW50cy9Qcm9qZWN0cy9oYXBweS1ob3VyL3BhZ2VzL2NvbXBvbmVudHMvZXN0YWJsaXNobWVudHMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgQWNjb3JkaW9uIGZyb20gJ3JlYWN0LWJvb3RzdHJhcC9BY2NvcmRpb24nO1xuaW1wb3J0IENhcmQgZnJvbSAncmVhY3QtYm9vdHN0cmFwL0NhcmQnO1xuXG4vLyByZWFjdC1ib290c3RyYXAgb3ZlcnJpZGVzIHNwZWNpZmljaXR5IGZvciBhbGwgYnMgY29tcG9uZW50IHN0eWxpbmcuIEJvb3RzdHJhcCBzcGVjaWZpYyBjb21wb25lbnRzIGFyZSBpbmxpbmUgc3R5bGVkIGZvciB0aGlzIHB1cnBvc2VcbmNvbnN0IGNhcmRTdHlsZSA9IHtcbiAgYmFja2dyb3VuZENvbG9yOiAnI0ZGOTkxNCcsXG4gIGNvbG9yOiAnI0ZGRicsXG4gIGZvbnRXZWlnaHQ6ICdib2xkJyxcbiAgYmFja2dyb3VuZEltYWdlOiAnbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSBsZWZ0LCAjRkY5OTE0LCAjREI2MjE4KSdcbn1cblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gRXN0YWJsaXNobWVudHMoeyBlc3RhYmxpc2htZW50cyB9KSB7XG4gIGNvbnN0IGZvcm1hdHRlZCA9IGVzdGFibGlzaG1lbnRzLm1hcCgocGxhY2UsIGtleSkgPT4ge1xuICAgIHJldHVybiAoXG4gICAgICA8Q2FyZCBrZXk9e2tleX0+XG4gICAgICAgIDxBY2NvcmRpb24uVG9nZ2xlIGFzPXtDYXJkLkhlYWRlcn0gdmFyaWFudD1cImxpbmtcIiBldmVudEtleT17a2V5fSBzdHlsZT17Y2FyZFN0eWxlfT5cbiAgICAgICAgICB7cGxhY2UubmFtZX1cbiAgICAgICAgPC9BY2NvcmRpb24uVG9nZ2xlPlxuICAgICAgICA8QWNjb3JkaW9uLkNvbGxhcHNlIGV2ZW50S2V5PXtrZXl9PlxuICAgICAgICAgIDxDYXJkLkJvZHk+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJsb2NhdGlvblwiPntwbGFjZS5hZGRyZXNzX2xpbmV9LCB7cGxhY2UuY2l0eX0sIHtwbGFjZS5wcm92aW5jZX0sIHtwbGFjZS5wb3N0YWxfY29kZX08L3A+XG4gICAgICAgICAgICA8aHIvPlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiZGVzY3JpcHRpb25cIj57cGxhY2UuZGVzY3JpcHRpb259PC9wPlxuICAgICAgICAgIDwvQ2FyZC5Cb2R5PlxuICAgICAgICA8L0FjY29yZGlvbi5Db2xsYXBzZT5cbiAgICAgIDwvQ2FyZD5cbiAgICApXG4gIH0pXG4gIHJldHVybiAoXG4gICAgPGRpdiBjbGFzc05hbWU9XCJsaXN0LWNvbnRhaW5lclwiPlxuICAgICAgPEFjY29yZGlvbiBkZWZhdWx0QWN0aXZlS2V5PVwiMFwiPlxuICAgICAgICB7Zm9ybWF0dGVkfVxuICAgICAgPC9BY2NvcmRpb24+XG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICAgIC5saXN0LWNvbnRhaW5lciB7XG4gICAgICAgICAgcGFkZGluZzogMjBweCA1MHB4O1xuICAgICAgICB9XG4gICAgICAgIC5jYXJkLWhlYWRlciB7XG4gICAgICAgICAgZm9udC1zaXplOiA1MHB4O1xuICAgICAgICB9XG4gICAgICBgfTwvc3R5bGU+XG4gICAgPC9kaXY+XG4gIClcbn0iXX0= */\n/*@ sourceURL=/home/ebae/Documents/Projects/happy-hour/pages/components/establishments.js */"));
 }
 
 /***/ }),
@@ -15879,7 +15894,7 @@ function () {
 
 /***/ }),
 
-/***/ 0:
+/***/ 2:
 /*!*******************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fdeals&absolutePagePath=%2Fhome%2Febae%2FDocuments%2FProjects%2Fhappy-hour%2Fpages%2Fdeals.js ***!
   \*******************************************************************************************************************************************/
@@ -15902,5 +15917,5 @@ module.exports = dll_6dc2816e14fab51b8269;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=deals.js.map
