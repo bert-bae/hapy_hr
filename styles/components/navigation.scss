@@ -45,7 +45,7 @@
   top: 35px;
   right: 15px;
   font-size: 25px;
-  font-weight: bold;
+  font-weight: bolder;
   transform: rotateZ(90deg);
   cursor: pointer;
   z-index: 500;
@@ -88,7 +88,7 @@ a:hover {
     padding: 70px 0 0 0;
     background-color: #FFF;
     box-shadow: -5px 0 3px 700px rgba(0, 0, 0, 0.5);
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     height: 100%;

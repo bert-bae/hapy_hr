@@ -4,19 +4,18 @@ import '../../styles/components/establishments.scss';
 // react-bootstrap overrides specificity for all bs component styling. Bootstrap specific components are inline styled for this purpose
 export default function Establishments({ establishments }) {
   const formatted = establishments.map((place, key) => {
-
+    const weekdays = {
+      0: "Sun",
+      1: "Mon",
+      2: "Tue",
+      3: "Wed",
+      4: "Thu",
+      5: "Fri",
+      6: "Sat"
+    }
     const sortHours = (opHours) => {
       let sameDay = false;
       let currentDay = null;
-      let weekdays = {
-        0: "Sun",
-        1: "Mon",
-        2: "Tue",
-        3: "Wed",
-        4: "Thu",
-        5: "Fri",
-        6: "Sat"
-      }
       let result = opHours.map((time, key) => {
         if (currentDay !== time.weekday) {
           sameDay = false;
@@ -57,10 +56,11 @@ export default function Establishments({ establishments }) {
     });
 
     const getToday = place.operational_hour.map((time, key) => {
-      const today = new Date().getDate();
-      
-      if (time === today) {
-        console.log(true);
+      const today = new Date().getDay();
+      if (time.weekday === today) {
+        return (
+          <div className="icon-content" key={key}>{weekdays[time.weekday]}: {time.start} - {time.end}</div>
+        )
       }
     })
 
@@ -69,7 +69,16 @@ export default function Establishments({ establishments }) {
     return (
       <Card key={key}>
         <Accordion.Toggle as={Card.Header} variant="link" eventKey={key}>
-          {place.name} {getToday}
+          <p>{place.name}</p>
+          <div className="icons-container">
+            <div className="op-time">
+              {getToday}
+            </div>
+            { formatFoodMenu.length > 0 && 
+              <div className="icon icon-content food">Food</div> }
+            { formatDrinkMenu.length > 0 && 
+              <div className="icon icon-content drinks">Drinks</div> }  
+          </div>
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={key}>
           <Card.Body>
