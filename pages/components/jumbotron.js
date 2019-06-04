@@ -53,6 +53,7 @@ export default function Jumbotron({ imgSrc, mainHeader, subHeader}) {
         h1 {
           font-size: 32px;
           margin: 0 0 15px 0;
+          text-align: center;
           color: #FFF;
           opacity: 0.9;
         }

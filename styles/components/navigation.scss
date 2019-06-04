@@ -39,8 +39,14 @@
   display: flex;
   justify-content: flex-end;
 }
-.nav-toggler {
-  padding-right: 20px;
+.nav-toggle-menu {
+  display: none;
+  position: absolute;
+  top: 35px;
+  right: 15px;
+  font-size: 25px;
+  font-weight: bold;
+  transform: rotateZ(90deg);
   cursor: pointer;
   z-index: 500;
 }
@@ -71,6 +77,9 @@ a:hover {
 }
 
 @media only screen and (max-width: 768px) {
+  .nav-toggle-menu {
+    display: block;
+  }
   .navigation-menu {
     display: none;
     flex-direction: column;
@@ -78,18 +87,18 @@ a:hover {
     align-items: center;
     padding: 70px 0 0 0;
     background-color: #FFF;
-    box-shadow: -5px 0 3px rgba(0, 0, 0, 0.5);
+    box-shadow: -5px 0 3px 700px rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 0;
     right: 0;
     height: 100%;
     width: 50%;
-    z-index: 100;
+    z-index: 500;
     &.toggled {
       display: block!important;
     }
     a.nav-option {
-      margin: 10px 0!important;
+      margin: 10px auto!important;
     }
   }
 }

@@ -56,12 +56,20 @@ export default function Establishments({ establishments }) {
       }
     });
 
+    const getToday = place.operational_hour.map((time, key) => {
+      const today = new Date().getDate();
+      
+      if (time === today) {
+        console.log(true);
+      }
+    })
+
     const formatHours = sortHours(place.operational_hour);
 
     return (
       <Card key={key}>
         <Accordion.Toggle as={Card.Header} variant="link" eventKey={key}>
-          {place.name}
+          {place.name} {getToday}
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={key}>
           <Card.Body>
