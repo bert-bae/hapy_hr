@@ -3,6 +3,7 @@ import "../styles/default.scss";
 import Head from 'next/head';
 import Navigation from './components/navigation';
 import Jumbotron from './components/jumbotron';
+import HomeCTA from './components/homeCTA';
 
 // color styles... temp location
 // main = DB6218
@@ -21,6 +22,7 @@ export default function Index() {
       </Head>
       <Navigation/>
       <Jumbotron imgSrc={"/static/images/homepage.jpg"} mainHeader={"Explore with Great Happy Hour Deals"} subHeader={"Food & Drink Deals Near You"}></Jumbotron>
+      <HomeCTA/>
     </div>
   )
 }

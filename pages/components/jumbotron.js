@@ -72,6 +72,7 @@ export default function Jumbotron({ imgSrc, mainHeader, subHeader}) {
         }
         input {
           width: calc(75% - 10px);
+          height: 19px;
           border-radius: 8px;
           margin-right: 5px;
           padding: 4px 10px;
