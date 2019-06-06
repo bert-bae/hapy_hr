@@ -1,5 +1,10 @@
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
+import Tab from 'react-bootstrap/Tab';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
+
 import '../../styles/components/establishments.scss';
 // react-bootstrap overrides specificity for all bs component styling. Bootstrap specific components are inline styled for this purpose
 export default function Establishments({ establishments }) {
@@ -85,7 +90,29 @@ export default function Establishments({ establishments }) {
             <p className="location">{place.address_line}, {place.city}, {place.province}, {place.postal_code}</p>
             <p className="description">{place.description}</p>
             <hr/>
-            <div className="establishment-details">
+            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+              <Col sm={3}>
+                <Nav variant="pills" className="flex-row">
+                  <Nav.Item>
+                    <Nav.Link eventKey="first">Tab 1</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="second">Tab 2</Nav.Link>
+                  </Nav.Item>
+                </Nav>
+              </Col>
+              <Col sm={9}>
+                <Tab.Content>
+                  <Tab.Pane eventKey="first">
+                    hello
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="second">
+                    hello
+                  </Tab.Pane>
+                </Tab.Content>
+              </Col>
+            </Tab.Container>
+            {/* <div className="establishment-details">
               <div className="establishment-menu">
                 <p className="subheader">Drinks</p>
                 <hr/>
@@ -99,7 +126,7 @@ export default function Establishments({ establishments }) {
                 <hr/>
                 {formatHours}
               </div>
-            </div>
+            </div> */}
           </Card.Body>
         </Accordion.Collapse>
       </Card>
