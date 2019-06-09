@@ -3,7 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import '../../styles/components/detailTabs.scss';
 
-export default function WeekTabs({place}) {
+export default function WeekTabs({place, setHasFood, setHasDrinks}) {
   const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']; 
   const formatTabs = weekdays.map((day, index) => {
     return (
@@ -28,6 +28,7 @@ export default function WeekTabs({place}) {
 
     dayDrinks = menuItems.map((item, index) => {
       if (item.weekday.includes(key) || item.weekday.includes(7) && item.type === "drink") {
+        setHasDrinks(true);
         checked.push(index)
         return (
           <div className="menu-item">
@@ -43,6 +44,7 @@ export default function WeekTabs({place}) {
         return;
       }
       if (item.weekday.includes(day) || item.weekday.includes(7) && item.type === "food") {
+        setHasFood(true);
         return (
           <div className="menu-item">
             <p className="item">{item.name}</p>

@@ -1,10 +1,15 @@
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import WeekTabs from './weekTabs';
+import GoogleMap from './googleMap';
+import { useEffect, useState } from 'react';
 
 import '../../styles/components/establishments.scss';
 
 export default function Establishments({ establishments }) {
+  const [hasFood, setHasFood] = useState(false);
+  const [hasDrinks, setHasDrinks] = useState(false);
+
   const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   const formatted = establishments.map((place, key) => {
@@ -26,10 +31,10 @@ export default function Establishments({ establishments }) {
             <div className="op-time">
               {getToday}
             </div>
-            {/* { formatFoodMenu.length > 0 && 
+            { hasFood > 0 && 
               <div className="icon icon-content food">Food</div> }
-            { formatDrinkMenu.length > 0 && 
-              <div className="icon icon-content drinks">Drinks</div> }   */}
+            { hasDrinks > 0 && 
+              <div className="icon icon-content drinks">Drinks</div> }  
           </div>
         </Accordion.Toggle>
 
@@ -38,7 +43,8 @@ export default function Establishments({ establishments }) {
             <p className="location">{place.address_line}, {place.city}, {place.province}, {place.postal_code}</p>
             <p className="description">{place.description}</p>
             <hr/>
-            <WeekTabs place={place}/>
+            <WeekTabs place={place} setHasFood={setHasFood} setHasDrinks={setHasDrinks}/>
+            <GoogleMap place={place}/>
           </Card.Body>
         </Accordion.Collapse>
       </Card>
