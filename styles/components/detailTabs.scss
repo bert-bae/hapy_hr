@@ -1,0 +1,48 @@
+// color styles... temp location
+// main = DB6218
+// secondary = EF7F00
+// tertiary = FF9914
+// background = EFA700
+// highlights & components = FF4823
+
+.tabs-container {
+  width: 50%;
+  .weekday-tabs {
+    margin: 0;
+    .day-tab {
+      width: calc(100% / 7);
+      .nav-link {
+        margin: 0!important;
+        width: 100%!important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #EFA700;
+        &.active, &:hover {
+          background-color: #EF7F00;
+        }
+      }
+    }
+  }
+  .tab-content {
+    padding: 15px;
+    border: 2px solid #EF7F00;
+    width: calc(100% + 2px)!important;
+    .subheader {
+      font-size: 18px;
+      font-weight: bold;
+      opacity: 0.8;
+      width: 100%;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.8);
+      margin-bottom: 10px;
+    }
+    .food, .drink {
+      margin-top: 20px;
+      .menu-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+}

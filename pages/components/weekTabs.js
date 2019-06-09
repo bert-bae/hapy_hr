@@ -1,14 +1,13 @@
 import Tab from 'react-bootstrap/Tab';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
+import '../../styles/components/detailTabs.scss';
 
 export default function WeekTabs({place}) {
-  // const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const weekdays = ['Sun'];  
+  const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']; 
   const formatTabs = weekdays.map((day, index) => {
     return (
-      <Nav.Item>
+      <Nav.Item className="day-tab">
         <Nav.Link eventKey={`tab-${index}`}>{day}</Nav.Link>
       </Nav.Item>
     )
@@ -33,7 +32,7 @@ export default function WeekTabs({place}) {
         return (
           <div className="menu-item">
             <p className="item">{item.name}</p>
-            <p className="price">{item.price}</p>
+            <p className="price">${item.price.toFixed(2)}</p>
           </div>
         )
       }
@@ -47,7 +46,7 @@ export default function WeekTabs({place}) {
         return (
           <div className="menu-item">
             <p className="item">{item.name}</p>
-            <p className="price">{item.price}</p>
+            <p className="price">${item.price.toFixed(2)}</p>
           </div>
         )
       }
@@ -56,7 +55,6 @@ export default function WeekTabs({place}) {
       <Tab.Pane eventKey={`tab-${key}`}>
         <div className="op-hours">
           <p className="subheader">Happy Hours</p>
-          <hr/>
           {dayHour}
         </div>
         <div className="menu-section">
@@ -74,17 +72,15 @@ export default function WeekTabs({place}) {
   })
 
   return (
-    <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-      <Col sm={3}>
-        <Nav variant="pills" className="flex-row">
+    <div className="tabs-container">
+      <Tab.Container defaultActiveKey="first">
+        <Nav variant="pills" className="weekday-tabs">
           {formatTabs}
         </Nav>
-      </Col>
-      <Col sm={9}>
         <Tab.Content>
           {constructDayDetails}
         </Tab.Content>
-      </Col>
-    </Tab.Container>
+      </Tab.Container>
+    </div>
   )
 }

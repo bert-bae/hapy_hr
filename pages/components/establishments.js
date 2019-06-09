@@ -38,12 +38,7 @@ export default function Establishments({ establishments }) {
             <p className="location">{place.address_line}, {place.city}, {place.province}, {place.postal_code}</p>
             <p className="description">{place.description}</p>
             <hr/>
-
-
             <WeekTabs place={place}/>
-
-
-
           </Card.Body>
         </Accordion.Collapse>
       </Card>
