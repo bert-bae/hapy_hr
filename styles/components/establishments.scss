@@ -55,6 +55,12 @@ $highlights: #ff4823;
   .card-body {
     border: 1px solid $tertiary-color;
   }
+  .establishment-content {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    align-items: center;
+  }
 }
 
 @media only screen and (max-width: 768px) {
