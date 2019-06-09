@@ -45,8 +45,8 @@ export default function Establishments({ establishments }) {
             <hr/>
             <div className="establishment-content">
               <WeekTabs place={place} setHasFood={setHasFood} setHasDrinks={setHasDrinks}/>
-              <GoogleMap place={place}/>
             </div>
+            <GoogleMap place={place}/>
           </Card.Body>
         </Accordion.Collapse>
       </Card>
