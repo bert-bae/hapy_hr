@@ -54,7 +54,7 @@ export default function Establishments({ establishments }) {
   })
   return (
     <div className="list-container">
-      <Accordion defaultActiveKey="0">
+      <Accordion>
         {formatted}
       </Accordion>
     </div>

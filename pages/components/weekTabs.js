@@ -4,7 +4,9 @@ import Nav from 'react-bootstrap/Nav';
 import '../../styles/components/detailTabs.scss';
 
 export default function WeekTabs({place, setHasFood, setHasDrinks}) {
-  const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']; 
+  const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const today = new Date().getDay();
+  
   const formatTabs = weekdays.map((day, index) => {
     return (
       <Nav.Item className="day-tab">
@@ -75,7 +77,7 @@ export default function WeekTabs({place, setHasFood, setHasDrinks}) {
 
   return (
     <div className="tabs-container">
-      <Tab.Container defaultActiveKey="first">
+      <Tab.Container defaultActiveKey={`tab-${today}`}>
         <Nav variant="pills" className="weekday-tabs">
           {formatTabs}
         </Nav>
