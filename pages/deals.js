@@ -34,7 +34,6 @@ DealPage.getInitialProps = async (initData) => {
   // Connect to server for data
   const res = await axios.get('http://localhost:5000/establishment');
   const data = res.data;
-  console.log(data);
   return { establishments: data.establishment };
 }
 
