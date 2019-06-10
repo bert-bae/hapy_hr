@@ -1,0 +1,25 @@
+.voucher-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  .subheader {
+    font-size: 24px;
+    opacity: 0.8;
+    text-align: center;
+    margin: 0;
+  }
+  .get-voucher {
+    height: 33%;
+    width: 75%;
+    margin-top: 20px;
+    background-color: forestgreen;
+    font-size: 18px;  
+    color: #FFF;
+    border-radius: 12px;
+    border: none;
+    box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.8);
+  }
+}

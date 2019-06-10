@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import WeekTabs from './weekTabs';
 import GoogleMap from './googleMap';
 import DayVoucher from './dayVoucher';
+import Col from 'react-bootstrap/Col';
 import { useEffect, useState } from 'react';
 
 import '../../styles/components/establishments.scss';
@@ -43,8 +44,12 @@ export default function Establishments({ establishments }) {
             <p className="description">{place.description}</p>
             <hr/>
             <div className="establishment-content">
-              <WeekTabs place={place} setHasFood={setHasFood} setHasDrinks={setHasDrinks}/>
-              <DayVoucher/>
+              <Col lg={6} md={6} sm={12}>
+                <WeekTabs place={place} setHasFood={setHasFood} setHasDrinks={setHasDrinks}/>
+              </Col>
+              <Col lg={6} md={6} sm={12}>
+                <DayVoucher/>
+              </Col>
             </div>
             <GoogleMap place={place}/>
           </Card.Body>
