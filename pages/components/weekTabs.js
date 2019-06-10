@@ -18,8 +18,9 @@ export default function WeekTabs({place, setHasFood, setHasDrinks}) {
   const constructDayDetails = weekdays.map((day, key) => {
     const opHours = place.operational_hour;
     let menuItems = place.menu_item;
-    let checked = [];
-    let dayHour, dayDrinks, dayFood;
+    let dayHour, dayDrinks = [], dayFood = [];
+
+    // Gets the hours of operation for the specific weekday based on a index match
     dayHour = opHours.map((time, index) => {
       if (time.weekday === key) {
         return (
@@ -28,32 +29,42 @@ export default function WeekTabs({place, setHasFood, setHasDrinks}) {
       }
     })
 
-    dayDrinks = menuItems.map((item, index) => {
-      if (item.weekday.includes(key) || item.weekday.includes(7) && item.type === "drink") {
-        setHasDrinks(true);
-        checked.push(index)
-        return (
-          <div className="menu-item" key={`drink=${index}`}>
-            <p className="item">{item.name}</p>
-            <p className="price">${item.price.toFixed(2)}</p>
-          </div>
-        )
+    // Sorts the menu items into food and drinks
+    menuItems.forEach((item) => {
+      switch (item.type) {
+        case "drink":
+          if (item.weekday.includes(key) || item.weekday.includes(7)) {
+            dayDrinks.push(item);
+            break;
+          }
+        case "food":
+          if (item.weekday.includes(key) || item.weekday.includes(7)) {
+            dayFood.push(item);
+          }
+          break;
+        default:
+          break;
       }
     })
 
-    dayFood = menuItems.map((item, index) => {
-      if (checked.includes(index)) {
-        return;
-      }
-      if (item.weekday.includes(day) || item.weekday.includes(7) && item.type === "food") {
-        setHasFood(true);
-        return (
-          <div className="menu-item" key={`food=${index}`}>
-            <p className="item">{item.name}</p>
-            <p className="price">${item.price.toFixed(2)}</p>
-          </div>
-        )
-      }
+    // Formats the drink menu items into a component
+    dayDrinks = dayDrinks.map((item, index) => {
+      return (
+        <div className="menu-item" key={`drink=${index}`}>
+          <p className="item">{item.name}</p>
+          <p className="price">${item.price.toFixed(2)}</p>
+        </div>
+      )
+    })
+    
+    // Formats the food menu items into a component
+    dayFood = dayFood.map((item, index) => {
+      return (
+        <div className="menu-item" key={`food=${index}`}>
+          <p className="item">{item.name}</p>
+          <p className="price">${item.price.toFixed(2)}</p>
+        </div>
+      )
     })
     return (
       <Tab.Pane eventKey={`tab-${key}`} key={`weekday-${key}`}>
@@ -62,14 +73,18 @@ export default function WeekTabs({place, setHasFood, setHasDrinks}) {
           {dayHour}
         </div>
         <div className="menu-section">
-          <div className="food">
-            <p className="subheader">Food</p>
-            {dayFood}
-          </div>
-          <div className="drink">
-            <p className="subheader">Drinks</p>
-            {dayDrinks}
-          </div>
+          {dayFood.length > 1 && 
+            <div className="food">
+              <p className="subheader">Food</p>
+              {dayFood}
+            </div>
+          }
+          {dayDrinks.length > 1 &&
+            <div className="drink">
+              <p className="subheader">Drinks</p>
+              {dayDrinks}
+            </div>
+          }
         </div>
       </Tab.Pane>
     )

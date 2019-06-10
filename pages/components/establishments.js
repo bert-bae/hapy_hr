@@ -2,6 +2,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import WeekTabs from './weekTabs';
 import GoogleMap from './googleMap';
+import DayVoucher from './dayVoucher';
 import { useEffect, useState } from 'react';
 
 import '../../styles/components/establishments.scss';
@@ -9,7 +10,6 @@ import '../../styles/components/establishments.scss';
 export default function Establishments({ establishments }) {
   const [hasFood, setHasFood] = useState(false);
   const [hasDrinks, setHasDrinks] = useState(false);
-
   const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   const formatted = establishments.map((place, key) => {
@@ -22,7 +22,6 @@ export default function Establishments({ establishments }) {
         )
       }
     })
-
     return (
       <Card key={key}>
         <Accordion.Toggle as={Card.Header} variant="link" eventKey={key}>
@@ -31,10 +30,10 @@ export default function Establishments({ establishments }) {
             <div className="op-time">
               {getToday}
             </div>
-            { hasFood > 0 && 
+            {/* { hasFood && 
               <div className="icon icon-content food">Food</div> }
-            { hasDrinks > 0 && 
-              <div className="icon icon-content drinks">Drinks</div> }  
+            { hasDrinks && 
+              <div className="icon icon-content drinks">Drinks</div> }   */}
           </div>
         </Accordion.Toggle>
 
@@ -45,6 +44,7 @@ export default function Establishments({ establishments }) {
             <hr/>
             <div className="establishment-content">
               <WeekTabs place={place} setHasFood={setHasFood} setHasDrinks={setHasDrinks}/>
+              <DayVoucher/>
             </div>
             <GoogleMap place={place}/>
           </Card.Body>
