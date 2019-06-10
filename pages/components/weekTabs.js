@@ -9,7 +9,7 @@ export default function WeekTabs({place, setHasFood, setHasDrinks}) {
   
   const formatTabs = weekdays.map((day, index) => {
     return (
-      <Nav.Item className="day-tab">
+      <Nav.Item className="day-tab" key={`weekday-${index}`}>
         <Nav.Link eventKey={`tab-${index}`}>{day}</Nav.Link>
       </Nav.Item>
     )
@@ -20,10 +20,10 @@ export default function WeekTabs({place, setHasFood, setHasDrinks}) {
     let menuItems = place.menu_item;
     let checked = [];
     let dayHour, dayDrinks, dayFood;
-    dayHour = opHours.map((time) => {
+    dayHour = opHours.map((time, index) => {
       if (time.weekday === key) {
         return (
-          <p className="hours">{time.start} - {time.end}</p>
+          <p className="hours" key={`time-${index}`}>{time.start} - {time.end}</p>
         )
       }
     })
@@ -33,7 +33,7 @@ export default function WeekTabs({place, setHasFood, setHasDrinks}) {
         setHasDrinks(true);
         checked.push(index)
         return (
-          <div className="menu-item">
+          <div className="menu-item" key={`drink=${index}`}>
             <p className="item">{item.name}</p>
             <p className="price">${item.price.toFixed(2)}</p>
           </div>
@@ -48,7 +48,7 @@ export default function WeekTabs({place, setHasFood, setHasDrinks}) {
       if (item.weekday.includes(day) || item.weekday.includes(7) && item.type === "food") {
         setHasFood(true);
         return (
-          <div className="menu-item">
+          <div className="menu-item" key={`food=${index}`}>
             <p className="item">{item.name}</p>
             <p className="price">${item.price.toFixed(2)}</p>
           </div>
@@ -56,7 +56,7 @@ export default function WeekTabs({place, setHasFood, setHasDrinks}) {
       }
     })
     return (
-      <Tab.Pane eventKey={`tab-${key}`}>
+      <Tab.Pane eventKey={`tab-${key}`} key={`weekday-${key}`}>
         <div className="op-hours">
           <p className="subheader">Happy Hours</p>
           {dayHour}
