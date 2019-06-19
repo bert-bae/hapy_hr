@@ -1,6 +1,5 @@
 import '../../styles/components/navigation.scss';
 import Link from 'next/link';
-import Head from 'next/head';
 
 export default function Navigation() {
   const openMenu = () => {
@@ -20,6 +19,9 @@ export default function Navigation() {
       <div className="nav-toggle-menu" onClick={(e) => { openMenu(e);}}>|||</div>
       <div className="navigation-menu">
         <div className="nav-toggle-menu" onClick={(e) => { closeMenu(e);}}>|||</div>
+        <Link href="/login">
+          <a className="nav-option">Login</a>
+        </Link>
         <Link href="/">
           <a className="nav-option">Home</a>
         </Link>
