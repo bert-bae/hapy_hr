@@ -31,8 +31,10 @@ export default class Auth {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
       } else if (err) {
-        Router.replace('/');
-        console.log(err);
+        window.location.href = '/';
+    
+        // TODO: Investigate why Router.replace('/'); does not work...
+        // Router.replace('/');
         alert(`Error: ${err.error}. Check the console for further details`);
       }
     });
@@ -49,7 +51,6 @@ export default class Auth {
   setSession(authResult) {
     // set isLoggedIn flag in localstroage
     localStorage.setItem('isLoggedIn', 'true');
-
     // set the time that the Access Token will expire at
     let expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
     this.accessToken = authResult.accessToken;
@@ -57,7 +58,10 @@ export default class Auth {
     this.expiresAt = expiresAt;
 
     // Once session is set, navigate to the home route
-    Router.replace('/');
+    window.location.href = '/';
+
+    // TODO: Investigate why Router.replace('/'); does not work...
+    // Router.replace('/');
   }
 
   renewSession() {
@@ -86,7 +90,10 @@ export default class Auth {
     })
 
     // navigate to the home route
-    Router.replace('/');
+    window.location.href = '/';
+    
+    // TODO: Investigate why Router.replace('/'); does not work...
+    // Router.replace('/');
   }
 
   isAuthenticated() {

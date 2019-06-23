@@ -5,11 +5,6 @@ import Link from 'next/link';
 export default function Jumbotron({ imgSrc, mainHeader, subHeader}) {
   const [addressInput, setAddressInput] = useState("");
 
-  // react hooks do not accept callback or promises to log result, but is async. Use useEffect to see that changes are being applied
-  useEffect(() => {
-    console.log(addressInput);
-  });
-
   return (
     <div>
       <div className="jumbotron-container" style={{backgroundImage: `url('${imgSrc}')`}}>

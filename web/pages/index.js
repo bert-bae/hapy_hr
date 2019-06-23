@@ -13,6 +13,7 @@ import HomeCTA from './components/homeCTA';
 // highlights & components = FF4823
 
 export default function Index() {
+  console.log(111);
   return (
     <div>
       <Head>
