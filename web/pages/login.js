@@ -1,6 +1,6 @@
 import getConfig from 'next/config';
 import { useState, useEffect } from 'react';
-import Auth from './Auth/auth';
+import Auth from '../utils/Auth/auth';
 import Router from 'next/router';
 
 export default function Login(props) {

@@ -1,6 +1,6 @@
 import Router from 'next/router';
 import { useEffect, useState} from 'react';
-import Auth from './Auth/auth';
+import Auth from '../utils/Auth/auth';
 
 export default function Callback() {
   const authenticate = new Auth;
