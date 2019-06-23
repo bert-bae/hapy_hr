@@ -1,10 +1,14 @@
 import auth0 from 'auth0-js';
 import getConfig from 'next/config';
-import Router from 'next/router';
+import jwtDecode from 'jwt-decode';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 export default class Auth {
+  accessToken;
+  idToken;
+  expiresAt;
+
   constructor() {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -13,6 +17,8 @@ export default class Auth {
     this.getAccessToken = this.getAccessToken.bind(this);
     this.getIdToken = this.getIdToken.bind(this);
     this.renewSession = this.renewSession.bind(this);
+    this.getQueryParams = this.getQueryParams.bind(this);
+    this.extractInfoFromHash = this.extractInfoFromHash.bind(this);
   }
   auth0 = new auth0.WebAuth({
     domain: publicRuntimeConfig.AUTH0_DOMAIN,
@@ -25,17 +31,34 @@ export default class Auth {
   login() {
     this.auth0.authorize();
   }
+  
+  extractInfoFromHash() {
+    if (process.server) {
+      return;
+    }
+    const { id_token } = this.getQueryParams();
+    return {
+      token: id_token,
+      user_details: jwtDecode(id_token),
+    }
+  }
+
+  getQueryParams() {
+    const params = {};
+    window.location.href.replace(/([^(?|#)=&]+)(=([^&]*))?/g, ($0, $1, $2, $3) => {
+      params[$1] = $3;
+    });
+    return params;
+  }
 
   handleAuthentication() {
+    const userDetails = this.extractInfoFromHash()
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
-        this.setSession(authResult);
+        this.setSession(authResult, userDetails);
       } else if (err) {
-        window.location.href = '/';
-    
-        // TODO: Investigate why Router.replace('/'); does not work...
-        // Router.replace('/');
         alert(`Error: ${err.error}. Check the console for further details`);
+        window.location.replace('/');
       }
     });
   }
@@ -48,20 +71,19 @@ export default class Auth {
     return this.idToken;
   }
 
-  setSession(authResult) {
+  setSession(authResult, userDetails) {
     // set isLoggedIn flag in localstroage
     localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('user_details', JSON.stringify(userDetails.user_details));
+
     // set the time that the Access Token will expire at
     let expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
     this.accessToken = authResult.accessToken;
     this.idToken = authResult.idToken;
     this.expiresAt = expiresAt;
 
-    // Once session is set, navigate to the home route
-    window.location.href = '/';
-
-    // TODO: Investigate why Router.replace('/'); does not work...
-    // Router.replace('/');
+    // Redirect to homepage
+    window.location.replace('/');
   }
 
   renewSession() {
@@ -83,16 +105,9 @@ export default class Auth {
 
     // Remove isLoggedIn flag from localstorage
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('user_details');
 
-    this.auth0.logout({
-      returnTo: window.location.origin
-    })
-
-    // navigate to the home route
-    window.location.href = '/';
-    
-    // TODO: Investigate why Router.replace('/'); does not work...
-    // Router.replace('/');
+    window.location.replace('/');
   }
 
   isAuthenticated() {
