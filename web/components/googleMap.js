@@ -1,4 +1,4 @@
-import '../../styles/components/googleMaps.scss';
+import '../styles/components/googleMaps.scss';
 import getConfig from 'next/config';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();

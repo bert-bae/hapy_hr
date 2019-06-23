@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import '../../styles/components/dayVoucher.scss';
+import '../styles/components/dayVoucher.scss';
 
 export default function DayVoucher() {
   const [voucher, setVoucher] = useState(null);

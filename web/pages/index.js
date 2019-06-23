@@ -1,9 +1,9 @@
 import "../styles/default.scss";
 
 import Head from 'next/head';
-import Navigation from './components/navigation';
-import Jumbotron from './components/jumbotron';
-import HomeCTA from './components/homeCTA';
+import Navigation from '../components/navigation';
+import Jumbotron from '../components/jumbotron';
+import HomeCTA from '../components/homeCTA';
 
 // color styles... temp location
 // main = DB6218
@@ -13,7 +13,6 @@ import HomeCTA from './components/homeCTA';
 // highlights & components = FF4823
 
 export default function Index() {
-  console.log(111);
   return (
     <div>
       <Head>

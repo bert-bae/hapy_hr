@@ -1,7 +1,7 @@
 import Tab from 'react-bootstrap/Tab';
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
-import '../../styles/components/detailTabs.scss';
+import '../styles/components/detailTabs.scss';
 
 export default function WeekTabs({place, setHasFood, setHasDrinks}) {
   const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

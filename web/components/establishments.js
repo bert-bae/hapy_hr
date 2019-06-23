@@ -6,7 +6,7 @@ import DayVoucher from './dayVoucher';
 import Col from 'react-bootstrap/Col';
 import { useEffect, useState } from 'react';
 
-import '../../styles/components/establishments.scss';
+import '../styles/components/establishments.scss';
 
 export default function Establishments({ establishments }) {
   const [hasFood, setHasFood] = useState(false);

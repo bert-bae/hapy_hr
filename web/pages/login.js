@@ -6,7 +6,7 @@ import Router from 'next/router';
 export default function Login(props) {
   // Initiate new instance of Auth class object...
   const authenticate = new Auth();
-
+  
   const goTo = (route) => {
     Router.replace(`/${route}`);
   }
@@ -25,7 +25,6 @@ export default function Login(props) {
       renewSession();
     }
   })
-
   return (
     <>
       { authenticate.isAuthenticated() &&

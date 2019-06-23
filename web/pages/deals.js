@@ -2,8 +2,8 @@ import '../styles/default.scss';
 import Head from 'next/head';
 import axios from 'axios';
 
-import Navigation from './components/navigation';
-import Establishments from './components/establishments';
+import Navigation from '../components/navigation';
+import Establishments from '../components/establishments';
 
 const DealPage = (props) => {
   return (

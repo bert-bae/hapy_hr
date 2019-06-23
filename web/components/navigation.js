@@ -1,4 +1,4 @@
-import '../../styles/components/navigation.scss';
+import '../styles/components/navigation.scss';
 import Link from 'next/link';
 
 export default function Navigation() {
