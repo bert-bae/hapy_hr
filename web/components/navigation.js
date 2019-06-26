@@ -5,7 +5,7 @@ import Auth from '../utils/Auth/auth';
 
 export default function Navigation() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const openMenu = () => {
     const navmenu = document.getElementsByClassName('navigation-menu')[0];
@@ -37,7 +37,7 @@ export default function Navigation() {
       renewSession();
     }
     setLoggedIn(localStorage.getItem('isLoggedIn'));
-    setUserData(localStorage.getItem('user_details'));
+    setLoading(true);
   })
 
   return (
@@ -49,10 +49,10 @@ export default function Navigation() {
       <div className="nav-toggle-menu" onClick={(e) => { openMenu(e);}}>|||</div>
       <div className="navigation-menu">
         <div className="nav-toggle-menu" onClick={(e) => { closeMenu(e);}}>|||</div>
-        { loggedIn &&
+        { loading && loggedIn &&
           <a className="nav-option" onClick={() => {logout()}}>Log Out</a>
         }
-        { !loggedIn &&
+        { loading && !loggedIn &&
           <a className="nav-option" onClick={() => {login()}}>Log In</a>
         }
         <Link href="/">
