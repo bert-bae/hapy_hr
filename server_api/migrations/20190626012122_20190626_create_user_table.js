@@ -4,8 +4,8 @@ exports.up = function(knex, Promise) {
     table.increments('id').unsigned().primary();
     table.string('email').defaultTo(null);
     table.string('username').defaultTo(null);
-    table.datetime('created_at').defaultTo(new Date());
-    table.datetime('last_login').defaultTo(new Date());
+    table.datetime('created_at').defaultTo(knex.raw('now()'));
+    table.datetime('last_login').defaultTo(knex.raw('now()'));
   })
 };
 
