@@ -1,0 +1,5 @@
+server_api/node_modules
+web/node_modules
+server_api/.env
+web/.env
+web/.next
