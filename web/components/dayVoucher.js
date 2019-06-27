@@ -5,7 +5,7 @@ export default function DayVoucher() {
   const [voucher, setVoucher] = useState(null);
   const createVoucher = () => {
     // TODO CREATE DATABASE FOR VOUCHER, USER, AND EXPIRATION
-    console.log(new Date());
+    return;
   }
   createVoucher();
   return (

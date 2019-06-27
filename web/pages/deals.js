@@ -20,7 +20,9 @@ const DealPage = (props) => {
         />
       </Head>
       <Navigation/>
-      <Establishments establishments={props.establishments}/>
+      { props.establishments &&
+        <Establishments establishments={props.establishments}/>
+      }
     </div>
   )
 }

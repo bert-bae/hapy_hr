@@ -12,7 +12,6 @@ export default function Establishments({ establishments }) {
   const [hasFood, setHasFood] = useState(false);
   const [hasDrinks, setHasDrinks] = useState(false);
   const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
   const formatted = establishments.map((place, key) => {
 
     const getToday = place.operational_hour.map((time, key) => {

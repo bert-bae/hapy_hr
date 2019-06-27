@@ -4,6 +4,7 @@ import { useAuth0 } from "../utils/Auth/react-auth0-wrapper";
 
 export default function Navigation() {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  console.log(isAuthenticated);
   const openMenu = () => {
     const navmenu = document.getElementsByClassName('navigation-menu')[0];
     navmenu.style = "display: block";

@@ -1,16 +1,12 @@
-import createAuth0Client from '@auth0/auth0-spa-js';
-import React, { useState, useEffect, useContext } from 'react';
-import getConfig from 'next/config';
-
-import jwtDecode from 'jwt-decode';
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
+import React, { useState, useEffect, useContext } from "react";
+import createAuth0Client from "@auth0/auth0-spa-js";
 
 const DEFAULT_REDIRECT_CALLBACK = () => {
   window.location.replace('/');
 }
 
 export const Auth0Context = React.createContext();
-export const useAuth0 = () => { useContext(Auth0Context) };
+export const useAuth0 = () => useContext(Auth0Context);
 export const Auth0Provider = ({
   children,
   onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
@@ -23,7 +19,7 @@ export const Auth0Provider = ({
   const [popupOpen, setPopupOpen] = useState(false);
 
   useEffect(() => {
-    const initAuth0 = async() => {
+    const initAuth0 = async () => {
       const auth0FromHook = await createAuth0Client(initOptions);
       setAuth0(auth0FromHook);
 
@@ -37,13 +33,12 @@ export const Auth0Provider = ({
       setIsAuthenticated(isAuthenticated);
 
       if (isAuthenticated) {
-        const use = await auth0FromHook.getUser();
+        const user = await auth0FromHook.getUser();
         setUser(user);
       }
 
       setLoading(false);
     };
-
     initAuth0();
     // eslint-disable-next-line
   }, []);
@@ -52,7 +47,7 @@ export const Auth0Provider = ({
     setPopupOpen(true);
     try {
       await auth0Client.loginWithPopup(params);
-    } catch (err) {
+    } catch (error) {
       console.error(error);
     } finally {
       setPopupOpen(false);
@@ -60,14 +55,16 @@ export const Auth0Provider = ({
     const user = await auth0Client.getUser();
     setUser(user);
     setIsAuthenticated(true);
-  }
+  };
 
   const handleRedirectCallback = async () => {
     setLoading(true);
+    await auth0Client.handleRedirectCallback();
+    const user = await auth0Client.getUser();
+    setLoading(false);
     setIsAuthenticated(true);
     setUser(user);
   };
-
   return (
     <Auth0Context.Provider
       value={{
@@ -82,8 +79,9 @@ export const Auth0Provider = ({
         getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
         getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
         logout: (...p) => auth0Client.logout(...p)
-      }}>
-        {children}
-      </Auth0Context.Provider>
-  )
-}
+      }}
+    >
+      {children}
+    </Auth0Context.Provider>
+  );
+};
