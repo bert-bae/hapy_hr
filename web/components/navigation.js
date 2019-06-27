@@ -1,12 +1,9 @@
 import '../styles/components/navigation.scss';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import Auth from '../utils/Auth/auth';
+import { useAuth0 } from "../utils/Auth/react-auth0-wrapper";
 
 export default function Navigation() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(false);
-
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const openMenu = () => {
     const navmenu = document.getElementsByClassName('navigation-menu')[0];
     navmenu.style = "display: block";
@@ -15,30 +12,6 @@ export default function Navigation() {
     const navmenu = document.getElementsByClassName('navigation-menu')[0];
     navmenu.style = "display: none";
   }
-
-  // Initiate new instance of Auth class object...
-  const authenticate = new Auth();
-
-  const goTo = (route) => {
-    Router.replace(`/${route}`);
-  }
-
-  const login = () => {
-    authenticate.login();
-  }
-
-  const logout = () => {
-    authenticate.logout();
-  }
-
-  useEffect(() => {
-    const { renewSession } = authenticate;
-    if (localStorage.getItem('isLoggedIn') === true) {
-      renewSession();
-    }
-    setLoggedIn(localStorage.getItem('isLoggedIn'));
-    setLoading(true);
-  })
 
   return (
     <div className="navigation-bar">
@@ -49,11 +22,11 @@ export default function Navigation() {
       <div className="nav-toggle-menu" onClick={(e) => { openMenu(e);}}>|||</div>
       <div className="navigation-menu">
         <div className="nav-toggle-menu" onClick={(e) => { closeMenu(e);}}>|||</div>
-        { loading && loggedIn &&
+        { isAuthenticated &&
           <a className="nav-option" onClick={() => {logout()}}>Log Out</a>
         }
-        { loading && !loggedIn &&
-          <a className="nav-option" onClick={() => {login()}}>Log In</a>
+        { !isAuthenticated &&
+          <a className="nav-option" onClick={() => {loginWithRedirect()}}>Log In</a>
         }
         <Link href="/">
           <a className="nav-option">Home</a>
