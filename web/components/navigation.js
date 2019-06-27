@@ -4,7 +4,6 @@ import { useAuth0 } from "../utils/Auth/react-auth0-wrapper";
 
 export default function Navigation() {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
-  console.log(isAuthenticated);
   const openMenu = () => {
     const navmenu = document.getElementsByClassName('navigation-menu')[0];
     navmenu.style = "display: block";
@@ -27,7 +26,9 @@ export default function Navigation() {
           <a className="nav-option" onClick={() => {logout()}}>Log Out</a>
         }
         { !isAuthenticated &&
-          <a className="nav-option" onClick={() => {loginWithRedirect()}}>Log In</a>
+          <a className="nav-option" onClick={() => {loginWithRedirect({
+            redirect_uri: window.location.origin
+          })}}>Log In</a>
         }
         <Link href="/">
           <a className="nav-option">Home</a>

@@ -1,5 +1,5 @@
 import App, { Container } from 'next/app';
-import { Auth0Provider, Auth0Context } from "../utils/Auth/react-auth0-wrapper";
+import { Auth0Provider } from "../utils/Auth/react-auth0-wrapper";
 import getConfig from 'next/config';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
@@ -28,14 +28,14 @@ class MyApp extends App {
   }
   render() {
     const { Component, pageProps } = this.props;
-    
+
     return (
       <Auth0Provider
         domain={publicRuntimeConfig.AUTH0_DOMAIN}
         client_id={publicRuntimeConfig.AUTH0_CLIENT_ID}
         onRedirectCallback={onRedirectCallback}>
         <Container>
-            <Component {...pageProps} />
+          <Component {...pageProps} />
         </Container>
       </Auth0Provider>
     );
