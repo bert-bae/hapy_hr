@@ -13,6 +13,7 @@ const port = 5000;
 // Routes - All Routes go here. Routes connect with controllers
 const establishment = require('./routes/establishment');
 const user = require('./routes/user');
+const voucher = require('./routes/voucher');
 
 // Authentication middleware. Access token must exist and be verified against the auth0 JSON web key set
 const checkJwt = jwt({
@@ -40,6 +41,7 @@ app.use(bodyParser.json());
 // Set all route file connections here
 app.use('/establishment', establishment);
 app.use('/user', user);
+app.use('/voucher', voucher);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
