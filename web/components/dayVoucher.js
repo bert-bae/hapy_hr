@@ -1,20 +1,24 @@
 import {useState, useEffect} from 'react';
+import axios from 'axios';
+import { setVoucherDate } from '../utils/dateUtils';
 import '../styles/components/dayVoucher.scss';
 
-export default function DayVoucher() {
+export default function DayVoucher({ establishmentId }) {
   const [voucher, setVoucher] = useState(null);
-  const createVoucher = () => {
-    // TODO CREATE DATABASE FOR VOUCHER, USER, AND EXPIRATION
-    return;
+  const createVoucher = async () => {
+    let setVoucher = await axios.post(`http://localhost:5000/voucher/${establishmentId}/set`, {
+      userId: 1,
+      expiresAt: setVoucherDate(new Date),
+    });
+    console.log(setVoucher);
   }
-  createVoucher();
   return (
     <div className="voucher-container">
       { !voucher &&
         <p className="subheader">Are you on the go and busy? Save a happy hour deal for later!</p>
       }
       { !voucher && 
-        <button type="button" className="get-voucher" onClick={() => { setVoucher(true) }}>Get Day Voucher</button>
+        <button type="button" className="get-voucher" onClick={() => { createVoucher() }}>Get Day Voucher</button>
       }
 
       { voucher && 

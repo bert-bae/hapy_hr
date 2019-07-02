@@ -47,7 +47,7 @@ export default function Establishments({ establishments }) {
                 <WeekTabs place={place} setHasFood={setHasFood} setHasDrinks={setHasDrinks}/>
               </Col>
               <Col lg={6} md={6} sm={12}>
-                <DayVoucher/>
+                <DayVoucher establishmentId={place.id}/>
               </Col>
             </div>
             <GoogleMap place={place}/>

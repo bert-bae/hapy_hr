@@ -12,9 +12,6 @@ export default function Navigation() {
     const navmenu = document.getElementsByClassName('navigation-menu')[0];
     navmenu.style = "display: none";
   }
-  if (user) {
-    console.log(user);
-  }
   return (
     <div className="navigation-bar">
       <div className="branding">

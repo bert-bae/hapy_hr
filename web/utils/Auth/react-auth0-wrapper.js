@@ -33,7 +33,6 @@ export const Auth0Provider = ({
 
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
-        console.log(user);
         // Verify if user is in server database, insert if not
         const authServer = await axios.post('http://localhost:5000/user/authenticate', {
           user
