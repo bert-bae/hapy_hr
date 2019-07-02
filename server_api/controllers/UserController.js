@@ -20,3 +20,13 @@ exports.authenticateUser = async (req, res, next) => {
     res.send({ success: false, err: true, message: "Error retrieving or creating user in server."})    
   }
 }
+
+exports.getUserByEmail = async (req, res, next) => {
+  const email = req.params.email;
+  try {
+    const user = await User.getUserByEmail(email);
+    res.send({ success: true, err: null, user });
+  } catch(err) {
+    res.send({ success: false, err: "User not found or specified.", user: null });
+  }
+}
