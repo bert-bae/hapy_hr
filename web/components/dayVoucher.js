@@ -17,8 +17,6 @@ export default function DayVoucher({ establishmentId, voucher, setVoucher }) {
     }
   }
 
-  console.log(establishmentId);
-  console.log(voucher.establishment_id);
   return (
     <div className="voucher-container">
       { voucher.establishment_id !== establishmentId &&

@@ -5,7 +5,7 @@ import axios from 'axios';
 import Navigation from '../components/navigation';
 import Establishments from '../components/establishments';
 
-const DealPage = (props) => {
+const DealPage = ({establishments}) => {
   return (
     <div>
       <Head>
@@ -20,8 +20,8 @@ const DealPage = (props) => {
         />
       </Head>
       <Navigation/>
-      { props.establishments &&
-        <Establishments establishments={props.establishments}/>
+      { establishments &&
+        <Establishments establishments={establishments}/>
       }
     </div>
   )
