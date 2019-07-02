@@ -11,6 +11,7 @@ import '../styles/components/establishments.scss';
 export default function Establishments({ establishments }) {
   const [hasFood, setHasFood] = useState(false);
   const [hasDrinks, setHasDrinks] = useState(false);
+  const [voucher, setVoucher] = useState({ id: null });
   const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const formatted = establishments.map((place, key) => {
 
@@ -47,7 +48,7 @@ export default function Establishments({ establishments }) {
                 <WeekTabs place={place} setHasFood={setHasFood} setHasDrinks={setHasDrinks}/>
               </Col>
               <Col lg={6} md={6} sm={12}>
-                <DayVoucher establishmentId={place.id}/>
+                <DayVoucher establishmentId={place.id} voucher={voucher} setVoucher={setVoucher}/>
               </Col>
             </div>
             <GoogleMap place={place}/>
