@@ -37,7 +37,13 @@ exports.getVoucher = async (req, res, next) => {
 }
 
 exports.redeemVoucher = async (req, res, next) => {
-  res.send('hello');
+  const voucherId = req.params.voucherId;
+  try {
+    const update = await Voucher.redeemVoucher(voucherId);
+    res.send({ success: true, err: null });
+  } catch(err) {
+    res.send({ success: false, err: "Voucher could not be redeemed from the server.", voucher: null })
+  }
 }
 
 exports.cancelVoucher = async (req, res, next) => {

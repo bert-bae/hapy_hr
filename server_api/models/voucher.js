@@ -1,9 +1,23 @@
 'use strict';
 const { Model, raw } = require('objection');
+const Establishment = require('./establishment');
 
 class Voucher extends Model {
   static get tableName() {
     return 'voucher';
+  }
+
+  static get relationMappings() {
+    return {
+      establishment: {
+        relation: Model.HasManyRelation,
+        modelClass: Establishment,
+        join: {
+          from: 'voucher.establishment_id',
+          to: 'establishment.id'
+        }
+      },
+    }
   }
 
   static get jsonSchema() {
@@ -15,7 +29,7 @@ class Voucher extends Model {
 
   static async getLastInsertFromUser() {
     const retrieveVoucher = () => {
-      return this.query().where('id', raw('LAST_INSERT_ID()'));
+      return this.query().where('id', raw('LAST_INSERT_ID()')).eager('establishment');
     }
     const voucher = await retrieveVoucher();
     if (voucher.length > 0) {
@@ -37,6 +51,10 @@ class Voucher extends Model {
       return this.query().insert({ establishment_id: establishmentId, user_id: userId, expires_at: expiresAt});
     }
     return null;
+  }
+
+  static async redeemVoucher(voucherId) {
+    return this.query().patch({ redeemed: true }).where('id', voucherId);
   }
 
   static async getVoucher(voucherId) {

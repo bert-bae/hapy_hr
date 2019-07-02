@@ -6,7 +6,7 @@ router.get('/:voucherId/view', VoucherController.retrieveVoucher);
 
 router.post('/:establishmentId/set', VoucherController.setVoucher);
 
-router.post('/:establishmentId/redeem', VoucherController.redeemVoucher);
+router.post('/:voucherId/redeem', VoucherController.redeemVoucher);
 
 router.post('/:establishmentId/cancel', VoucherController.cancelVoucher);
 
