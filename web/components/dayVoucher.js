@@ -38,7 +38,7 @@ export default function DayVoucher({ establishmentId, voucher, setVoucher }) {
         </button>
       }
       { showRedeem && voucher &&
-        <RedeemVoucher voucher={voucher} setShowRedeem={setShowRedeem}/>
+        <RedeemVoucher voucher={voucher} setShowRedeem={setShowRedeem} setVoucher={setVoucher}/>
       }
     </div>
   )

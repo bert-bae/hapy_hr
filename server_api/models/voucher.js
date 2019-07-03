@@ -39,14 +39,15 @@ class Voucher extends Model {
   }
 
   static async setVoucher(establishmentId, userId, expiresAt) {
-    const verifyUnique = () => {
+    const verifyUniqueForDay = () => {
       return this.query()
         .where('valid', true)
-        .andWhere('redeemed', false)
+        .orWhere('redeemed', false)
+        .orWhere('redeemed', true)
         .andWhere('expires_at', '<=', expiresAt)
         .andWhere('expires_at', '>', raw("DATE_FORMAT(CONCAT(CURDATE(), ' 00:00:00'), '%m-%d-%Y %H:%i:%s')"));
     }
-    const voucherExists = await verifyUnique();
+    const voucherExists = await verifyUniqueForDay();
     if (voucherExists.length === 0) {
       return this.query().insert({ establishment_id: establishmentId, user_id: userId, expires_at: expiresAt});
     }
