@@ -8,7 +8,7 @@ router.post('/:establishmentId/set', VoucherController.setVoucher);
 
 router.post('/:voucherId/redeem', VoucherController.redeemVoucher);
 
-router.post('/:establishmentId/cancel', VoucherController.cancelVoucher);
+router.post('/:voucherId/invalidate', VoucherController.invalidateVoucher);
 
 
 

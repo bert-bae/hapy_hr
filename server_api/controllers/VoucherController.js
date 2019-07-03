@@ -46,8 +46,15 @@ exports.redeemVoucher = async (req, res, next) => {
   }
 }
 
-exports.cancelVoucher = async (req, res, next) => {
-  res.send('hello');
+exports.invalidateVoucher = async (req, res, next) => {
+  const voucherId = req.params.voucherId;
+  console.log(`this is the voucher id ${voucherId}`)
+  try {
+    await Voucher.invalidateVoucher(voucherId);
+    res.send({ success: true, err: null });
+  } catch(err) {
+    res.send({ success: false, err: "Voucher invalidation could not be completed in the server." });
+  }
 }
 
 exports.retrieveVoucher = async (req, res, next) => {

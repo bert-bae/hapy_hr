@@ -42,8 +42,6 @@ class Voucher extends Model {
     const verifyUniqueForDay = () => {
       return this.query()
         .where('valid', true)
-        .orWhere('redeemed', false)
-        .orWhere('redeemed', true)
         .andWhere('expires_at', '<=', expiresAt)
         .andWhere('expires_at', '>', raw("DATE_FORMAT(CONCAT(CURDATE(), ' 00:00:00'), '%m-%d-%Y %H:%i:%s')"));
     }
@@ -52,6 +50,10 @@ class Voucher extends Model {
       return this.query().insert({ establishment_id: establishmentId, user_id: userId, expires_at: expiresAt});
     }
     return null;
+  }
+
+  static async invalidateVoucher(voucherId) {
+    return this.query().patch({ valid: false }).where('id', voucherId);
   }
 
   static async redeemVoucher(voucherId) {
