@@ -48,7 +48,6 @@ exports.redeemVoucher = async (req, res, next) => {
 
 exports.invalidateVoucher = async (req, res, next) => {
   const voucherId = req.params.voucherId;
-  console.log(`this is the voucher id ${voucherId}`)
   try {
     await Voucher.invalidateVoucher(voucherId);
     res.send({ success: true, err: null });

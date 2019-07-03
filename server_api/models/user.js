@@ -2,6 +2,7 @@
 
 const { Model, raw } = require('objection');
 const Voucher = require('./voucher');
+const Establishment = require('./establishment');
 
 class User extends Model {
   static get tableName() {
@@ -18,6 +19,19 @@ class User extends Model {
           to: 'voucher.user_id'
         }
       },
+      establishment: {
+        relation: Model.ManyToManyRelation,
+        modelClass: Establishment,
+        join: {
+          from: 'user.id',
+          through: {
+            // voucher is a join table between user and establishment
+            from: 'voucher.user_id',
+            to: 'voucher.establishment_id'
+          },
+          to: 'establishment.id'
+        }
+      }
     }
   }
 
@@ -42,7 +56,7 @@ class User extends Model {
           builder.where('valid', true);
           builder.andWhere('redeemed', false);
           builder.andWhere('expires_at', '<=', 'CURDATE()');
-          builder.andWhere('expires_at', '>', raw("DATE_FORMAT(CONCAT(CURDATE(), ' 00:00:00'), '%m-%d-%Y %H:%i:%s')"));
+          builder.andWhere('expires_at', '>', raw("DATE_FORMAT(CONCAT(CURDATE(), ' 00:00:00'), '%m-%d-%Y %H:%i:%s')")).eager('establishment');
         })
     }
     const user = await retrieveUser();

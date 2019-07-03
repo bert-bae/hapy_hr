@@ -1,7 +1,9 @@
 import axios from 'axios';
+import { useAuth0 } from "../../utils/Auth/react-auth0-wrapper";
 import '../../styles/components/voucherModals.scss'
 
 export default function ReplaceVoucher({ establishmentId, voucher, setShowReplace, createVoucher }) {
+  const { user } = useAuth0();
   const establishment = voucher.establishment.length > 0 ? voucher.establishment[0] : null;
 
   // Invalidates the current voucher with a post request
@@ -11,7 +13,7 @@ export default function ReplaceVoucher({ establishmentId, voucher, setShowReplac
     try {
       const invalidate = await axios.post(`http://localhost:5000/voucher/${voucher.id}/invalidate`);
       if (invalidate.data.success) {
-        createVoucher(establishmentId);
+        createVoucher(establishmentId, user);
         setShowReplace(false);
         return;
       }

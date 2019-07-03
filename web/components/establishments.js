@@ -50,7 +50,7 @@ export default function Establishments({ establishments }) {
                 <WeekTabs place={place} setHasFood={setHasFood} setHasDrinks={setHasDrinks}/>
               </Col>
               <Col className="inner-container" lg={6} md={6} sm={12}>
-                <DayVoucher establishmentId={place.id} voucher={voucher} setVoucher={setVoucher}/>
+                <DayVoucher establishmentId={place.id} voucher={voucher} setVoucher={setVoucher} user={user}/>
               </Col>
             </div>
             <GoogleMap place={place}/>
@@ -67,13 +67,14 @@ export default function Establishments({ establishments }) {
       axios.get(`http://localhost:5000/user/${encodeURIComponent(user.email)}/view`).then(res => {
         const userVoucher = res.data.user.voucher;
         if (userVoucher.length > 0) {
+          console.log(userVoucher);
           setVoucher(userVoucher[0]);
         }
       }).catch(err => {
         console.log(err);
       })
     }
-  })
+  }, [])
 
   return (
     <div className="list-container">

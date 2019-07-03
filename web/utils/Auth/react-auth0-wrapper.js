@@ -34,9 +34,12 @@ export const Auth0Provider = ({
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
         // Verify if user is in server database, insert if not
-        const authServer = await axios.post('http://localhost:5000/user/authenticate', {
+        const authUser = await axios.post('http://localhost:5000/user/authenticate', {
           user
         });
+        // Set database user ID with authentication and with current voucher if present
+        user.id = authUser.data.user.id;
+        user.voucher = authUser.data.user.voucher;
         setUser(user);
       }
 

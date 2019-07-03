@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import { useAuth0 } from "../utils/Auth/react-auth0-wrapper";
 import axios from 'axios';
 import { setVoucherDate } from '../utils/dateUtils';
 import RedeemVoucher from './popups/redeemVoucher';
@@ -6,11 +7,16 @@ import ReplaceVoucher from './popups/replaceVoucher';
 import '../styles/components/dayVoucher.scss';
 
 export default function DayVoucher({ establishmentId, voucher, setVoucher }) {
+  const { loginWithRedirect, user } = useAuth0();
   const [showRedeem, setShowRedeem] = useState(false);
   const [showReplace, setShowReplace] = useState(false);
-  const createVoucher = async (estId) => {
+  const createVoucher = async (estId, currentUser) => {
+    // if user is invalid, prompt auth0 login
+    if (!currentUser) {
+      loginWithRedirect();
+    }
     const setServer = await axios.post(`http://localhost:5000/voucher/${estId}/set`, {
-      userId: 1,
+      userId: currentUser.id,
       expiresAt: setVoucherDate(new Date),
     });
     if (setServer.data.prompt) {
@@ -18,6 +24,7 @@ export default function DayVoucher({ establishmentId, voucher, setVoucher }) {
       setShowReplace(true);
     }
     if (setServer.data.success) {
+      console.log(setServer.data.voucher);
       setVoucher(setServer.data.voucher);
     }
   }
@@ -28,7 +35,7 @@ export default function DayVoucher({ establishmentId, voucher, setVoucher }) {
         <p className="subheader">Are you on the go and busy? Save a happy hour deal for later!</p>
       }
       { voucher.establishment_id !== establishmentId && 
-        <button type="button" className="get-voucher" onClick={() => { createVoucher(establishmentId) }}>Get Day Voucher</button>
+        <button type="button" className="get-voucher" onClick={() => { createVoucher(establishmentId, user) }}>Get Day Voucher</button>
       }
 
       { voucher.establishment_id === establishmentId && 
