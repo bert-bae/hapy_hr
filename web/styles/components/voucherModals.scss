@@ -9,4 +9,26 @@
   justify-content: center;
   align-items: center;
   background-color: #FFF;
+  button {
+    background-color: #FFF;
+    border: none;
+    padding: 7px 25px;
+    margin: 5px 15px;
+    &.cancel-btn {
+      color: #FFF;
+      background-color: rgba(255, 0, 0, 0.5);
+      border-radius: 8px;
+      &:hover {
+        background-color: rgba(255, 0, 0, 0.8);
+      }
+    }
+    &.confirm-btn {
+      color: #FFF;
+      background-color: rgba(0, 128, 0, 0.8);
+      border-radius: 8px;
+      &:hover {
+        background-color: rgba(0, 128, 0, 1);
+      }
+    }
+  }
 }

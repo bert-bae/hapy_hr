@@ -46,10 +46,10 @@ export default function Establishments({ establishments }) {
             <p className="description">{place.description}</p>
             <hr/>
             <div className="establishment-content">
-              <Col lg={6} md={6} sm={12}>
+              <Col className="inner-container" lg={6} md={6} sm={12}>
                 <WeekTabs place={place} setHasFood={setHasFood} setHasDrinks={setHasDrinks}/>
               </Col>
-              <Col lg={6} md={6} sm={12}>
+              <Col className="inner-container" lg={6} md={6} sm={12}>
                 <DayVoucher establishmentId={place.id} voucher={voucher} setVoucher={setVoucher}/>
               </Col>
             </div>

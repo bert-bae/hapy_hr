@@ -16,7 +16,7 @@ export default function RedeemVoucher({ voucher, setShowRedeem, setVoucher }) {
   return (
     <div className="modal-popup">
       <p className="subheader">
-        Redeem your voucher at {establishment.name}?
+        Redeem your voucher at<br/>{establishment.name}?
       </p>
       <div className="btn-container">
         <button type="button" className="cancel-btn" onClick={() => { setShowRedeem(false)}}>No</button>

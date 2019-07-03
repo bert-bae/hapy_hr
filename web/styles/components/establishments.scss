@@ -73,5 +73,11 @@ $highlights: #ff4823;
         width: 100%;
       }
     }
+    .establishment-content {
+      flex-direction: column;
+      .inner-container {
+        margin-bottom: 25px;
+      }
+    }
   }
 }
