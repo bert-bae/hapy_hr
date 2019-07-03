@@ -1,9 +1,4 @@
-// color styles... temp location
-// main = DB6218
-// secondary = EF7F00
-// tertiary = FF9914
-// background = EFA700
-// highlights & components = FF4823
+@import '../variables.scss';
 
 .tabs-container {
   width: 100%;
@@ -12,24 +7,22 @@
     .day-tab {
       width: calc(100% / 7);
       .nav-link {
+        @include flex(center, center, row, wrap);
         margin: 0!important;
-        width: 100%!important;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #EFA700;
+        width: 100%!important;  
+        background-color: $backgroundColor;
         &.active, &:hover {
-          background-color: #EF7F00;
+          background-color: $secondaryColor;
         }
       }
     }
   }
   .tab-content {
     padding: 15px;
-    border: 2px solid #EF7F00;
+    border: 2px solid $secondaryColor;
     width: calc(100% + 2px)!important;
     .subheader {
-      font-size: 18px;
+      font-size: $subheaderFontSize;
       font-weight: bold;
       opacity: 0.8;
       width: 100%;
@@ -39,9 +32,7 @@
     .food, .drink {
       margin-top: 20px;
       .menu-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include flex(space-between, center, row, wrap);
       }
     }
   }

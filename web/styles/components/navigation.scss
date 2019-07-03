@@ -1,11 +1,10 @@
+@import '../variables.scss';
+
 .navigation-bar {
   height: 100px;
   width: 100%;
-  background-color: #EFA700;
-  display: flex;
-  flex-flow: row wrap;
-  align-items:center;
-  justify-content: space-between;
+  background-color: $backgroundColor;
+  @include flex(space-between, center, row, wrap);
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.7);
 }
 .branding {
@@ -28,7 +27,7 @@
   font-size: 24px;
 }
 .hapyhr {
-  color: #DB6218;
+  color: $mainColor;
   margin: 0;
   font-size: 32px!important;
   font-weight: 600;
@@ -57,8 +56,8 @@ a, a.nav-option {
   height: 27px!important;
   box-sizing: content-box!important;
   line-height: 1!important;
-  border: 2px solid #DB6218;
-  background-color: #EF7F00;
+  border: 2px solid $mainColor;
+  background-color: $secondaryColor;
   color: #FFF!important;
   text-decoration: none;
   display: flex;
@@ -71,7 +70,7 @@ a, a.nav-option {
   }
 }
 a:hover {
-  background-color: #DB6218;
+  background-color: $mainColor;
   color: #FFF;
   transition: 0.2s all;
 }

@@ -1,0 +1,19 @@
+// color styles... temp location
+$mainColor: #DB6218;
+$secondaryColor: #EF7F00;
+$tertiaryColor: #FF9914;
+$backgroundColor: #EFA700;
+$highlightColor: #FF4823;
+
+$headerFontSize: 24px;
+$subheaderFontSize: 18px;
+$mainFontSize: 14px;
+$subFontSize: 12px;
+
+@mixin flex($jContent, $aItems, $direction, $wrap) {
+  display: flex;
+  justify-content: $jContent;
+  align-items: $aItems;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}

@@ -1,12 +1,11 @@
+@import '../variables.scss';
+
 .voucher-container {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-items: center;
+  @include flex(center, center, column, wrap);
   .subheader {
-    font-size: 24px;
+    font-size: $subheaderFontSize;
     opacity: 0.8;
     text-align: center;
     margin: 0;
@@ -16,7 +15,7 @@
     width: 75%;
     margin-top: 20px;
     background-color: forestgreen;
-    font-size: 18px;  
+    font-size: $subheaderFontSize;  
     color: #FFF;
     border-radius: 12px;
     border: none;
@@ -26,7 +25,7 @@
     width: 75%;
     margin-top: 20px;
     background-color: #ff4823;
-    font-size: 18px;  
+    font-size: $subheaderFontSize;  
     color: #FFF;
     border-radius: 12px;
     border: none;

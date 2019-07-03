@@ -1,21 +1,20 @@
+@import '../variables.scss';
+
 .section-header {
-  font-size: 24px;
+  font-size: $headerFontSize;
   text-align: center;
-  color: #DB6218;
+  color: $mainColor;
 }
 .section-subheader {
-  font-size: 20px;
-  color: #FF9914;
+  font-size: $subheaderFontSize;
+  color: $tertiaryColor;
   width: 90%;
   margin: 0 auto;
   text-align: center;
   font-weight: bold;
 }
 .cta-container {
-  display: flex;
-  justify-content: space-around;
-  flex-flow: row wrap;
-  align-items: center;
+  @include flex(space-around, center, row, wrap);
   height: 100%;
   padding: 20px 30px;
   .cta-section {
@@ -25,16 +24,13 @@
     width: 30%;
     padding: 10px;
     box-sizing: border-box;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
+    @include flex(space-evenly, center, column, center);
     text-align: center;
     h1 {
-      font-size: 20px;
+      font-size: $subheaderFontSize;
     }
     p {
-      font-size: 16px;
+      font-size: $mainFontSize;
       opacity: 0.7;
     }
   }

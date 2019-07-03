@@ -1,14 +1,4 @@
-// color styles... temp location
-// main = DB6218
-// secondary = EF7F00
-// tertiary = FF9914
-// background = EFA700
-// highlights & components = FF4823
-$main-color: #DB6218;
-$secondary-color: #ef7f00;
-$tertiary-color: #ff9914;
-$background-color: #EFA700;
-$highlights: #ff4823;
+@import '../variables.scss';
 
 .list-container {
   padding: 20px 50px;
@@ -17,16 +7,12 @@ $highlights: #ff4823;
   }
   .card-header {
     color: #FFF;
-    background-color: $tertiary-color;
+    background-color: $tertiaryColor;
     font-weight: bold;
-    background-image: linear-gradient(to bottom left, $tertiary-color, $main-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background-image: linear-gradient(to bottom left, $tertiaryColor, $mainColor);
+    @include flex(space-between, center, row, wrap);
     .icons-container {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
+      @include flex(flex-end, center, row, wrap);
       width: 50%;
       .icon {
         border-radius: 12px;
@@ -47,19 +33,17 @@ $highlights: #ff4823;
         }
       }
       .icon-content {
-        font-size: 12px;
+        font-size: $subFontSize;
         font-weight: normal;
       }
     }
   }
   .card-body {
-    border: 1px solid $tertiary-color;
+    border: 1px solid $tertiaryColor;
   }
   .establishment-content {
-    display: flex;
     height: 100%;
-    justify-content: space-between;
-    flex-direction: row;
+    @include flex(space-between, center, row, wrap);
   }
 }
 

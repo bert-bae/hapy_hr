@@ -11,6 +11,8 @@ export default function DayVoucher({ establishmentId, voucher, setVoucher }) {
   const [showRedeem, setShowRedeem] = useState(false);
   const [showReplace, setShowReplace] = useState(false);
   const createVoucher = async (estId, currentUser) => {
+    // DEVELOPMENT DELETE BEFORE COMMIT
+    currentUser = { id: 1 }
     // if user is invalid, prompt auth0 login
     if (!currentUser) {
       loginWithRedirect();
