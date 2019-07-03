@@ -24,7 +24,6 @@ export default function DayVoucher({ establishmentId, voucher, setVoucher }) {
       setShowReplace(true);
     }
     if (setServer.data.success) {
-      console.log(setServer.data.voucher);
       setVoucher(setServer.data.voucher);
     }
   }

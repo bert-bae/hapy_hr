@@ -67,14 +67,15 @@ export default function Establishments({ establishments }) {
       axios.get(`http://localhost:5000/user/${encodeURIComponent(user.email)}/view`).then(res => {
         const userVoucher = res.data.user.voucher;
         if (userVoucher.length > 0) {
-          console.log(userVoucher);
           setVoucher(userVoucher[0]);
         }
       }).catch(err => {
         console.log(err);
       })
     }
-  }, [])
+  }, []) 
+  // ..., []) >> Add this to the end of useEffect to make it so that it only fires on mount
+  // If you don't add this, the setVoucher inside of it will trigger an infinite loop
 
   return (
     <div className="list-container">
