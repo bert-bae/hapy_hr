@@ -1,15 +1,13 @@
 import Head from 'next/head';
-import Navigation from '../components/navigation';
 
 export default function TrendingPage() {
   return (
-    <div>
+    <div className="page-container">
       <Head>
         <title>HapyHr | Find Happy Hour Deals</title>
         <meta description="Testing NEXT head"></meta>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
       </Head>
-      <Navigation/>
       Trending
       <style jsx>{`
         :global(body), :global(html) {

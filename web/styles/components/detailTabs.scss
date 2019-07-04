@@ -8,8 +8,10 @@
       width: calc(100% / 7);
       .nav-link {
         @include flex(center, center, row, wrap);
+        color: #FFF;
         margin: 0!important;
         width: 100%!important;  
+        border: 2px solid $secondaryColor;
         background-color: $backgroundColor;
         &.active, &:hover {
           background-color: $secondaryColor;

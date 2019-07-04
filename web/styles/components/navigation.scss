@@ -49,7 +49,7 @@
   cursor: pointer;
   z-index: 500;
 }
-a, a.nav-option {
+a.nav-option {
   margin: 0 0 0 20px!important;
   padding: 0!important;
   width: 100px!important;
@@ -69,10 +69,11 @@ a, a.nav-option {
     color: #FFF;
   }
 }
-a:hover {
+a.nav-option:hover {
   background-color: $mainColor;
   color: #FFF;
   transition: 0.2s all;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {

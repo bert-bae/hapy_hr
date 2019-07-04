@@ -2,6 +2,9 @@ import App, { Container } from 'next/app';
 import { Auth0Provider } from "../utils/Auth/react-auth0-wrapper";
 import getConfig from 'next/config';
 
+import Navigation from '../components/navigation';
+import Footer from '../components/footer';
+
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 // A function that routes the user to the right place
@@ -35,7 +38,9 @@ class MyApp extends App {
         client_id={publicRuntimeConfig.AUTH0_CLIENT_ID}
         onRedirectCallback={onRedirectCallback}>
         <Container>
+          <Navigation/>
           <Component {...pageProps} />
+          <Footer/>
         </Container>
       </Auth0Provider>
     );

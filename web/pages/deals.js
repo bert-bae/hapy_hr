@@ -2,12 +2,11 @@ import '../styles/default.scss';
 import Head from 'next/head';
 import axios from 'axios';
 
-import Navigation from '../components/navigation';
 import Establishments from '../components/establishments';
 
 const DealPage = ({establishments}) => {
   return (
-    <div>
+    <div className="page-container">
       <Head>
         <title>HapyHr | Find Happy Hour Deals</title>
         <meta description="HapyHr | Discover new places near you with special happy hour deals!"></meta>
@@ -19,7 +18,6 @@ const DealPage = ({establishments}) => {
           crossOrigin="anonymous"
         />
       </Head>
-      <Navigation/>
       { establishments &&
         <Establishments establishments={establishments}/>
       }
