@@ -21,3 +21,17 @@ exports.getSingleEstablishment = async (req, res, next) => {
     res.send({ success: false, error: err, establishment: null });
   }
 }
+
+exports.getNearbyEstablishmentsByDistance = async (req, res, next) => {
+  const longitude = req.query.longitude || -123.114735;
+  const latitude = req.query.latitude || 49.278433;
+  const distance = 10;
+  try {
+    let result = await Establishment.getNearbyEstablishmentsByDistance(longitude, latitude, distance);
+    console.log(result);
+    res.send({ success: true, error: null, establishments: result });
+  } catch(err) {
+    console.log(`Error getting establishments by distance: ${JSON.stringify(err)}`);
+    res.send({ success: false, error: err, establishments: null });
+  }
+}

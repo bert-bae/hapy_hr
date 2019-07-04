@@ -56,6 +56,23 @@ class Establishment extends Model {
   static async getSingleEstablishment(id) {
     return this.query().where('id', id);
   }
+
+  // Get list of establishments by DISTANCE (https://stackoverflow.com/questions/11112926/how-to-find-nearest-location-using-latitude-and-longitude-from-sql-database)
+  // 6371 for KMs, 3959 for MIs
+
+  // query below is correct... query above is not working somewhere
+  // keep as documentation for understanding haversine functions
+  // SELECT id, ( 6371 * acos( cos( radians(49.278433) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(-123.114735) ) + sin( radians(49.278433) ) * sin( radians( latitude ) ) ) ) AS distance FROM establishment HAVING distance < 25 ORDER BY distance LIMIT 0 , 20;
+
+  static async getNearbyEstablishmentsByDistance(sLongitude, sLatitude, sDistance) {
+    return this.query()
+      .select(raw(`6371 * ACOS(COS(RADIANS(${sLatitude})) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS(${sLongitude})) + SIN(RADIANS(${sLatitude})) * SIN(RADIANS(latitude)))`).as('distance'))
+      .having('distance', '<', sDistance)
+      .orderBy('distance')
+      .limit(10)
+      .eager('menu_item')
+      .mergeEager('operational_hour');
+  }
 }
 
 module.exports = Establishment;
