@@ -25,7 +25,7 @@ describe('EstablishmentController', () => {
 
     describe('getAllEstablishments', () => {
 
-        it('should call res.send with successful result', () => {
+        it('calls res.send with successful result', () => {
             sinon.stub(establishmentModel, 'getEstablishments').resolves([{id: 1}, {id: 2}]);
 
             let result = suppressConsole(establishmentController.getAllEstablishments, [{}, res, {}]);
@@ -37,7 +37,7 @@ describe('EstablishmentController', () => {
             });
         });
 
-        it('should call res.send with unsuccessful result when getEstablishments throws an error', () => {
+        it('calls res.send with unsuccessful result when getEstablishments throws an error', () => {
             sinon.stub(establishmentModel, 'getEstablishments').throws();
             
             let result = suppressConsole(establishmentController.getAllEstablishments, [{}, res, {}]);
@@ -51,7 +51,7 @@ describe('EstablishmentController', () => {
     });
 
     describe('getSingleEstablishment', () => {
-        it('should call res.send with successful result', () => {
+        it('calls res.send with successful result', () => {
             sinon.stub(establishmentModel, 'getSingleEstablishment').resolves({id: 1});
 
             let result = suppressConsole(establishmentController.getSingleEstablishment, [req, res, {}]);
@@ -63,7 +63,7 @@ describe('EstablishmentController', () => {
             });
         });
 
-        it('should call res.send with unsuccessful result when getSingleEstablishment throws error', () => {
+        it('calls res.send with unsuccessful result when getSingleEstablishment throws error', () => {
             sinon.stub(establishmentModel, 'getSingleEstablishment').throws();
 
             let result = suppressConsole(establishmentController.getSingleEstablishment, [req, res, {}]);

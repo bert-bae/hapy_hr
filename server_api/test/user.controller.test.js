@@ -41,7 +41,7 @@ describe('UserController', () => {
             });
         });
 
-        it('calls res.send with successful result when user does not exist', () => {
+        it('calls res.send with successful result when new user is created', () => {
             sinon.stub(userModel, 'getUserByEmail').resolves(false);
             sinon.stub(userModel, 'createUser').resolves(true);
 
