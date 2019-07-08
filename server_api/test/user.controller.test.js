@@ -63,7 +63,7 @@ describe('UserController', () => {
             return result.then(() => {
                 expect(res.send.calledOnce).to.be.true;
                 expect(res.send.args[0][0].success).to.be.false;
-                expect(res.send.args[0][0].err).not.to.be.null;
+                expect(res.send.args[0][0].err).to.be.true;
                 expect(res.send.args[0][0].message).to.equal('Error retrieving or creating user in server.');
             });
         });
@@ -77,7 +77,7 @@ describe('UserController', () => {
             return result.then(() => {
                 expect(res.send.calledOnce).to.be.true;
                 expect(res.send.args[0][0].success).to.be.false;
-                expect(res.send.args[0][0].err).not.to.be.null;
+                expect(res.send.args[0][0].err).to.be.true;
                 expect(res.send.args[0][0].message).to.equal('Error retrieving or creating user in server.');
             });
         });
