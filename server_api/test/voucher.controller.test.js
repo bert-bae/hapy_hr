@@ -115,7 +115,7 @@ describe('VoucherController', () => {
             });
         });
 
-        it('calls res.send with unsuccessful result when getVoucher throws', () => {
+        it('calls res.send with unsuccessful result when getVoucher throws an error', () => {
             sinon.stub(voucherModel, 'getVoucher').throws();
 
             let result = suppressConsole(voucherController.getVoucher, [req, res, {}]);
@@ -130,14 +130,54 @@ describe('VoucherController', () => {
     });
 
     describe('redeemVoucher', () => {
+        it('calls res.send with successful result when redeemVoucher returns successfully', () => {
+            sinon.stub(voucherModel, 'redeemVoucher').resolves(true);
 
+            let result = suppressConsole(voucherController.redeemVoucher, [req, res, {}]);
+
+            result.then(() => {
+                expect(res.send.calledOnce).to.be.true;
+                expect(res.send.args[0][0].success).to.be.true;
+                expect(res.send.args[0][0].err).to.be.null;
+            });
+        });
+
+        it('calls res.send with unsuccessful result when redeemVoucher throws an error', () => {
+            sinon.stub(voucherModel, 'redeemVoucher').throws();
+
+            let result = suppressConsole(voucherController.redeemVoucher, [req, res, {}]);
+
+            result.then(() => {
+                expect(res.send.calledOnce).to.be.true;
+                expect(res.send.args[0][0].success).to.be.false;
+                expect(res.send.args[0][0].err).not.to.be.null;
+            });
+        });
     });
 
     describe('invalidateVoucher', () => {
+        it('calls res.send with successful result when invalidateVoucher returns successfully', () => {
+            sinon.stub(voucherModel, 'invalidateVoucher').resolves(true);
 
-    });
+            let result = suppressConsole(voucherController.invalidateVoucher, [req, res, {}]);
 
-    describe('retrieveVoucher', () => {
+            result.then(() => {
+                expect(res.send.calledOnce).to.be.true;
+                expect(res.send.args[0][0].success).to.be.true;
+                expect(res.send.args[0][0].err).to.be.null;
+            });
+        });
 
+        it('calls res.send with unsuccessful result when invalidateVoucher throws an error', () => {
+            sinon.stub(voucherModel, 'invalidateVoucher').throws();
+
+            let result = suppressConsole(voucherController.invalidateVoucher, [req, res, {}]);
+
+            result.then(() => {
+                expect(res.send.calledOnce).to.be.true;
+                expect(res.send.args[0][0].success).to.be.false;
+                expect(res.send.args[0][0].err).not.to.be.null;
+            });
+        });
     });
 });
