@@ -14,7 +14,8 @@ describe('VoucherController', () => {
             expiresAt: true
         },
         params: {
-            establishmentId: 1
+            establishmentId: 1,
+            voucherId: 1
         }
     }
 
@@ -98,5 +99,45 @@ describe('VoucherController', () => {
                 expect(res.send.args[0][0].prompt).to.be.false;
             });
         });
+    });
+
+    describe('getVoucher', () => {
+        it('calls res.send with successful result when getVoucher returns successfully', () => {
+            sinon.stub(voucherModel, 'getVoucher').resolves(true);
+            
+            let result = suppressConsole(voucherController.getVoucher, [req, res, {}]);
+
+            result.then(() => {
+                expect(res.send.calledOnce).to.be.true;
+                expect(res.send.args[0][0].success).to.be.true;
+                expect(res.send.args[0][0].err).to.be.null;
+                expect(res.send.args[0][0].voucher).not.to.be.null;
+            });
+        });
+
+        it('calls res.send with unsuccessful result when getVoucher throws', () => {
+            sinon.stub(voucherModel, 'getVoucher').throws();
+
+            let result = suppressConsole(voucherController.getVoucher, [req, res, {}]);
+
+            result.then(() => {
+                expect(res.send.calledOnce).to.be.true;
+                expect(res.send.args[0][0].success).to.be.false;
+                expect(res.send.args[0][0].err).not.to.be.null;
+                expect(res.send.args[0][0].voucher).to.be.null;
+            });
+        });
+    });
+
+    describe('redeemVoucher', () => {
+
+    });
+
+    describe('invalidateVoucher', () => {
+
+    });
+
+    describe('retrieveVoucher', () => {
+
     });
 });
