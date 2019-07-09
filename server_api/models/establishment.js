@@ -61,7 +61,7 @@ class Establishment extends Model {
   // 6371 for KMs, 3959 for MIs
 
   // query below is correct... query above is not working somewhere
-  // keep as documentation for understanding haversine functions
+  // keep as documentation for understanding haversine functions.. RAW SQL EXAMPLE BELOW:
   // SELECT id, ( 6371 * acos( cos( radians(49.278433) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(-123.114735) ) + sin( radians(49.278433) ) * sin( radians( latitude ) ) ) ) AS distance FROM establishment HAVING distance < 25 ORDER BY distance LIMIT 0 , 20;
 
   static async getNearbyEstablishmentsByDistance(sLongitude, sLatitude, sDistance) {
