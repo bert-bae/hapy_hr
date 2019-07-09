@@ -4,7 +4,7 @@
   "description": "",
   "main": "knexfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "nodemon server.js"
   },
   "author": "bert-bae",
@@ -22,6 +22,9 @@
     "objection": "^1.6.9"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1",
+    "sinon": "^7.3.2"
   }
 }
