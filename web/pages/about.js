@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Jumbotron from '../components/jumbotron';
 import '../styles/components/aboutContent.scss';
 
@@ -18,12 +19,18 @@ export default function AboutPage() {
           <div className="section-content">
             <h1 className="subheader">Everyday Users</h1>
             <p className="content">Never know where to find happy hour deals? HapyHr's search engine helps you find locations near you with great deals. Happy hour times are limited and your time is important. Spend less time searching and more time enjoying some quality time socializing, winding down, and relax with discounts!</p>
+            <Link href="/deals">
+              <a className="about-option">Find Deals</a>
+            </Link>
           </div>
         </div>
         <div className="section-container">
           <div className="section-content">
             <h1 className="subheader">Restaurants and Bars</h1>
             <p className="content">Have special deals, but your sandwich board is not doing enough? Get more customers, increase your reach, and list your happy hour deals. Increase your online presence to be on the list of places locals will visit near them!</p>
+            <Link href="/restaurants/list">
+              <a className="about-option">List Your Deals</a>
+            </Link>
           </div>
           <div className="section-image restaurant"></div>
         </div>
@@ -32,6 +39,9 @@ export default function AboutPage() {
           <div className="section-content">
             <h1 className="subheader">Connect, Unwind, and Relax</h1>
             <p className="content">Be a part of the community by socializing or simply unwinding in its presence. HapyHr is the tool to discover restaurants and bars to visit and unwind after a long day while taking advantage of great happy hour deals near you.</p>
+            <Link href="/trending">
+              <a className="about-option">View Trending Locations</a>
+            </Link>
           </div>
         </div>
       </div>

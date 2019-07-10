@@ -35,6 +35,7 @@ export default function Jumbotron({ imgSrc, mainHeader, subHeader, searchInput})
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          text-align: center;
         }
         .jumbotron-container:before {
           position: absolute;
