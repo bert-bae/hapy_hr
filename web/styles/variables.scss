@@ -17,3 +17,17 @@ $subFontSize: 12px;
   flex-direction: $direction;
   flex-wrap: $wrap;
 }
+
+
+.section-header {
+  font-size: $headerFontSize;
+}
+.subheader {
+  font-size: $subheaderFontSize;
+}
+.content {
+  font-size: $mainFontSize;
+}
+.sub-content {
+  font-size: $subFontSize;
+}
