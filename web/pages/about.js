@@ -28,7 +28,7 @@ export default function AboutPage() {
           <div className="section-content">
             <h1 className="subheader">Restaurants and Bars</h1>
             <p className="content">Have special deals, but your sandwich board is not doing enough? Get more customers, increase your reach, and list your happy hour deals. Increase your online presence to be on the list of places locals will visit near them!</p>
-            <Link href="/restaurants/list">
+            <Link href="/establishment/list">
               <a className="about-option">List Your Deals</a>
             </Link>
           </div>
