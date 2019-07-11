@@ -45,7 +45,7 @@ export default function Jumbotron({ imgSrc, mainHeader, subHeader, searchInput})
           height: 100%;
           content: "";
           background-color: black;
-          opacity: 0.5;
+          opacity: 0.7;
           z-index: -1;
         }
         h1 {

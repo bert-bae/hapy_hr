@@ -1,0 +1,39 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+// Page Links
+.link-option {
+  text-decoration: none;
+  padding: 0 15px;
+  height: 27px;
+  width: fit-content;
+  box-sizing: content-box;
+  line-height: 1;
+  border: 2px solid $secondaryColor;
+  background-color: rgba(239, 127, 0, 0.5);
+  color: $mainColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s;
+  margin: 14px auto 0 auto;
+  &:hover {
+    background-color: $secondaryColor;
+    color: #FFF;
+  }
+}
+
+.orange-map-icon {
+  @include background-image('/static/icons/orange-map-icon.svg', contain, center);
+}
+.orange-utensil-icon {
+  @include background-image('/static/icons/orange-utensil-icon.svg', contain, center);
+}
+.orange-calendar-icon {
+  @include background-image('/static/icons/orange-calendar-icon.svg', contain, center);
+}

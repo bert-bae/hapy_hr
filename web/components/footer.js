@@ -15,7 +15,7 @@ export default function Footer() {
       </div>
       <div className="footer-col">
         <p className="footer-header">For Restaurants & Bars</p>
-        <a className="footer-link" onClick={() => { Router.push('/establishments') }}>Restaurants/Bars</a>
+        <a className="footer-link" onClick={() => { Router.push('/establishment') }}>Restaurants/Bars</a>
         <a className="footer-link" onClick={() => { Router.push('/voucher') }}>What is a Voucher</a>
         <a className="footer-link" onClick={() => { Router.push('/about') }}>About</a>
       </div>
