@@ -1,0 +1,49 @@
+@import '../variables.scss';
+
+
+.add-establishment-container {
+  padding: 50px 50px 100px 50px;
+  .form-group {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(auto, 1fr));
+    grid-template-rows: repeat(auto, minmax(auto, 1fr));
+    .form-control {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(auto, 1fr));
+      grid-template-rows: repeat(2, minmax(auto, max-content));
+      grid-gap: 7px;
+      padding: 10px 0;
+      .form-input {
+        box-sizing: border-box;
+        border-radius: 8px;
+        height: 30px;
+        border: 2px solid $tertiaryColor;
+        padding: 0 10px;;
+      }
+      textarea.form-input {
+        height: 70px;
+        width: 100%;
+        resize: none;
+      }
+    }
+    .inner-container {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(auto, 1fr));
+      grid-template-rows: repeat(auto, minmax(auto, 1fr));
+      grid-gap: 15px;
+    }
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  .add-establishment-container {
+    padding: 50px 20px 100px 20px;
+    .form-group {
+      .inner-container {
+        grid-template-columns: repeat(1, minmax(auto, 1fr));
+        grid-template-rows: repeat(auto, minmax(auto, 1fr));
+        grid-gap: 0;
+      }
+    }
+  }
+}

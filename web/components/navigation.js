@@ -16,7 +16,7 @@ export default function Navigation() {
     <div className="navigation-bar">
       <div className="branding">
         <div className="brand-logo"></div>
-        <h1 className="hapyhr">HappyR</h1>
+        <h1 className="happyr">HapyHr</h1>
       </div>
       <div className="nav-toggle-menu" onClick={(e) => { openMenu(e);}}>|||</div>
       <div className="navigation-menu">
