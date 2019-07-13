@@ -2,7 +2,7 @@ import '../styles/components/homeCTA.scss';
 
 export default function HomeCTA() {
   return (
-    <div>
+    <div className="home-container">
       <h1 className="section-header">What is HapyHr?</h1>
       <p className="section-subheader">It lets you find happy hour deals in one click to...</p>
       <div className="cta-container">
