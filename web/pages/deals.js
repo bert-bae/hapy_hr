@@ -8,8 +8,8 @@ const DealPage = ({establishments}) => {
   return (
     <div className="page-container">
       <Head>
-        <title>HapyHr | Find Happy Hour Deals</title>
-        <meta description="HapyHr | Discover new places near you with special happy hour deals!"></meta>
+        <title>HappyR | Find Happy Hour Deals</title>
+        <meta description="HappyR | Discover new places near you with special happy hour deals!"></meta>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
         <link
           rel="stylesheet"

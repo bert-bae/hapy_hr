@@ -7,12 +7,12 @@ export default function Establishment() {
   return (
     <div className="page-container">
       <Head>
-        <title>HapyHr | List Your Restaurant & Bar</title>
-        <meta description="HapyHr deals at the user's fingertips. List your restaurant or bar with us today to get approved listing on our HapyHr user's radars for growth, exposure, and success."></meta>
+        <title>HappyR | List Your Restaurant & Bar</title>
+        <meta description="HappyR deals at the user's fingertips. List your restaurant or bar with us today to get approved listing on our HappyR user's radars for growth, exposure, and success."></meta>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
         <script src="https://kit.fontawesome.com/2d22d84f41.js"></script>
       </Head>
-      <Jumbotron imgSrc={"/static/images/about-restaurant.jpg"} mainHeader={"HapyHr | For Restaurants and Bars"} subHeader={"Sandwich boards can only get you so far..."} searchInput={false}></Jumbotron>
+      <Jumbotron imgSrc={"/static/images/about-restaurant.jpg"} mainHeader={"HappyR | For Restaurants and Bars"} subHeader={"Sandwich boards can only get you so far..."} searchInput={false}></Jumbotron>
       <div className="establishment-page-container">
       <div className="grid-container">
         <div className="section-container">

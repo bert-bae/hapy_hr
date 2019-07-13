@@ -8,7 +8,7 @@ export default function Index() {
   return (
     <div className="page-container">
       <Head>
-        <title>HapyHr | Find Happy Hour Deals</title>
+        <title>HappyR | Find Happy Hour Deals</title>
         <meta description="Testing NEXT head"></meta>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
       </Head>
