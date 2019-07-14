@@ -12,7 +12,9 @@ export default function List() {
   const [postalCode, setPostalCode] = useState("");
   const [establishmentName, setEstablishmentName] = useState("");
   const [establishmentDescription, setEstablishmentDescription] = useState("");
-  const [menuItems, setMenuItems] = useState([]);
+  const [itemName, setItemName] = useState("");
+  const [itemPrice, setItemPrice] = useState("");
+  const [menuItems, setMenuItems] = useState([{ name: "", price: 0.00}]);
 
   return (
     <div className="page-container">
@@ -121,9 +123,19 @@ export default function List() {
 
         {// Prototype - Form control for menu items below
           menuItems.map((item) => {
-            return <MenuItemForm item={item}/>
+            return <MenuItemForm item={item} itemName={itemName} itemPrice={itemPrice} setItemName={setItemName} setItemPrice={setItemPrice}/>
           })
         }
+        <button 
+          type="button"
+          className="submit-item"
+          onClick={() => {
+            let newMenuItems = JSON.parse(JSON.stringify(menuItems));
+            newMenuItems.push({ name: itemName, price: itemPrice })
+            setMenuItems(newMenuItems);
+            setItemName("");
+            setItemPrice(0.00);
+        }}>Add Item</button>
       </div>
     </div>
   )

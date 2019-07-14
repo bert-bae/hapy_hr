@@ -1,5 +1,6 @@
-export default function MenuItemForm({ item }) {
-  console.log(item)
+import { useState, useEffect } from 'react';
+
+export default function MenuItemForm({ item, itemName, itemPrice, setItemName, setItemPrice}) {
   return (
     <div className="form-group menu-item-form">
       <label htmlFor="menu-item">Menu Item</label>
@@ -12,7 +13,8 @@ export default function MenuItemForm({ item }) {
             maxLength="150"
             name="item-name[val]"
             placeholder="E.g. House Burger and Fries"
-            value={item.name}></input>
+            value={item.name || itemName}
+            onChange={(e) => { setItemName(e.target.value)}}></input>
         </div>
         <div className="form-control">
           <label htmlFor="item-name[val]">Item Price</label>
@@ -22,7 +24,8 @@ export default function MenuItemForm({ item }) {
             step="0.01"
             value="0.00"
             name="item-price[val]"
-            value={item.price}></input>
+            value={item.price || itemPrice}
+            onChange={(e) => { setItemPrice(e.target.value)}}></input>
         </div>
       </div>
       <div className="weekday-selection">
