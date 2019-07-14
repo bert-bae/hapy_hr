@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import MenuItemForm from '../../components/establishmentForm/menuItemForm';
 import { useState, useEffect } from 'react';
 import '../../styles/components/contactForm.scss'
 
@@ -11,7 +12,7 @@ export default function List() {
   const [postalCode, setPostalCode] = useState("");
   const [establishmentName, setEstablishmentName] = useState("");
   const [establishmentDescription, setEstablishmentDescription] = useState("");
-
+  const [menuItems, setMenuItems] = useState([]);
 
   return (
     <div className="page-container">
@@ -24,8 +25,9 @@ export default function List() {
         <div className="form-group about-you">
           <div className="inner-container">
             <div className="form-control">
-              <label for="location-name">Your Name (required)</label>
-              <input class="form-input" 
+              <label htmlFor="location-name">Your Name (required)</label>
+              <input 
+                className="form-input" 
                 type="text" 
                 name="applicant-name" 
                 placeholder="E.g. Bert"
@@ -34,9 +36,9 @@ export default function List() {
                 ></input>
             </div>
             <div className="form-control">
-              <label for="location-name">Your Email (required)</label>
+              <label htmlFor="location-name">Your Email (required)</label>
               <input 
-                class="form-input" 
+                className="form-input" 
                 type="email" 
                 name="contact-email" 
                 placeholder="E.g. bert@happyr.ca"
@@ -48,9 +50,9 @@ export default function List() {
         <div className="form-group address-group">
           <div className="inner-container">
             <div className="form-control">
-              <label for="address-line">Street Address (required)</label>
+              <label htmlFor="address-line">Street Address (required)</label>
               <input 
-                class="form-input" 
+                className="form-input" 
                 type="text" 
                 name="address-line" 
                 placeholder="E.g. 123 Granville Street"
@@ -58,9 +60,9 @@ export default function List() {
                 onChange={(e) => { setStreetAddress(e.target.value); }}></input>
             </div>
             <div className="form-control">
-              <label for="location-name">City (required)</label>
+              <label htmlFor="location-name">City (required)</label>
               <input 
-                class="form-input" 
+                className="form-input" 
                 type="text" 
                 name="city" 
                 placeholder="E.g. Vancouver"
@@ -70,9 +72,9 @@ export default function List() {
           </div>
           <div className="inner-container">
             <div className="form-control">
-              <label for="location-name">Province (required)</label>
+              <label htmlFor="location-name">Province (required)</label>
               <input 
-                class="form-input" 
+                className="form-input" 
                 type="text" 
                 name="province" 
                 placeholder="E.g. BC"
@@ -80,9 +82,9 @@ export default function List() {
                 onChange={(e) => { setProvince(e.target.value); }}></input>
             </div>
             <div className="form-control">
-              <label for="location-name">Postal Code (required)</label>
+              <label htmlFor="location-name">Postal Code (required)</label>
               <input 
-                class="form-input" 
+                className="form-input" 
                 type="text" 
                 maxLength="7" 
                 name="postal-code" 
@@ -94,9 +96,9 @@ export default function List() {
         </div>
         <div className="form-group">
           <div className="form-control restaurant-name">
-            <label for="location-name">Restaurant or Bar Name (required)</label>
+            <label htmlFor="location-name">Restaurant or Bar Name (required)</label>
             <input 
-              class="form-input" 
+              className="form-input" 
               type="text" 
               maxLength="150" 
               name="location-name" 
@@ -105,9 +107,9 @@ export default function List() {
               onChange={(e) => { setEstablishmentName(e.target.value); }}></input>
           </div>
           <div className="form-control">
-            <label for="location-name">Restaurant or Bar Description (required)</label>
+            <label htmlFor="location-name">Restaurant or Bar Description (required)</label>
             <textarea 
-              class="form-input" 
+              className="form-input" 
               type="text" 
               maxLength="300" 
               name="location-description" 
@@ -116,6 +118,12 @@ export default function List() {
               onChange={(e) => { setEstablishmentDescription(e.target.value); }}></textarea>
           </div>
         </div>
+
+        {// Prototype - Form control for menu items below
+          menuItems.map((item) => {
+            return <MenuItemForm item={item}/>
+          })
+        }
       </div>
     </div>
   )

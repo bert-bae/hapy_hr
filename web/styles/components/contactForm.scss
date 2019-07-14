@@ -32,6 +32,16 @@
       grid-template-rows: repeat(auto, minmax(auto, 1fr));
       grid-gap: 15px;
     }
+    .weekday-selection {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(auto, 1fr));
+      grid-template-rows: repeat(1, minmax(auto, 1fr));
+      grid-gap: 15px;
+      .form-control {
+        justify-items: center;
+        grid-template-rows: repeat(1, minmax(auto, 1fr));
+      }
+    }
   }
 }
 
