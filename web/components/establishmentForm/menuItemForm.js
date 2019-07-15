@@ -1,19 +1,31 @@
 import { useState, useEffect } from 'react';
+import WeekdayCheckbox from './weekdayCheckbox';
 
-export default function MenuItemForm({ item, menuItems, setMenuItems, menuItemIndex }) {
+export default function MenuItemForm({ menuItems, setMenuItems, menuItemIndex }) {
   const [componentItemName, setComponentItemName] = useState("");
   const [componentItemPrice, setComponentItemPrice] = useState("");
-
-  useEffect(() => {
-    if (item) {
-      setComponentItemName(item.name);
-      setComponentItemPrice(item.price);
+  const onCheckboxChange = (weekday, addWeekday) => {
+    // Create copy of the menuItem object
+    let updateMenuWeekday = JSON.parse(JSON.stringify(menuItems));
+    // Find if the weekday index number [0-6] exists in weekdays array in object...
+    let indexOf = updateMenuWeekday[menuItemIndex].weekdays.indexOf(weekday);;
+    if (addWeekday) {
+      if (indexOf === -1) {
+        // Add the weekday to the weekdays array of the object
+        updateMenuWeekday[menuItemIndex].weekdays.push(weekday);
+        setMenuItems(updateMenuWeekday);
+      }
+    } else {
+      // If it does, remove it and update the menuItems index
+      if (indexOf > -1) {
+        updateMenuWeekday[menuItemIndex].weekdays.splice(indexOf, 1);
+        setMenuItems(updateMenuWeekday);
+      }
     }
-  }, [])
+  }
 
   return (
-    <div className="form-group menu-item-form">
-      <label htmlFor="menu-item">Menu Item</label>
+    <>
       <div className="inner-container">
         <div className="form-control">
           <label htmlFor="item-name[val]">Item Name</label>
@@ -49,35 +61,14 @@ export default function MenuItemForm({ item, menuItems, setMenuItems, menuItemIn
         </div>
       </div>
       <div className="weekday-selection">
-        <div className="form-control checkbox">
-          <input type="checkbox" name="weekday" value="0"></input>
-          <label htmlFor="weekday">Monday</label>
-        </div>
-        <div className="form-control checkbox">
-          <input type="checkbox" name="weekday" value="1"></input>
-          <label htmlFor="weekday">Tuesday</label>
-        </div>
-        <div className="form-control checkbox">
-          <input type="checkbox" name="weekday" value="2"></input>
-          <label htmlFor="weekday">Wednesday</label>
-        </div>
-        <div className="form-control checkbox">
-          <input type="checkbox" name="weekday" value="3"></input>
-          <label htmlFor="weekday">Thursday</label>
-        </div>
-        <div className="form-control checkbox">
-          <input type="checkbox" name="weekday" value="4"></input>
-          <label htmlFor="weekday">Friday</label>
-        </div>
-        <div className="form-control checkbox">
-          <input type="checkbox" name="weekday" value="5"></input>
-          <label htmlFor="weekday">Saturday</label>
-        </div>
-        <div className="form-control checkbox">
-          <input type="checkbox" name="weekday" value="6"></input>
-          <label htmlFor="weekday">Sunday</label>
-        </div>
+        <WeekdayCheckbox value={0} weekday={"Monday"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
+        <WeekdayCheckbox value={1} weekday={"Tuesday"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
+        <WeekdayCheckbox value={2} weekday={"Wednesday"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
+        <WeekdayCheckbox value={3} weekday={"Thursday"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
+        <WeekdayCheckbox value={4} weekday={"Friday"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
+        <WeekdayCheckbox value={5} weekday={"Saturday"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
+        <WeekdayCheckbox value={6} weekday={"Sunday"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
       </div>
-    </div>  
+    </>
   )
 }

@@ -12,7 +12,7 @@ export default function List() {
   const [postalCode, setPostalCode] = useState("");
   const [establishmentName, setEstablishmentName] = useState("");
   const [establishmentDescription, setEstablishmentDescription] = useState("");
-  const [menuItems, setMenuItems] = useState([{ name: "", price: 0.00}]);
+  const [menuItems, setMenuItems] = useState([{ name: "", price: 0.00, weekdays: [] }]);
 
   return (
     <div className="page-container">
@@ -118,23 +118,26 @@ export default function List() {
               onChange={(e) => { setEstablishmentDescription(e.target.value); }}></textarea>
           </div>
         </div>
-
-        {// Prototype - Form control for menu items below
-          menuItems.map((item, key) => {
-            return <MenuItemForm 
-              key={`item-${key}`} 
-              item={item} 
-              menuItems={menuItems}
-              setMenuItems={setMenuItems}
-              menuItemIndex={key}/>
-          })
-        }
+        <div className="form-group menu-item-form">
+          <label htmlFor="menu-item">Menu Item</label>
+            {// Prototype - Form control for menu items below
+              menuItems.map((item, key) => {
+                return <MenuItemForm 
+                  key={`item-${key}`} 
+                  item={item} 
+                  menuItems={menuItems}
+                  setMenuItems={setMenuItems}
+                  menuItemIndex={key}/>
+              })
+            }
+        </div>
         <button 
           type="button"
           className="submit-item"
           onClick={() => {
             let newMenuItems = JSON.parse(JSON.stringify(menuItems));
-            newMenuItems.push({ name: "", price: 0.00 })
+            newMenuItems.push({ name: "", price: 0.00, weekdays: [] })
+            console.log(newMenuItems);
             setMenuItems(newMenuItems);
         }}>Add Item</button>
       </div>
