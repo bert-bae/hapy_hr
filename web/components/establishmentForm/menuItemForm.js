@@ -4,6 +4,7 @@ import WeekdayCheckbox from './weekdayCheckbox';
 export default function MenuItemForm({ menuItems, setMenuItems, menuItemIndex }) {
   const [componentItemName, setComponentItemName] = useState("");
   const [componentItemPrice, setComponentItemPrice] = useState("");
+  const [componentItemType, setComponentItemType] = useState("");
   const onCheckboxChange = (weekday, addWeekday) => {
     // Create copy of the menuItem object
     let updateMenuWeekday = JSON.parse(JSON.stringify(menuItems));
@@ -25,7 +26,7 @@ export default function MenuItemForm({ menuItems, setMenuItems, menuItemIndex })
   }
 
   return (
-    <>
+    <div className="form-group menu-item-form">
       <div className="inner-container">
         <div className="form-control">
           <label htmlFor="item-name[val]">Item Name</label>
@@ -59,16 +60,34 @@ export default function MenuItemForm({ menuItems, setMenuItems, menuItemIndex })
               setMenuItems(updateMenuItemPrice);
             }}></input>
         </div>
+        <div className="form-control">
+          <label htmlFor="item-type[val]">Food or Drink</label>
+          <select
+            className="form-input"
+            type="text"
+            maxLength="150"
+            name="item-type[val]"
+            onChange={(e) => {
+              let updateMenuItemType = JSON.parse(JSON.stringify(menuItems));
+              updateMenuItemType[menuItemIndex].type = e.target.value;
+              setComponentItemType(e.target.value);
+              setMenuItems(updateMenuItemType);
+            }}>
+            <option value="" disabled selected>Select Type: Food or Drink</option>
+            <option value="food">Food</option>
+            <option value="drink">Drink</option>
+          </select>
+        </div>
       </div>
       <div className="weekday-selection">
-        <WeekdayCheckbox value={0} weekday={"Monday"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
-        <WeekdayCheckbox value={1} weekday={"Tuesday"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
-        <WeekdayCheckbox value={2} weekday={"Wednesday"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
-        <WeekdayCheckbox value={3} weekday={"Thursday"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
-        <WeekdayCheckbox value={4} weekday={"Friday"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
-        <WeekdayCheckbox value={5} weekday={"Saturday"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
-        <WeekdayCheckbox value={6} weekday={"Sunday"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
+        <WeekdayCheckbox value={0} weekday={"Mon"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
+        <WeekdayCheckbox value={1} weekday={"Tue"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
+        <WeekdayCheckbox value={2} weekday={"Wed"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
+        <WeekdayCheckbox value={3} weekday={"Thu"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
+        <WeekdayCheckbox value={4} weekday={"Fri"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
+        <WeekdayCheckbox value={5} weekday={"Sat"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
+        <WeekdayCheckbox value={6} weekday={"Sun"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
       </div>
-    </>
+    </div>
   )
 }

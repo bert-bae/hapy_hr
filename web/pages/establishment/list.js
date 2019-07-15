@@ -12,7 +12,7 @@ export default function List() {
   const [postalCode, setPostalCode] = useState("");
   const [establishmentName, setEstablishmentName] = useState("");
   const [establishmentDescription, setEstablishmentDescription] = useState("");
-  const [menuItems, setMenuItems] = useState([{ name: "", price: 0.00, weekdays: [] }]);
+  const [menuItems, setMenuItems] = useState([{ name: "", price: 0.00, weekdays: [], type: "" }]);
 
   return (
     <div className="page-container">
@@ -22,6 +22,7 @@ export default function List() {
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
       </Head>
       <div className="add-establishment-container">
+        <h1 className="subheader">Your Contact Information</h1>
         <div className="form-group about-you">
           <div className="inner-container">
             <div className="form-control">
@@ -47,6 +48,34 @@ export default function List() {
             </div>
           </div>
         </div>
+        
+        <h1 className="subheader">About Your Establishment</h1>
+        <div className="form-group">
+          <div className="form-control restaurant-name">
+            <label htmlFor="location-name">Restaurant or Bar Name (required)</label>
+            <input 
+              className="form-input" 
+              type="text" 
+              maxLength="150" 
+              name="location-name" 
+              placeholder="Establishment Name"
+              value={establishmentName}
+              onChange={(e) => { setEstablishmentName(e.target.value); }}></input>
+          </div>
+          <div className="form-control">
+            <label htmlFor="location-name">Restaurant or Bar Description (required)</label>
+            <textarea 
+              className="form-input" 
+              type="text" 
+              maxLength="300" 
+              name="location-description" 
+              placeholder="Random Establishment specializes in providing a fun, casual, and lively environment with many cocktails, wide variety of craft beers, and games. Our specialty are our seafood dishes which go well with rum based cocktails any day of the week!"
+              value={establishmentDescription}
+              onChange={(e) => { setEstablishmentDescription(e.target.value); }}></textarea>
+          </div>
+        </div>
+        
+        <h1 className="subheader">Establishment Location</h1>        
         <div className="form-group address-group">
           <div className="inner-container">
             <div className="form-control">
@@ -94,52 +123,26 @@ export default function List() {
             </div>
           </div>
         </div>
-        <div className="form-group">
-          <div className="form-control restaurant-name">
-            <label htmlFor="location-name">Restaurant or Bar Name (required)</label>
-            <input 
-              className="form-input" 
-              type="text" 
-              maxLength="150" 
-              name="location-name" 
-              placeholder="Establishment Name"
-              value={establishmentName}
-              onChange={(e) => { setEstablishmentName(e.target.value); }}></input>
-          </div>
-          <div className="form-control">
-            <label htmlFor="location-name">Restaurant or Bar Description (required)</label>
-            <textarea 
-              className="form-input" 
-              type="text" 
-              maxLength="300" 
-              name="location-description" 
-              placeholder="Random Establishment specializes in providing a fun, casual, and lively environment with many cocktails, wide variety of craft beers, and games. Our specialty are our seafood dishes which go well with rum based cocktails any day of the week!"
-              value={establishmentDescription}
-              onChange={(e) => { setEstablishmentDescription(e.target.value); }}></textarea>
-          </div>
-        </div>
-        <div className="form-group menu-item-form">
-          <label htmlFor="menu-item">Menu Item</label>
-            {// Prototype - Form control for menu items below
-              menuItems.map((item, key) => {
-                return <MenuItemForm 
-                  key={`item-${key}`} 
-                  item={item} 
-                  menuItems={menuItems}
-                  setMenuItems={setMenuItems}
-                  menuItemIndex={key}/>
-              })
-            }
-        </div>
+
+        <h1 className="subheader">Menu Items</h1>
+        {// Prototype - Form control for menu items below
+          menuItems.map((item, key) => {
+            return <MenuItemForm 
+              key={`item-${key}`} 
+              item={item} 
+              menuItems={menuItems}
+              setMenuItems={setMenuItems}
+              menuItemIndex={key}/>
+          })
+        }
         <button 
           type="button"
-          className="submit-item"
+          className="add-item link-option"
           onClick={() => {
             let newMenuItems = JSON.parse(JSON.stringify(menuItems));
-            newMenuItems.push({ name: "", price: 0.00, weekdays: [] })
-            console.log(newMenuItems);
+            newMenuItems.push({ name: "", price: 0.00, weekdays: [], type: "" })
             setMenuItems(newMenuItems);
-        }}>Add Item</button>
+        }}>Add Another Item</button>
       </div>
     </div>
   )

@@ -5,7 +5,7 @@
   padding: 50px 50px 100px 50px;
   .form-group {
     display: grid;
-    grid-template-columns: repeat(1, minmax(auto, 1fr));
+    grid-template-columns: repeat(1, minmax(100%, 1fr));
     grid-template-rows: repeat(auto, minmax(auto, 1fr));
     .form-control {
       display: grid;
@@ -42,6 +42,24 @@
         grid-template-rows: repeat(1, minmax(auto, 1fr));
       }
     }
+    &.menu-item-form {
+      .inner-container {
+        grid-template-columns: repeat(3, minmax(auto, 1fr));
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .add-establishment-container {
+    .form-group {
+      &.menu-item-form {
+        .inner-container {
+          grid-template-columns: repeat(1, minmax(auto, 1fr));
+          grid-template-rows: repeat(3, minmax(auto, 1fr));
+        }
+      }
+    }
   }
 }
 
@@ -51,6 +69,10 @@
     .form-group {
       .inner-container {
         grid-template-columns: repeat(1, minmax(auto, 1fr));
+        grid-template-rows: repeat(auto, minmax(auto, 1fr));
+      }
+      .weekday-selection {
+        grid-template-columns: repeat(4, minmax(auto, 1fr));
         grid-template-rows: repeat(auto, minmax(auto, 1fr));
         grid-gap: 0;
       }
