@@ -12,8 +12,6 @@ export default function List() {
   const [postalCode, setPostalCode] = useState("");
   const [establishmentName, setEstablishmentName] = useState("");
   const [establishmentDescription, setEstablishmentDescription] = useState("");
-  const [itemName, setItemName] = useState("");
-  const [itemPrice, setItemPrice] = useState("");
   const [menuItems, setMenuItems] = useState([{ name: "", price: 0.00}]);
 
   return (
@@ -122,8 +120,13 @@ export default function List() {
         </div>
 
         {// Prototype - Form control for menu items below
-          menuItems.map((item) => {
-            return <MenuItemForm item={item} itemName={itemName} itemPrice={itemPrice} setItemName={setItemName} setItemPrice={setItemPrice}/>
+          menuItems.map((item, key) => {
+            return <MenuItemForm 
+              key={`item-${key}`} 
+              item={item} 
+              menuItems={menuItems}
+              setMenuItems={setMenuItems}
+              menuItemIndex={key}/>
           })
         }
         <button 
@@ -131,10 +134,8 @@ export default function List() {
           className="submit-item"
           onClick={() => {
             let newMenuItems = JSON.parse(JSON.stringify(menuItems));
-            newMenuItems.push({ name: itemName, price: itemPrice })
+            newMenuItems.push({ name: "", price: 0.00 })
             setMenuItems(newMenuItems);
-            setItemName("");
-            setItemPrice(0.00);
         }}>Add Item</button>
       </div>
     </div>
