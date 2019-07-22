@@ -3,8 +3,14 @@ import '../styles/components/jumbotron.scss';
 import Link from 'next/link';
 
 export default function Jumbotron({ imgSrc, mainHeader, subHeader, searchInput}) {
-  const [addressInput, setAddressInput] = useState("");
+  // const [addressInput, setAddressInput] = useState("");
+  useEffect(() => {
+    const getUserLocation = navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position.coords);
+    });
 
+
+  }, [])
   return (
     <div>
       <div className="jumbotron-container" style={{backgroundImage: `url('${imgSrc}')`}}>
