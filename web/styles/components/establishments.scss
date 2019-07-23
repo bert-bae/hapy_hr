@@ -14,6 +14,11 @@
     .icons-container {
       @include flex(flex-end, center, row, wrap);
       width: 50%;
+      .distance-from {
+        font-size: $subFontSize;
+        font-weight: normal;
+        margin-right: 20px;
+      }
       .icon {
         border-radius: 12px;
         width: 50px;
