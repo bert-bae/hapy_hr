@@ -29,7 +29,6 @@ export default function DayVoucher({ establishmentId, voucher, setVoucher }) {
       setVoucher(setServer.data.voucher);
     }
   }
-
   return (
     <div className="voucher-container">
       { voucher.establishment_id !== establishmentId &&

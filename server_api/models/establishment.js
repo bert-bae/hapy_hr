@@ -66,7 +66,7 @@ class Establishment extends Model {
 
   static async getNearbyEstablishmentsByDistance(sLongitude, sLatitude, sDistance) {
     return this.query()
-      .select(raw(`*, 6371 * ACOS(COS(RADIANS(${sLatitude})) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS(${sLongitude})) + SIN(RADIANS(${sLatitude})) * SIN(RADIANS(latitude)))`).as('distance'))
+      .select(raw(`*, 6371 * ACOS(COS(RADIANS(${sLatitude})) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS(${sLongitude})) + SIN(RADIANS(${sLatitude})) * SIN(RADIANS(latitude)))`).as('distance'), 'id')
       .orderBy('distance')
       .limit(10)
       .eager('menu_item')
