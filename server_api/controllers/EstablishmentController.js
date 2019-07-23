@@ -3,11 +3,12 @@ const Establishment = require('../models/establishment');
 
 exports.getAllEstablishments = async (req, res, next) => {
   try {
-    let results = await Establishment.getEstablishments();
-    res.send({success: true, error: null, establishment: results});
+    let result = await Establishment.getEstablishments();
+    result = Array.isArray(result) ? result : [result];
+    res.send({success: true, error: null, establishments: result});
   } catch(err) {
     console.log(`Error getting establishments: ${JSON.stringify(err)}`);
-    res.send({ success: false, error: err, establishment: null });
+    res.send({ success: false, error: err, establishments: null });
   }
 }
 
@@ -23,15 +24,15 @@ exports.getSingleEstablishment = async (req, res, next) => {
 }
 
 exports.getNearbyEstablishmentsByDistance = async (req, res, next) => {
-  const longitude = req.query.longitude || -123.114735;
-  const latitude = req.query.latitude || 49.278433;
-  const distance = 10;
+  const longitude = req.query.longitude;
+  const latitude = req.query.latitude;
   try {
-    let result = await Establishment.getNearbyEstablishmentsByDistance(longitude, latitude, distance);
-    console.log(result);
+    let result = await Establishment.getNearbyEstablishmentsByDistance(longitude, latitude);
+    result = Array.isArray(result) ? result : [result];
     res.send({ success: true, error: null, establishments: result });
   } catch(err) {
-    console.log(`Error getting establishments by distance: ${JSON.stringify(err)}`);
+    console.log('Error getting establishments by distance.');
+    console.log(err);
     res.send({ success: false, error: err, establishments: null });
   }
 }

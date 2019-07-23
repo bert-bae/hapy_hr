@@ -12,7 +12,7 @@ export default function Index() {
         <meta description="Testing NEXT head"></meta>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
       </Head>
-      <Jumbotron imgSrc={"/static/images/homepage.jpg"} mainHeader={"Explore with Great Happy Hour Deals"} subHeader={"Food & Drink Deals Near You"} searchInput={true}></Jumbotron>
+      <Jumbotron imgSrc={"/static/images/homepage.jpg"} mainHeader={"Explore with Great Happy Hour Deals"} subHeader={"Food & Drink Deals Near You"}></Jumbotron>
       <HomeCTA/>
     </div>
   )

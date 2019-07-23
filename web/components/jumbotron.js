@@ -1,37 +1,16 @@
-import { useState, useEffect } from 'react';
-import { getUserLocation } from '../utils/geolocationUtils';
-
 import Link from 'next/link';
 
-export default function Jumbotron({ imgSrc, mainHeader, subHeader, searchInput}) {
+export default function Jumbotron({ imgSrc, mainHeader, subHeader}) {
   // const [addressInput, setAddressInput] = useState("");
-  const [locationPermission, setLocationPermission] = useState(false);
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
-
-  useEffect(() => {
-    console.log(getUserLocation());
-    // TODO: Once you get user location, determine if access is provided...
-    // If it is not, re-request for permission everytime the link is pressed...
-    // If it is, set the latitude and longitude
-  }, []);
 
   return (
     <div>
       <div className="jumbotron-container" style={{backgroundImage: `url('${imgSrc}')`}}>
         <h1>{mainHeader}</h1>
         <p>{subHeader}</p>
-        <Link href={{ pathname: '/deals/', query: { latitude, longitude } }} as='/deals'>
+        <Link href={{ pathname: '/deals/' }} as='/deals'>
           <a className="link-option">Find Places Near Me</a>
         </Link>
-        {/* { searchInput && 
-          <div className="input-container">
-            <input type="text" 
-              placeholder="Search near your address!" 
-              value={addressInput} 
-              onChange={(e) => {setAddressInput(e.target.value);}}></input>
-          </div>
-        } */}
       </div>
       <style jsx>{`
         .jumbotron-container {

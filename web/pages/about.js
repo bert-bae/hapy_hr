@@ -11,7 +11,7 @@ export default function AboutPage() {
         <meta description="Testing NEXT head"></meta>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
       </Head>
-      <Jumbotron imgSrc={"/static/images/homepage.jpg"} mainHeader={"Find happy hour deals near you with one click"} subHeader={"Happy hour information for users, exposure for restaurants and bars"} searchInput={false}></Jumbotron>
+      <Jumbotron imgSrc={"/static/images/homepage.jpg"} mainHeader={"Find happy hour deals near you with one click"} subHeader={"Happy hour information for users, exposure for restaurants and bars"}></Jumbotron>
       <div className="about-container">
         <h1 className="section-header">What can HappyR do for you?</h1>
         <div className="section-container">

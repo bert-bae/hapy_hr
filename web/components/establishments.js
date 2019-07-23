@@ -30,6 +30,11 @@ export default function Establishments({ establishments }) {
         <Accordion.Toggle as={Card.Header} variant="link" eventKey={key}>
           <p>{place.name}</p>
           <div className="icons-container">
+            {place.distance &&
+              <div className="distance-from">
+                {place.distance.toFixed(1)}km
+              </div>
+            }
             <div className="op-time">
               {getToday}
             </div>
