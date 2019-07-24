@@ -5,7 +5,8 @@ export default function Footer() {
     <div className="footer-container">
       <div className="inner-container">
         <div className="footer-col">
-          Company Logo, copyright, etc.
+          <img className="brand-logo" src="/static/images/happyr.png"></img>
+          <p>&copy; 2019 Happyr.ca | All Rights Reserved</p>
         </div>
         <div className="footer-col">
           <p className="footer-header">Deals Near You</p>

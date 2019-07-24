@@ -19,6 +19,7 @@ export default function List() {
         <title>HappyR | List Your Restaurant & Bar</title>
         <meta description="HappyR deals at the user's fingertips. List your restaurant or bar with us today to get approved listing on our HappyR user's radars for growth, exposure, and success."></meta>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
+        <link href="/static/icons/happyr-icon.png" rel="icon" type="image/gif"></link>
       </Head>
       <div className="add-establishment-container">
         <h1 className="subheader">Your Contact Information</h1>

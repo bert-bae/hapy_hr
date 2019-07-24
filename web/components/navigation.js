@@ -14,8 +14,7 @@ export default function Navigation() {
   return (
     <div className="navigation-bar">
       <div className="branding">
-        <div className="brand-logo"></div>
-        <h1 className="happyr">HappyR</h1>
+        <img className="brand-logo" src="/static/images/happyr.png"></img>
       </div>
       <div className="nav-toggle-menu" onClick={(e) => { openMenu(e);}}>|||</div>
       <div className="navigation-menu">

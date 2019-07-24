@@ -8,6 +8,7 @@ export default function Establishment() {
       <Head>
         <title>HappyR | List Your Restaurant & Bar</title>
         <meta description="HappyR deals at the user's fingertips. List your restaurant or bar with us today to get approved listing on our HappyR user's radars for growth, exposure, and success."></meta>
+        <link href="/static/icons/happyr-icon.png" rel="icon" type="image/gif"></link>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
         <script src="https://kit.fontawesome.com/2d22d84f41.js"></script>
       </Head>

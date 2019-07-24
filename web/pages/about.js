@@ -8,6 +8,7 @@ export default function AboutPage() {
       <Head>
         <title>HappyR | Find Happy Hour Deals</title>
         <meta description="Testing NEXT head"></meta>
+        <link href="/static/icons/happyr-icon.png" rel="icon" type="image/gif"></link>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
       </Head>
       <Jumbotron imgSrc={"/static/images/homepage.jpg"} mainHeader={"Find happy hour deals near you with one click"} subHeader={"Happy hour information for users, exposure for restaurants and bars"}></Jumbotron>

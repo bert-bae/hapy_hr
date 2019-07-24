@@ -7,6 +7,7 @@ export default function TrendingPage() {
         <title>HappyR | Find Happy Hour Deals</title>
         <meta description="Testing NEXT head"></meta>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
+        <link href="/static/icons/happyr-icon.png" rel="icon" type="image/gif"></link>
       </Head>
       Trending
       <style jsx>{`
