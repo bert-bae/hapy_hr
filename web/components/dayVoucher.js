@@ -4,7 +4,6 @@ import axios from 'axios';
 import { setVoucherDate } from '../utils/dateUtils';
 import RedeemVoucher from './popups/redeemVoucher';
 import ReplaceVoucher from './popups/replaceVoucher';
-import '../styles/components/dayVoucher.scss';
 
 export default function DayVoucher({ establishmentId, voucher, setVoucher }) {
   const { loginWithRedirect, user } = useAuth0();

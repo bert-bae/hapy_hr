@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useAuth0 } from "../../utils/Auth/react-auth0-wrapper";
-import '../../styles/components/voucherModals.scss'
 
 export default function ReplaceVoucher({ establishmentId, voucher, setShowReplace, createVoucher }) {
   const { user } = useAuth0();

@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import '../styles/components/jumbotron.scss';
 
 export default function Jumbotron({ imgSrc, mainHeader, subHeader}) {
   // const [addressInput, setAddressInput] = useState("");

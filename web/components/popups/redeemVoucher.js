@@ -1,5 +1,4 @@
 import axios from 'axios';
-import '../../styles/components/voucherModals.scss'
 
 export default function RedeemVoucher({ voucher, setShowRedeem, setVoucher }) {
   const establishment = voucher.establishment.length > 0 ? voucher.establishment[0] : null;

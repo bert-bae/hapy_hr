@@ -1,5 +1,3 @@
-import "../styles/default.scss";
-
 import Head from 'next/head';
 import Jumbotron from '../components/jumbotron';
 import HomeCTA from '../components/homeCTA';

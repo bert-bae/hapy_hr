@@ -1,5 +1,3 @@
-import '../styles/components/homeCTA.scss';
-
 export default function HomeCTA() {
   return (
     <div className="home-container">

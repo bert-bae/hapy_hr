@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Jumbotron from '../components/jumbotron';
-import '../styles/components/aboutContent.scss';
 
 export default function AboutPage() {
   return (

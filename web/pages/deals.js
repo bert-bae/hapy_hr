@@ -1,4 +1,3 @@
-import '../styles/default.scss';
 import { useState, useEffect } from 'react';
 import { getUserLocation } from '../utils/geolocationUtils';
 import Head from 'next/head';

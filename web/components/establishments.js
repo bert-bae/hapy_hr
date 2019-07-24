@@ -8,8 +8,6 @@ import { useAuth0 } from "../utils/Auth/react-auth0-wrapper";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import '../styles/components/establishments.scss';
-
 export default function Establishments({ establishments }) {
   const { isAuthenticated, user } = useAuth0();
   const [hasFood, setHasFood] = useState(false);

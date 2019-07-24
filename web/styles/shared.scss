@@ -1,8 +1,18 @@
 body, html {
-  margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#__next, .page-container {
+  padding: 0;
+  min-height: calc(100vh - 215px);
+  width: 100%;
+  overflow: hidden;
 }
 
 // Page Links

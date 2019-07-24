@@ -5,6 +5,8 @@ import getConfig from 'next/config';
 import Navigation from '../components/navigation';
 import Footer from '../components/footer';
 
+import '../styles/index.scss';
+
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 // A function that routes the user to the right place
@@ -37,7 +39,7 @@ class MyApp extends App {
         domain={publicRuntimeConfig.AUTH0_DOMAIN}
         client_id={publicRuntimeConfig.AUTH0_CLIENT_ID}
         onRedirectCallback={onRedirectCallback}>
-        <Container>
+        <Container className="hi">
           <Navigation/>
           <Component {...pageProps} />
           <Footer/>

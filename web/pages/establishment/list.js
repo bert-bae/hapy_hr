@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import MenuItemForm from '../../components/establishmentForm/menuItemForm';
 import { useState, useEffect } from 'react';
-import '../../styles/components/contactForm.scss'
 
 export default function List() {
   const [applicantName, setApplicantName] = useState("");

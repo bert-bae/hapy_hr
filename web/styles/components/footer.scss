@@ -1,10 +1,10 @@
-@import '../variables.scss';
-
 .footer-container {
-  @include flex(space-between, center, row, wrap);
   width: 100%;
   padding: 20px 0;
   background-color: $backgroundColor;
+  .inner-container {
+    @include flex(space-between, center, row, wrap);
+  }
   .footer-col {
     flex: 1 1 auto;
     @include flex(center, center, column, nowrap);

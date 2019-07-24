@@ -1,4 +1,3 @@
-import '../styles/components/navigation.scss';
 import Link from 'next/link';
 import { useAuth0 } from "../utils/Auth/react-auth0-wrapper";
 
