@@ -1,7 +1,15 @@
 
-
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .list-container {
   padding: 50px 50px 100px 50px;
+  animation: fadeIn 1s;
   p {
     margin: 5px 0 0 0;
   }

@@ -39,7 +39,7 @@ class MyApp extends App {
         domain={publicRuntimeConfig.AUTH0_DOMAIN}
         client_id={publicRuntimeConfig.AUTH0_CLIENT_ID}
         onRedirectCallback={onRedirectCallback}>
-        <Container className="hi">
+        <Container>
           <Navigation/>
           <Component {...pageProps} />
           <Footer/>

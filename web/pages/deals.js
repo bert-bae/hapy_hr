@@ -39,14 +39,18 @@ const DealPage = () => {
         // Retrieve establishments based on nearest top 10
         result = await axios.get(`http://localhost:5000/establishment/distance?latitude=${latitude}&longitude=${longitude}`);
         setEstablishments(result.data.establishments);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 500)
       }
 
       // If permission is false, retrieve all data limit to 10
       if (locationPermission === false) {
         result = await axios.get('http://localhost:5000/establishment');
         setEstablishments(result.data.establishments);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 500)
       }
     };
     getInitialData();
