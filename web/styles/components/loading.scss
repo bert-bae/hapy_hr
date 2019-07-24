@@ -1,0 +1,15 @@
+.loading-container {
+  min-height: calc(100vh - 215px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  .subheader {
+    margin-bottom: 0;
+  }
+  .spinner-grow {
+    height: 100px;
+    width: 100px;
+  }
+}

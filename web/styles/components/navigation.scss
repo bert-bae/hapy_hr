@@ -1,5 +1,3 @@
-
-
 .navigation-bar {
   height: 100px;
   width: 100%;
@@ -58,6 +56,7 @@ a.nav-option {
   line-height: 1!important;
   border: 2px solid $mainColor;
   background-color: $secondaryColor;
+  font-family: 'Roboto', sans-serif;
   color: #FFF!important;
   text-decoration: none;
   display: flex;

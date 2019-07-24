@@ -4,6 +4,7 @@ import Head from 'next/head';
 import axios from 'axios';
 
 import Establishments from '../components/establishments';
+import Loading from '../components/loading';
 
 const DealPage = () => {
   const [loading, setLoading] = useState(true);
@@ -70,7 +71,7 @@ const DealPage = () => {
         <h1>Oops! We can't help you find locations near you without geolocation enabled. Here's the full list for now! If you want us to sort it by the nearest locations, you an enable browser to let us know where you are. Don't worry, we aren't spying on you, this particular feature just requires your general location for it to work.</h1>
       }
       { loading && locationPermission &&
-        <h1>loading</h1>
+        <Loading/>
       }
       { !loading && locationPermission && establishments && establishments.length > 0 &&
         <Establishments establishments={establishments}/>
