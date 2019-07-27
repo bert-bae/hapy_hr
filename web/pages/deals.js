@@ -70,7 +70,9 @@ const DealPage = () => {
         <Loading/>
       }
       { !loading && locationPermission && establishments && establishments.length > 0 &&
-        <Establishments establishments={establishments}/>
+        <Establishments 
+          establishments={establishments}
+          showMap={true}/>
       }
     </div>
   )

@@ -8,7 +8,7 @@ import { useAuth0 } from "../utils/Auth/react-auth0-wrapper";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function Establishments({ establishments }) {
+export default function Establishments({ establishments, showMap }) {
   const { isAuthenticated, user } = useAuth0();
   const [hasFood, setHasFood] = useState(false);
   const [hasDrinks, setHasDrinks] = useState(false);
@@ -49,14 +49,18 @@ export default function Establishments({ establishments }) {
             <p className="description">{place.description}</p>
             <hr/>
             <div className="establishment-content">
-              <Col className="inner-container" lg={6} md={6} sm={12}>
+              <Col className="inner-container" lg={12} md={12} sm={12}>
                 <WeekTabs place={place} setHasFood={setHasFood} setHasDrinks={setHasDrinks}/>
               </Col>
-              {/* <Col className="inner-container" lg={6} md={6} sm={12}>
-                <DayVoucher establishmentId={place.id} voucher={voucher} setVoucher={setVoucher} user={user}/>
-              </Col> */}
+              {/* { showVoucher && 
+                <Col className="inner-container" lg={6} md={6} sm={12}>
+                  <DayVoucher establishmentId={place.id} voucher={voucher} setVoucher={setVoucher} user={user}/>
+                </Col>
+              } */}
             </div>
-            {/* <Map place={place}/> */}
+            { showMap &&
+              <Map place={place}/>
+            }
           </Card.Body>
         </Accordion.Collapse>
       </Card>

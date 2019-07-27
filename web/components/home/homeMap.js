@@ -79,7 +79,9 @@ export default function HomeMap() {
         <Loading/>
       }
       { !loading && locationPermission && establishments && establishments.length > 0 &&
-        <Establishments establishments={establishments}/>
+        <Establishments 
+          establishments={establishments}
+          showMap={false}/>
       }
       { loading &&
         <ReactMapGL
