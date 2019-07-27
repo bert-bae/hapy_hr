@@ -1,7 +1,7 @@
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import WeekTabs from './weekTabs';
-import GoogleMap from './googleMap';
+import Map from './map';
 import DayVoucher from './dayVoucher';
 import Col from 'react-bootstrap/Col';
 import { useAuth0 } from "../utils/Auth/react-auth0-wrapper";
@@ -56,7 +56,7 @@ export default function Establishments({ establishments }) {
                 <DayVoucher establishmentId={place.id} voucher={voucher} setVoucher={setVoucher} user={user}/>
               </Col>
             </div>
-            <GoogleMap place={place}/>
+            <Map place={place}/>
           </Card.Body>
         </Accordion.Collapse>
       </Card>

@@ -31,7 +31,6 @@ const DealPage = () => {
       } else {
         setLocationPermission(false);
       }
-      
       getUserLocation(successLocation, errorLocation);
 
       // If permission is true, find the geolocation of user
@@ -71,6 +70,7 @@ const DealPage = () => {
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossOrigin="anonymous"
         />
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.0/mapbox-gl.css' rel='stylesheet' />
       </Head>
       { locationPermission === false && 
         <h1>Oops! We can't help you find locations near you without geolocation enabled. Here's the full list for now! If you want us to sort it by the nearest locations, you an enable browser to let us know where you are. Don't worry, we aren't spying on you, this particular feature just requires your general location for it to work.</h1>
