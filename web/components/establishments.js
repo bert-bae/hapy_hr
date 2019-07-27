@@ -52,11 +52,11 @@ export default function Establishments({ establishments }) {
               <Col className="inner-container" lg={6} md={6} sm={12}>
                 <WeekTabs place={place} setHasFood={setHasFood} setHasDrinks={setHasDrinks}/>
               </Col>
-              <Col className="inner-container" lg={6} md={6} sm={12}>
+              {/* <Col className="inner-container" lg={6} md={6} sm={12}>
                 <DayVoucher establishmentId={place.id} voucher={voucher} setVoucher={setVoucher} user={user}/>
-              </Col>
+              </Col> */}
             </div>
-            <Map place={place}/>
+            {/* <Map place={place}/> */}
           </Card.Body>
         </Accordion.Collapse>
       </Card>
