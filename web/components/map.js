@@ -1,6 +1,7 @@
 import getConfig from 'next/config';
-import ReactMapGL, { Marker } from 'react-map-gl';
+import ReactMapGL from 'react-map-gl';
 import { useState, useEffect } from 'react';
+import MapMarker from './mapMarker';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
@@ -12,6 +13,7 @@ export default function Map({place}) {
     longitude: Number(place.longitude),
     zoom: 15
   }
+  const location = `${place.address_line}+${place.city}+${place.province}`;
   const [viewport, setViewport] = useState(null);
 
   useEffect(() => {
@@ -24,13 +26,7 @@ export default function Map({place}) {
       mapboxApiAccessToken={publicRuntimeConfig.MAPBOX_PK}
       {...viewport}
       onViewportChange={(viewport) => setViewport(viewport)}>
-      <Marker 
-        latitude={options.latitude} 
-        longitude={options.longitude} 
-        offsetLeft={-20} 
-        offsetTop={-10}>
-        <div className="map-marker"></div>
-      </Marker>
+      <MapMarker location={location} latitude={options.latitude} longitude={options.longitude}/>
     </ReactMapGL>
   );
 }
