@@ -4,7 +4,7 @@ export default function WeekdayCheckbox({ value, weekday, onCheckboxChange}) {
   const [componentWeekdaySelection, setComponentWeekdaySelection] = useState(false);
   
   return (
-    <div className="form-control checkbox">
+    <div className="form-subgroup checkbox">
       <input 
         type="checkbox" 
         name="weekday" 

@@ -23,9 +23,9 @@ export default function List() {
       </Head>
       <div className="add-establishment-container">
         <h1 className="subheader">Your Contact Information</h1>
-        <div className="form-group about-you">
+        <div className="form-section about-you">
           <div className="inner-container">
-            <div className="form-control">
+            <div className="form-subgroup">
               <label htmlFor="location-name">Your Name (required)</label>
               <input 
                 className="form-input" 
@@ -36,7 +36,7 @@ export default function List() {
                 onChange={(e) => { setApplicantName(e.target.value); }}
                 ></input>
             </div>
-            <div className="form-control">
+            <div className="form-subgroup">
               <label htmlFor="location-name">Your Email (required)</label>
               <input 
                 className="form-input" 
@@ -50,8 +50,8 @@ export default function List() {
         </div>
         
         <h1 className="subheader">About Your Establishment</h1>
-        <div className="form-group">
-          <div className="form-control restaurant-name">
+        <div className="form-section">
+          <div className="form-subgroup restaurant-name">
             <label htmlFor="location-name">Restaurant or Bar Name (required)</label>
             <input 
               className="form-input" 
@@ -62,7 +62,7 @@ export default function List() {
               value={establishmentName}
               onChange={(e) => { setEstablishmentName(e.target.value); }}></input>
           </div>
-          <div className="form-control">
+          <div className="form-subgroup">
             <label htmlFor="location-name">Restaurant or Bar Description (required)</label>
             <textarea 
               className="form-input" 
@@ -76,9 +76,9 @@ export default function List() {
         </div>
         
         <h1 className="subheader">Establishment Location</h1>        
-        <div className="form-group address-group">
+        <div className="form-section address-group">
           <div className="inner-container">
-            <div className="form-control">
+            <div className="form-subgroup">
               <label htmlFor="address-line">Street Address (required)</label>
               <input 
                 className="form-input" 
@@ -88,7 +88,7 @@ export default function List() {
                 value={streetAddress}
                 onChange={(e) => { setStreetAddress(e.target.value); }}></input>
             </div>
-            <div className="form-control">
+            <div className="form-subgroup">
               <label htmlFor="location-name">City (required)</label>
               <input 
                 className="form-input" 
@@ -100,7 +100,7 @@ export default function List() {
             </div>
           </div>
           <div className="inner-container">
-            <div className="form-control">
+            <div className="form-subgroup">
               <label htmlFor="location-name">Province (required)</label>
               <input 
                 className="form-input" 
@@ -110,7 +110,7 @@ export default function List() {
                 value={province}
                 onChange={(e) => { setProvince(e.target.value); }}></input>
             </div>
-            <div className="form-control">
+            <div className="form-subgroup">
               <label htmlFor="location-name">Postal Code (required)</label>
               <input 
                 className="form-input" 

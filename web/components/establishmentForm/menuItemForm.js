@@ -26,9 +26,9 @@ export default function MenuItemForm({ menuItems, setMenuItems, menuItemIndex })
   }
 
   return (
-    <div className="form-group menu-item-form">
+    <div className="form-section menu-item-form">
       <div className="inner-container">
-        <div className="form-control">
+        <div className="form-subgroup">
           <label htmlFor="item-name[val]">Item Name</label>
           <input
             className="form-input"
@@ -44,7 +44,7 @@ export default function MenuItemForm({ menuItems, setMenuItems, menuItemIndex })
               setMenuItems(updateMenuItemName);
             }}></input>
         </div>
-        <div className="form-control">
+        <div className="form-subgroup">
           <label htmlFor="item-name[val]">Item Price</label>
           <input
             className="form-input"
@@ -60,7 +60,7 @@ export default function MenuItemForm({ menuItems, setMenuItems, menuItemIndex })
               setMenuItems(updateMenuItemPrice);
             }}></input>
         </div>
-        <div className="form-control">
+        <div className="form-subgroup">
           <label htmlFor="item-type[val]">Food or Drink</label>
           <select
             className="form-input"

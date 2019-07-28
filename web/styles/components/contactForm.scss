@@ -3,11 +3,11 @@
 
 .add-establishment-container {
   padding: 50px 50px 100px 50px;
-  .form-group {
+  .form-section {
     display: grid;
     grid-template-columns: repeat(1, minmax(100%, 1fr));
     grid-template-rows: repeat(auto, minmax(auto, 1fr));
-    .form-control {
+    .form-subgroup {
       display: grid;
       grid-template-columns: repeat(1, minmax(auto, 1fr));
       grid-template-rows: repeat(2, minmax(auto, max-content));
@@ -37,7 +37,7 @@
       grid-template-columns: repeat(7, minmax(auto, 1fr));
       grid-template-rows: repeat(1, minmax(auto, 1fr));
       grid-gap: 15px;
-      .form-control {
+      .form-subgroup {
         justify-items: center;
         grid-template-rows: repeat(1, minmax(auto, 1fr));
       }
@@ -52,7 +52,7 @@
 
 @media only screen and (max-width: 768px) {
   .add-establishment-container {
-    .form-group {
+    .form-section {
       &.menu-item-form {
         .inner-container {
           grid-template-columns: repeat(1, minmax(auto, 1fr));
@@ -66,7 +66,7 @@
 @media only screen and (max-width: 568px) {
   .add-establishment-container {
     padding: 50px 20px 100px 20px;
-    .form-group {
+    .form-section {
       .inner-container {
         grid-template-columns: repeat(1, minmax(auto, 1fr));
         grid-template-rows: repeat(auto, minmax(auto, 1fr));
