@@ -7,17 +7,19 @@
     opacity: 1;
   }
 }
-.list-container {
+.custom-accordion {
   padding: 50px 50px 100px 50px;
   animation: fadeIn 1s;
   p {
     margin: 5px 0 0 0;
   }
-  .card-header, .accordion-toggle {
+  .accordion-toggle {
     color: #FFF;
     background-color: $tertiaryColor;
     font-weight: bold;
     background-image: linear-gradient(to bottom left, $tertiaryColor, $mainColor);
+    width: 100%;
+    padding: 5px;
     @include flex(space-between, center, row, wrap);
     .icons-container {
       @include flex(flex-end, center, row, wrap);
@@ -51,9 +53,18 @@
       }
     }
   }
-  .card-body {
-    padding: 20px 20px 40px 20px;
+
+
+  .accordion-body {
     border: 1px solid $tertiaryColor;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    &.open {
+      padding: 20px 20px 40px 20px;
+      max-height: 1000px;
+      height: fit-content;
+    }
   }
   .establishment-content {
     height: 100%;
