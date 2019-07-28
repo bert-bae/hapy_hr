@@ -20,13 +20,14 @@ export default function Map({place}) {
     setViewport(options);
   }, []);
   return (
-    <ReactMapGL
-      className="map-container"
-      mapStyle="mapbox://styles/mapbox/streets-v11"
-      mapboxApiAccessToken={publicRuntimeConfig.MAPBOX_PK}
-      {...viewport}
-      onViewportChange={(viewport) => setViewport(viewport)}>
-      <MapMarker location={location} latitude={options.latitude} longitude={options.longitude}/>
-    </ReactMapGL>
+    <div className="map-container">
+      <ReactMapGL
+        mapStyle="mapbox://styles/mapbox/streets-v11"
+        mapboxApiAccessToken={publicRuntimeConfig.MAPBOX_PK}
+        {...viewport}
+        onViewportChange={(viewport) => setViewport(viewport)}>
+        <MapMarker place={place}/>
+      </ReactMapGL>
+    </div>
   );
 }

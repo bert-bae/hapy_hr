@@ -1,0 +1,47 @@
+
+.home-container {
+  padding: 0 0 0 0;
+  height: 100%;
+  .section-header {
+    text-align: center;
+    color: $mainColor;
+  }
+  .section-subheader {
+    font-size: $subheaderFontSize;
+    color: $tertiaryColor;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .home-listings {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(auto, 1fr));
+    grid-template-rows: repeat(1, minmax(auto, 1fr));
+    overflow: hidden;
+    .list-container {
+      padding: 0;
+      grid-column: span 5;
+      height: 500px;
+      overflow-y: auto;
+      background-color: $mainColor;
+    }
+    .map-container {
+      grid-column: span 7;
+      margin: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+ 
+}
+
+@media only screen and (max-width: 568px) {
+  .home-container {
+    padding-left: 20px!important;
+    padding-right: 20px!important;
+
+  }
+}

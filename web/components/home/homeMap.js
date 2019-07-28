@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import Loading from '../loading';
 import Establishments from '../establishments';
+import MapMarker from '../mapMarker';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
@@ -41,7 +42,7 @@ export default function HomeMap() {
       if (locationPermission && latitude && longitude) {
         setViewport({
           width: '100%',
-          height: 300,
+          height: 600,
           latitude: latitude,
           longitude: longitude,
           zoom: 15
@@ -69,7 +70,6 @@ export default function HomeMap() {
     // Potential issue... How often will this trigger an API request? If a user is moving, might need to consider that factor and put a timer on it.
   }, [latitude, longitude, locationPermission]);
 
-  // const location = `${place.address_line}+${place.city}+${place.province}`;
   return (
     <div className="home-container">
       { locationPermission === false && 
@@ -79,18 +79,26 @@ export default function HomeMap() {
         <Loading/>
       }
       { !loading && locationPermission && establishments && establishments.length > 0 &&
-        <Establishments 
-          establishments={establishments}
-          showMap={false}/>
-      }
-      { loading &&
-        <ReactMapGL
-          className="map-container"
-          mapStyle="mapbox://styles/mapbox/streets-v11"
-          mapboxApiAccessToken={publicRuntimeConfig.MAPBOX_PK}
-          {...viewport}
-          onViewportChange={(viewport) => setViewport(viewport)}>
-        </ReactMapGL>
+        <div className="home-listings">
+          <Establishments 
+            establishments={establishments}
+            showMap={false}/>
+          <div className="map-container">
+            <ReactMapGL
+              mapStyle="mapbox://styles/mapbox/streets-v11"
+              mapboxApiAccessToken={publicRuntimeConfig.MAPBOX_PK}
+              {...viewport}
+              onViewportChange={(viewport) => setViewport(viewport)}>
+              { establishments.map((place, key) => {
+                  return <MapMarker 
+                          place={place} 
+                          isHome={true}
+                          accordionTarget={`accordion-${key}`}/>
+                })
+              }
+            </ReactMapGL>
+          </div>
+        </div>
       }
     </div>
   );

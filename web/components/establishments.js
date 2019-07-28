@@ -10,6 +10,7 @@ import axios from 'axios';
 
 export default function Establishments({ establishments, showMap }) {
   const { isAuthenticated, user } = useAuth0();
+  const [activeKey, setActiveKey] = useState(`accordion-0`);
   const [hasFood, setHasFood] = useState(false);
   const [hasDrinks, setHasDrinks] = useState(false);
   const [voucher, setVoucher] = useState({ id: null });
@@ -25,7 +26,7 @@ export default function Establishments({ establishments, showMap }) {
     })
     return (
       <Card key={key}>
-        <Accordion.Toggle as={Card.Header} variant="link" eventKey={key}>
+        <Accordion.Toggle as={Card.Header} variant="link" eventKey={`accordion-${key}`}>
           <p>{place.name}</p>
           <div className="icons-container">
             {place.distance &&
@@ -43,7 +44,7 @@ export default function Establishments({ establishments, showMap }) {
           </div>
         </Accordion.Toggle>
 
-        <Accordion.Collapse eventKey={key}>
+        <Accordion.Collapse eventKey={`accordion-${key}`}>
           <Card.Body>
             <p className="location">{place.address_line}, {place.city}, {place.province}, {place.postal_code}</p>
             <p className="description">{place.description}</p>
@@ -57,10 +58,10 @@ export default function Establishments({ establishments, showMap }) {
                   <DayVoucher establishmentId={place.id} voucher={voucher} setVoucher={setVoucher} user={user}/>
                 </Col>
               } */}
+              { showMap &&
+                <Map place={place}/>
+              }
             </div>
-            { showMap &&
-              <Map place={place}/>
-            }
           </Card.Body>
         </Accordion.Collapse>
       </Card>
@@ -86,7 +87,7 @@ export default function Establishments({ establishments, showMap }) {
 
   return (
     <div className="list-container">
-      <Accordion>
+      <Accordion defaultActiveKey={activeKey}>
         {formatted}
       </Accordion>
     </div>
