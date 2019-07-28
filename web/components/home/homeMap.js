@@ -42,7 +42,7 @@ export default function HomeMap() {
       if (locationPermission && latitude && longitude) {
         setViewport({
           width: '100%',
-          height: 600,
+          height: 500,
           latitude: latitude,
           longitude: longitude,
           zoom: 15
