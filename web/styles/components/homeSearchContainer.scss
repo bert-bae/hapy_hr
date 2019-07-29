@@ -28,3 +28,23 @@
     }
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .search-container {
+    .form-subgroup {
+      grid-template-columns: repeat(1, minmax(auto, 1fr));
+      grid-template-rows: repeat(2, minmax(auto, 1fr));
+    }
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  .search-container {
+    grid-template-columns: repeat(1, minmax(auto, 1fr));
+    grid-template-rows: repeat(2, minmax(auto, 1fr));
+    .form-subgroup {
+      grid-template-columns: repeat(2, minmax(auto, 1fr));
+      grid-template-rows: repeat(1, minmax(auto, 1fr));
+    }
+  }
+}
