@@ -1,17 +1,13 @@
 import Accordion from '../components/accordion/accordion';
-import Card from 'react-bootstrap/Card';
-import WeekTabs from './weekTabs';
-import Map from './map';
 import DayVoucher from './dayVoucher';
-import Col from 'react-bootstrap/Col';
 import { useAuth0 } from "../utils/Auth/react-auth0-wrapper";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function Establishments(props) {
-  const { isAuthenticated, user } = useAuth0();
   const [hasFood, setHasFood] = useState(false);
   const [hasDrinks, setHasDrinks] = useState(false);
+  const { isAuthenticated, user } = useAuth0();
   const [voucher, setVoucher] = useState({ id: null });
 
   // Verifies if the user logging in has a valid voucher or not

@@ -47,9 +47,6 @@ export default function AccordionSet({ index, place, getToday, selection, setSel
               <DayVoucher establishmentId={place.id} voucher={voucher} setVoucher={setVoucher} user={user}/>
             </Col>
           } */}
-          {/* { showMap &&
-            <Map place={place}/>
-          } */}
         </div>
       </div>
     </>

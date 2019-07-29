@@ -94,10 +94,11 @@ export default function HomeMap() {
               {...viewport}
               onViewportChange={(viewport) => setViewport(viewport)}>
               { establishments.map((place, key) => {
-                  return <MapMarker 
-                          place={place} 
-                          isHome={true}
-                          accordionTarget={`accordion-${key}`}/>
+                  return (
+                    <a key={key} onClick={() => { setSelection(`acc-${key}`);}}>
+                      <MapMarker place={place} isHome={true}/>
+                    </a>
+                  )
                 })
               }
             </ReactMapGL>

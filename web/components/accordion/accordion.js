@@ -15,7 +15,7 @@ export default function Accordion(props) {
     })
     let setProps = { index: `acc-${key}`, place, getToday, selection, setSelection };
     return (
-      <AccordionSet {...setProps}/>
+      <AccordionSet key={key} {...setProps}/>
     )
   });
   return (
