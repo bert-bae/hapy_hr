@@ -64,6 +64,7 @@ export default function HomeMap() {
           setLoading(false);
         }, 500)
       }
+
     };
     getInitialData();
     // Only track changes as latitude and longitude changes

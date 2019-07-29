@@ -10,55 +10,56 @@ import Loading from '../components/loading';
 import Accordion from '../components/accordion/accordion';
 
 const DealPage = () => {
-  // const [loading, setLoading] = useState(true);
-  // const [locationPermission, setLocationPermission] = useState(null);
-  // const [establishments, setEstablishments] = useState([]);
-  // const [latitude, setLatitude] = useState(null);
-  // const [longitude, setLongitude] = useState(null);
-  // const successLocation = (position) => {
-  //   setLatitude(position.coords.latitude);
-  //   setLongitude(position.coords.longitude);
-  // }
+  const [loading, setLoading] = useState(true);
+  const [locationPermission, setLocationPermission] = useState(null);
+  const [establishments, setEstablishments] = useState([]);
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const successLocation = (position) => {
+    setLatitude(position.coords.latitude);
+    setLongitude(position.coords.longitude);
+  }
   
-  // const errorLocation = (error) => {
-  //   console.log(`Error retrieving geolocation: ${error}`);
-  // }
+  const errorLocation = (error) => {
+    console.log(`Error retrieving geolocation: ${error}`);
+  }
   
-  // useEffect(() => {
-  //   async function getInitialData() {
-  //     let result;
-  //     // Verify user geolocation permission...
-  //     const permission = await navigator.permissions.query({name:'geolocation'});
-  //     if (permission.state === 'granted') {
-  //       setLocationPermission(true);
-  //     } else {
-  //       setLocationPermission(false);
-  //     }
-  //     getUserLocation(successLocation, errorLocation);
+  useEffect(() => {
+    async function getInitialData() {
+      let result;
+      // Verify user geolocation permission...
+      const permission = await navigator.permissions.query({name:'geolocation'});
+      if (permission.state === 'granted') {
+        setLocationPermission(true);
+      } else {
+        setLocationPermission(false);
+      }
+      getUserLocation(successLocation, errorLocation);
 
-  //     // If permission is true, find the geolocation of user
-  //     if (locationPermission && latitude && longitude) {
-  //       // Retrieve establishments based on nearest top 10
-  //       result = await axios.get(`http://localhost:5000/establishment/distance?latitude=${latitude}&longitude=${longitude}`);
-  //       setEstablishments(result.data.establishments);
-  //       setTimeout(() => {
-  //         setLoading(false);
-  //       }, 500)
-  //     }
+      // If permission is true, find the geolocation of user
+      if (locationPermission && latitude && longitude) {
+        // Retrieve establishments based on nearest top 10
+        result = await axios.get(`http://localhost:5000/establishment/distance?latitude=${latitude}&longitude=${longitude}`);
+        setEstablishments(result.data.establishments);
+        setTimeout(() => {
+          setLoading(false);
+        }, 500)
+      }
 
-  //     // If permission is false, retrieve all data limit to 10
-  //     if (locationPermission === false) {
-  //       result = await axios.get('http://localhost:5000/establishment');
-  //       setEstablishments(result.data.establishments);
-  //       setTimeout(() => {
-  //         setLoading(false);
-  //       }, 500)
-  //     }
-  //   };
-  //   getInitialData();
-  //   // Only track changes as latitude and longitude changes
-  //   // Potential issue... How often will this trigger an API request? If a user is moving, might need to consider that factor and put a timer on it.
-  // }, [latitude, longitude, locationPermission]);
+      // If permission is false, retrieve all data limit to 10
+      if (locationPermission === false) {
+        result = await axios.get('http://localhost:5000/establishment');
+        setEstablishments(result.data.establishments);
+        setTimeout(() => {
+          setLoading(false);
+        }, 500)
+        console.log(result.data.establishments);
+      }
+    };
+    getInitialData();
+    // Only track changes as latitude and longitude changes
+    // Potential issue... How often will this trigger an API request? If a user is moving, might need to consider that factor and put a timer on it.
+  }, [latitude, longitude, locationPermission]);
 
   // return (
   //   <div className="page-container">
@@ -80,7 +81,11 @@ const DealPage = () => {
   //   </div>
   // )
   return (
-    <Accordion></Accordion>
+    <>
+      { establishments &&
+        <Accordion establishments={establishments}></Accordion>
+      }
+    </>
   )
 }
 

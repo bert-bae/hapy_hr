@@ -13,48 +13,6 @@
   p {
     margin: 5px 0 0 0;
   }
-  .card-header, .accordion-toggle {
-    color: #FFF;
-    background-color: $tertiaryColor;
-    font-weight: bold;
-    background-image: linear-gradient(to bottom left, $tertiaryColor, $mainColor);
-    @include flex(space-between, center, row, wrap);
-    .icons-container {
-      @include flex(flex-end, center, row, wrap);
-      width: 50%;
-      .distance-from {
-        font-size: $subFontSize;
-        font-weight: normal;
-        margin-right: 20px;
-      }
-      .icon {
-        border-radius: 12px;
-        width: 50px;
-        height: 27px;
-        opacity: 0.5;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: 20px;
-        &.food {
-          background-color: #994B00;
-          color: #FFF;
-        }
-        &.drinks {
-          background-color: #CC004B;
-          color: #FFF;
-        }
-      }
-      .icon-content {
-        font-size: $subFontSize;
-        font-weight: normal;
-      }
-    }
-  }
-  .card-body {
-    padding: 20px 20px 40px 20px;
-    border: 1px solid $tertiaryColor;
-  }
   .establishment-content {
     height: 100%;
     @include flex(space-between, center, row, wrap);
@@ -64,18 +22,6 @@
 @media only screen and (max-width: 768px) {
   .list-container {
     padding: 0;
-    .card-header {
-      flex-direction: column;
-      align-items: flex-start;
-      .icons-container {
-        width: 100%;
-      }
-    }
-    .establishment-content {
-      flex-direction: column;
-      .inner-container {
-        margin-bottom: 25px;
-      }
-    }
+
   }
 }
