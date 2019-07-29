@@ -1,14 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import WeekTabs from '../weekTabs';
 import { Col } from 'react-bootstrap';
 
 export default function AccordionSet({ index, place, getToday, selection, setSelection }) {
   const [openContent, setOpenContent] = useState("");
+  const accRef = useRef(null);
+  // TODO... Scroll to selection is not really working correctly...
+  // Suspect it may have to do with the max-height transition with collapse, but examine later
+  const scrollToRef = (ref) => {
+    document.getElementsByClassName('list-container')[0].scrollTo(0, ref.current.offsetTop);
+  };
   const toggleAccordion = () => {
     if (selection !== index) {
       setOpenContent("");
     } else {
       setOpenContent("open");
+      scrollToRef(accRef);
     }
   }
 
@@ -19,7 +26,8 @@ export default function AccordionSet({ index, place, getToday, selection, setSel
   return (
     <>
       <button 
-        type="button" 
+        ref={accRef}
+        type="button"
         className="accordion-toggle" 
         onClick={() => { setSelection(index);}}>
         <p>{place.name}</p>
