@@ -2,18 +2,26 @@ import { useState, useEffect } from 'react';
 import WeekTabs from '../weekTabs';
 import { Col } from 'react-bootstrap';
 
-export default function AccordionSet({ place, getToday }) {
+export default function AccordionSet({ index, place, getToday, selection, setSelection }) {
   const [openContent, setOpenContent] = useState("");
   const toggleAccordion = () => {
-    if (openContent) {
+    if (selection !== index) {
       setOpenContent("");
     } else {
       setOpenContent("open");
     }
   }
+
+  useEffect(() => {
+    toggleAccordion();
+  }, [selection])
+
   return (
     <>
-      <button type="button" className="accordion-toggle" onClick={() => { toggleAccordion()}} >
+      <button 
+        type="button" 
+        className="accordion-toggle" 
+        onClick={() => { setSelection(index);}}>
         <p>{place.name}</p>
         <div className="icons-container">
           {place.distance &&

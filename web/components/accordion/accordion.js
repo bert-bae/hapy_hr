@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import AccordionSet from './accordionSet';
 
-export default function Accordion({ establishments }) {
+export default function Accordion(props) {
+  const { establishments, selection, setSelection } = props;
   const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const accordionSet = establishments.map((place, key) => {
     const getToday = place.operational_hour.map((time, key) => {
@@ -12,8 +13,9 @@ export default function Accordion({ establishments }) {
         )
       }
     })
+    let setProps = { index: `acc-${key}`, place, getToday, selection, setSelection };
     return (
-      <AccordionSet key={key} place={place} getToday={getToday}/>
+      <AccordionSet {...setProps}/>
     )
   });
   return (

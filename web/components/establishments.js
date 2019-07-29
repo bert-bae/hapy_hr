@@ -8,7 +8,7 @@ import { useAuth0 } from "../utils/Auth/react-auth0-wrapper";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function Establishments({ establishments, showMap }) {
+export default function Establishments(props) {
   const { isAuthenticated, user } = useAuth0();
   const [hasFood, setHasFood] = useState(false);
   const [hasDrinks, setHasDrinks] = useState(false);
@@ -33,7 +33,7 @@ export default function Establishments({ establishments, showMap }) {
 
   return (
     <div className="list-container">
-      <Accordion establishments={establishments}/>
+      <Accordion {...props}/>
     </div>
   )
 }

@@ -17,6 +17,7 @@ export default function HomeMap() {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [viewport, setViewport] = useState(null);
+  const [selection, setSelection] = useState(null);
   const successLocation = (position) => {
     setLatitude(position.coords.latitude);
     setLongitude(position.coords.longitude);
@@ -83,6 +84,8 @@ export default function HomeMap() {
         <div className="home-listings">
           <Establishments 
             establishments={establishments}
+            selection={selection}
+            setSelection={setSelection}
             showMap={false}/>
           <div className="map-container">
             <ReactMapGL
