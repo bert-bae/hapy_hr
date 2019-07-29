@@ -4,13 +4,16 @@
   width: 100%;
   .weekday-tabs {
     margin: 0;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(auto, 1fr));
+    grid-template-rows: repeat(1, minmax(auto, 1fr));
     .day-tab {
-      width: calc(100% / 7);
       .nav-link {
         @include flex(center, center, row, wrap);
         color: #FFF;
         margin: 0!important;
-        width: 100%!important;  
+        padding: 0;
+        width: 100%!important;
         border: 2px solid $secondaryColor;
         background-color: $backgroundColor;
         &.active, &:hover {
@@ -20,7 +23,6 @@
     }
   }
   .tab-content {
-    padding: 15px;
     border: 2px solid $secondaryColor;
     width: calc(100% + 2px)!important;
     .subheader {

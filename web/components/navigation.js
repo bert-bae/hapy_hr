@@ -30,9 +30,9 @@ export default function Navigation() {
         <Link href="/">
           <a className="nav-option">Home</a>
         </Link>
-        <Link href="/deals">
+        {/* <Link href="/deals">
           <a className="nav-option">Deals</a>
-        </Link>
+        </Link> */}
         {/* <Link href="/trending">
           <a className="nav-option">Trending</a>
         </Link> */}
