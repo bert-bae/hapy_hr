@@ -1,0 +1,30 @@
+.search-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, 1fr));
+  grid-template-rows: repeat(1, minmax(auto, 1fr));
+  grid-gap: 20px;
+  align-items: center;
+  justify-items: center;
+  padding: 10px 20px;
+  background-color: $mainColor;
+  .form-subgroup {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(auto, 1fr));
+    grid-template-rows: repeat(1, minmax(auto, 1fr));
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    input, select {
+      width: 100%;
+      border-radius: 8px;
+      padding: 2px 5px;
+      border: 2px inset $mainColor;
+      font-size: $mainFontSize;
+    }
+    label {
+      color: #FFF;
+      margin: 0;
+    }
+  }
+}

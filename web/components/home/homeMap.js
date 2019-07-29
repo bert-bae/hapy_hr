@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { getUserLocation } from '../../utils/geolocationUtils';
 import axios from 'axios';
 
+
+import SearchContainer from './searchContainer';
 import Loading from '../loading';
 import Establishments from '../establishments';
 import MapMarker from '../mapMarker';
@@ -24,7 +26,9 @@ export default function HomeMap() {
   }
   
   const errorLocation = (error) => {
-    console.log(`Error retrieving geolocation: ${error}`);
+    setLocationPermission(false);
+    console.log(`Error retrieving geolocation:`);
+    console.log(error);
   }
   
   useEffect(() => {
@@ -34,8 +38,6 @@ export default function HomeMap() {
       const permission = await navigator.permissions.query({name:'geolocation'});
       if (permission.state === 'granted') {
         setLocationPermission(true);
-      } else {
-        setLocationPermission(false);
       }
       getUserLocation(successLocation, errorLocation);
 
@@ -74,6 +76,7 @@ export default function HomeMap() {
 
   return (
     <div className="home-container">
+      <SearchContainer/>
       { locationPermission === false && 
         <h1>Oops! We can't help you find locations near you without geolocation enabled. Here's the full list for now! If you want us to sort it by the nearest locations, you an enable browser to let us know where you are. Don't worry, we aren't spying on you, this particular feature just requires your general location for it to work.</h1>
       }
@@ -87,7 +90,7 @@ export default function HomeMap() {
             selection={selection}
             setSelection={setSelection}
             showMap={false}/>
-          <div className="map-container">
+          {/* <div className="map-container">
             <ReactMapGL
               mapStyle="mapbox://styles/mapbox/streets-v11"
               mapboxApiAccessToken={publicRuntimeConfig.MAPBOX_PK}
@@ -102,7 +105,7 @@ export default function HomeMap() {
                 })
               }
             </ReactMapGL>
-          </div>
+          </div> */}
         </div>
       }
     </div>
