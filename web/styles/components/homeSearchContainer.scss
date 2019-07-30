@@ -21,6 +21,9 @@
       padding: 2px 5px;
       border: 2px inset $mainColor;
       font-size: $mainFontSize;
+      &:focus {
+        outline: none;
+      }
     }
     label {
       color: #FFF;

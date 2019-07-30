@@ -2,6 +2,7 @@ import getConfig from 'next/config';
 import ReactMapGL from 'react-map-gl';
 import { useState, useEffect } from 'react';
 import { getUserLocation } from '../../utils/geolocationUtils';
+import { mapBoxConfig } from '../../utils/constants/optionUtils';
 import axios from 'axios';
 
 
@@ -26,7 +27,6 @@ export default function HomeMap() {
   }
   
   const errorLocation = (error) => {
-    setLocationPermission(false);
     console.log(`Error retrieving geolocation:`);
     console.log(error);
   }
@@ -38,18 +38,14 @@ export default function HomeMap() {
       const permission = await navigator.permissions.query({name:'geolocation'});
       if (permission.state === 'granted') {
         setLocationPermission(true);
+      } else {
+        setLocationPermission(false);
       }
       getUserLocation(successLocation, errorLocation);
 
       // If permission is true, find the geolocation of user
       if (locationPermission && latitude && longitude) {
-        setViewport({
-          width: '100%',
-          height: 500,
-          latitude: latitude,
-          longitude: longitude,
-          zoom: 15
-        });
+        setViewport(mapBoxConfig('100%', 500, latitude, longitude, 15));
 
         // Retrieve establishments based on nearest top 10
         result = await axios.get(`http://localhost:5000/establishment/distance?latitude=${latitude}&longitude=${longitude}`);
@@ -60,7 +56,7 @@ export default function HomeMap() {
       }
 
       // If permission is false, retrieve all data limit to 10
-      if (locationPermission === false) {
+      if (!locationPermission) {
         result = await axios.get('http://localhost:5000/establishment');
         setEstablishments(result.data.establishments);
         setTimeout(() => {
@@ -76,36 +72,38 @@ export default function HomeMap() {
 
   return (
     <div className="home-container">
-      <SearchContainer/>
-      { locationPermission === false && 
-        <h1>Oops! We can't help you find locations near you without geolocation enabled. Here's the full list for now! If you want us to sort it by the nearest locations, you an enable browser to let us know where you are. Don't worry, we aren't spying on you, this particular feature just requires your general location for it to work.</h1>
-      }
       { loading && locationPermission &&
         <Loading/>
       }
-      { !loading && locationPermission && establishments && establishments.length > 0 &&
-        <div className="home-listings">
-          <Establishments 
-            establishments={establishments}
-            selection={selection}
-            setSelection={setSelection}
-            showMap={false}/>
-          {/* <div className="map-container">
-            <ReactMapGL
-              mapStyle="mapbox://styles/mapbox/streets-v11"
-              mapboxApiAccessToken={publicRuntimeConfig.MAPBOX_PK}
-              {...viewport}
-              onViewportChange={(viewport) => setViewport(viewport)}>
-              { establishments.map((place, key) => {
-                  return (
-                    <a key={key} onClick={() => { setSelection(`acc-${key}`);}}>
-                      <MapMarker place={place} isHome={true}/>
-                    </a>
-                  )
-                })
-              }
-            </ReactMapGL>
-          </div> */}
+      { !loading && establishments && establishments.length > 0 &&
+        <div>
+          <SearchContainer 
+            setEstablishments={setEstablishments}
+            viewport={viewport}
+            setViewport={setViewport}/>
+          <div className="home-listings">
+            <Establishments 
+              establishments={establishments}
+              selection={selection}
+              setSelection={setSelection}
+              showMap={false}/>
+            {/* <div className="map-container">
+              <ReactMapGL
+                mapStyle="mapbox://styles/mapbox/streets-v11"
+                mapboxApiAccessToken={publicRuntimeConfig.MAPBOX_PK}
+                {...viewport}
+                onViewportChange={(viewport) => setViewport(viewport)}>
+                { establishments.map((place, key) => {
+                    return (
+                      <a key={key} onClick={() => { setSelection(`acc-${key}`);}}>
+                        <MapMarker place={place} isHome={true}/>
+                      </a>
+                    )
+                  })
+                }
+              </ReactMapGL>
+            </div> */}
+          </div>
         </div>
       }
     </div>

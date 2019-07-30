@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
+import { deepCopy } from '../../utils/objectUtils';
+import { mapBoxConfig } from '../../utils/constants/optionUtils';
 
-export default function SearchContainer() {
+export default function SearchContainer(props) {
+  const { setEstablishments, setViewport, viewport } = props;
   const [addressInput, setAddressInput] = useState("");
-  const [areaSelection, setAreaSelection] = useState(null);
+  const [areaSelection, setAreaSelection] = useState("Search by area");
   return (
     <div className="search-container">
       <div className="form-subgroup">
@@ -19,7 +22,12 @@ export default function SearchContainer() {
         <select 
           className="form-input"
           value={areaSelection}
-          onChange={(e) => { setAreaSelection(e.target.value); }}>
+          onChange={(e) => {
+            // TODO...set value of the selection options with data sets of latitude and longitude
+            // Pass as latitude and longitude in arguments below and uncomment (requires network access);
+            // setViewport(mapBoxConfig('100%', 500, latitude, longitude, 15))  
+            setAreaSelection(e.target.value);
+          }}>
           <option disabled selected>Search by area</option>
           <option value="Gastown">Gastown</option>
           <option value="Hastings">Hastings</option>
