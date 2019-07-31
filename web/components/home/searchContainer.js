@@ -1,11 +1,21 @@
 import { useState, useEffect } from 'react';
-import { deepCopy } from '../../utils/objectUtils';
+import popularAreas from '../../utils/constants/popularAreas';
 import { mapBoxConfig } from '../../utils/constants/optionUtils';
 
 export default function SearchContainer(props) {
   const { setEstablishments, setViewport, viewport } = props;
   const [addressInput, setAddressInput] = useState("");
   const [areaSelection, setAreaSelection] = useState("Search by area");
+  const getGeoDataFromAddress = (address) => {
+    // TODO... take the address and convert to geolocation data
+    // Research = Does mapbox have this built in? If not use Google API
+  }
+  const formatAreas = popularAreas.areas.map((area) => {
+    return <option value={`{"latitude": ${area.latitude}, "longitude": ${area.longitude}}`}>{area.name}</option>
+  })
+  const formatStations = popularAreas.stations.map((station) => {
+    return <option value={`{"latitude": ${station.latitude}, "longitude": ${station.longitude}}`}>{station.name}</option>
+  })
   return (
     <div className="search-container">
       <div className="form-subgroup">
@@ -23,17 +33,19 @@ export default function SearchContainer(props) {
           className="form-input"
           value={areaSelection}
           onChange={(e) => {
-            // TODO...set value of the selection options with data sets of latitude and longitude
-            // Pass as latitude and longitude in arguments below and uncomment (requires network access);
-            // setViewport(mapBoxConfig('100%', 500, latitude, longitude, 15))  
+            const latlon = JSON.parse(e.target.value);
+            setViewport(mapBoxConfig('100%', 500, latlon.latitude, latlon.longitude, 15));            
             setAreaSelection(e.target.value);
           }}>
           <option disabled selected>Search by area</option>
-          <option value="Gastown">Gastown</option>
-          <option value="Hastings">Hastings</option>
-          <option value="Strathcona">Strathcona</option>
-          <option value="False Creek">False Creek</option>
-          <option value="Richmond">Richmond</option>
+          <optgroup>
+            <option disabled selected>Popular Areas</option>
+            {formatAreas}
+          </optgroup>
+          <optgroup>
+            <option disabled selected>Near Stations</option>
+            {formatStations}
+          </optgroup>
         </select>
       </div>
     </div>

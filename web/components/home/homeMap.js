@@ -87,7 +87,7 @@ export default function HomeMap() {
               selection={selection}
               setSelection={setSelection}
               showMap={false}/>
-            {/* <div className="map-container">
+            <div className="map-container">
               <ReactMapGL
                 mapStyle="mapbox://styles/mapbox/streets-v11"
                 mapboxApiAccessToken={publicRuntimeConfig.MAPBOX_PK}
@@ -102,7 +102,7 @@ export default function HomeMap() {
                   })
                 }
               </ReactMapGL>
-            </div> */}
+            </div>
           </div>
         </div>
       }
