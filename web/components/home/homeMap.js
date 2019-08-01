@@ -86,6 +86,7 @@ export default function HomeMap() {
               establishments={establishments}
               selection={selection}
               setSelection={setSelection}
+              setViewport={setViewport}
               showMap={false}/>
             <div className="map-container">
               <ReactMapGL

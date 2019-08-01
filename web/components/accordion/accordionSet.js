@@ -2,7 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import WeekTabs from '../weekTabs';
 import { Col } from 'react-bootstrap';
 
-export default function AccordionSet({ index, place, getToday, selection, setSelection }) {
+import { mapBoxConfig } from '../../utils/constants/optionUtils'
+
+export default function AccordionSet({ index, place, getToday, selection, setSelection, setViewport }) {
   const [openContent, setOpenContent] = useState("");
   const accRef = useRef(null);
   // TODO... Scroll to selection is not really working correctly...
@@ -29,7 +31,12 @@ export default function AccordionSet({ index, place, getToday, selection, setSel
         ref={accRef}
         type="button"
         className="accordion-toggle" 
-        onClick={() => { setSelection(index);}}>
+        onClick={() => { 
+          const longitude = Number(place.longitude);
+          const latitude = Number(place.latitude);
+          setViewport(mapBoxConfig('100%', 500, latitude, longitude, 15));
+          setSelection(index);
+        }}>
         <p>{place.name}</p>
         <div className="icons-container">
           {place.distance &&
