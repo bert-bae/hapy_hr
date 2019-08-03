@@ -37,13 +37,13 @@ export default function SearchContainer(props) {
             setViewport(mapBoxConfig('100%', 500, latlon.latitude, latlon.longitude, 15));            
             setAreaSelection(e.target.value);
           }}>
-          <option disabled selected>Search by area</option>
+          <option disabled>Search by area</option>
           <optgroup>
-            <option disabled selected>Popular Areas</option>
+            <option disabled>Popular Areas</option>
             {formatAreas}
           </optgroup>
           <optgroup>
-            <option disabled selected>Near Stations</option>
+            <option disabled>Near Stations</option>
             {formatStations}
           </optgroup>
         </select>

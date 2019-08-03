@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import MenuItemForm from '../../components/establishmentForm/menuItemForm';
+import TimeInput from '../../components/establishmentForm/timeInput';
+import { deepCopy } from '../../utils/objectUtils';
 import { useState, useEffect } from 'react';
 
 export default function List() {
@@ -12,7 +14,18 @@ export default function List() {
   const [establishmentName, setEstablishmentName] = useState("");
   const [establishmentDescription, setEstablishmentDescription] = useState("");
   const [menuItems, setMenuItems] = useState([{ name: "", price: 0.00, weekdays: [], type: "" }]);
+  const [happyTimes, setHappyTimes] = useState([{ weekday: 0, start: "", end: "" }]);
 
+  const addHappyTime = () => {
+    let newTime = deepCopy(happyTimes);
+    newTime.push({ weekday: "", start: "", end: "" });
+    setHappyTimes(newTime);
+  }
+  const addMenuItem = () => {
+    let newMenuItems = deepCopy(menuItems);
+    newMenuItems.push({ name: "", price: 0.00, weekdays: [], type: "" })
+    setMenuItems(newMenuItems);
+  }
   return (
     <div className="page-container">
       <Head>
@@ -22,8 +35,8 @@ export default function List() {
         <link href="/static/icons/happyr-icon.png" rel="icon" type="image/gif"></link>
       </Head>
       <div className="add-establishment-container">
-        <h1 className="subheader">Your Contact Information</h1>
         <div className="form-section about-you">
+          <h2 className="subheader">Your Contact Information</h2>
           <div className="inner-container">
             <div className="form-subgroup">
               <label htmlFor="location-name">Your Name (required)</label>
@@ -49,8 +62,8 @@ export default function List() {
           </div>
         </div>
         
-        <h1 className="subheader">About Your Establishment</h1>
         <div className="form-section">
+          <h2 className="subheader">About Your Establishment</h2>
           <div className="form-subgroup restaurant-name">
             <label htmlFor="location-name">Restaurant or Bar Name (required)</label>
             <input 
@@ -75,8 +88,8 @@ export default function List() {
           </div>
         </div>
         
-        <h1 className="subheader">Establishment Location</h1>        
         <div className="form-section address-group">
+          <h2 className="subheader">Establishment Location</h2>        
           <div className="inner-container">
             <div className="form-subgroup">
               <label htmlFor="address-line">Street Address (required)</label>
@@ -124,25 +137,39 @@ export default function List() {
           </div>
         </div>
 
-        <h1 className="subheader">Menu Items</h1>
-        {// Prototype - Form control for menu items below
-          menuItems.map((item, key) => {
-            return <MenuItemForm 
-              key={`item-${key}`} 
-              item={item} 
-              menuItems={menuItems}
-              setMenuItems={setMenuItems}
-              menuItemIndex={key}/>
-          })
-        }
-        <button 
-          type="button"
-          className="add-item link-option"
-          onClick={() => {
-            let newMenuItems = JSON.parse(JSON.stringify(menuItems));
-            newMenuItems.push({ name: "", price: 0.00, weekdays: [], type: "" })
-            setMenuItems(newMenuItems);
-        }}>Add Another Item</button>
+        <div className="form-section time-inputs">
+          <h2 className="subheader">Happy Hour Times</h2>
+            { happyTimes.map((time, key) => {
+              return <TimeInput
+                key={`time-${key}`}
+                time={time}
+                happyTimes={happyTimes}
+                setHappyTimes={setHappyTimes}
+                happyTimeIndex={key}/>
+            })}
+          <button 
+            type="button" 
+            className="add-item link-option"
+            onClick={() => { addHappyTime(); }}>Add Another Time</button>
+        </div>
+
+        <div className="form-section">
+          <h2 className="subheader">Menu Items</h2>
+          {// Prototype - Form control for menu items below
+            menuItems.map((item, key) => {
+              return <MenuItemForm 
+                key={`item-${key}`} 
+                item={item} 
+                menuItems={menuItems}
+                setMenuItems={setMenuItems}
+                menuItemIndex={key}/>
+            })
+          }
+          <button 
+            type="button"
+            className="add-item link-option"
+            onClick={() => { addMenuItem(); }}>Add Another Item</button>
+        </div>
       </div>
     </div>
   )

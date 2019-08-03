@@ -1,6 +1,3 @@
-
-
-
 .add-establishment-container {
   padding: 50px 50px 100px 50px;
   .form-section {
@@ -16,7 +13,7 @@
       .form-input {
         box-sizing: border-box;
         border-radius: 8px;
-        height: 30px;
+        height: 37px;
         border: 2px solid $tertiaryColor;
         padding: 5px 10px;;
       }
@@ -45,6 +42,12 @@
     &.menu-item-form {
       .inner-container {
         grid-template-columns: repeat(3, minmax(auto, 1fr));
+      }
+    }
+    &.time-inputs {
+      .form-subgroup {
+        grid-template-columns:repeat(3, minmax(auto, 1fr));
+        grid-template-rows:repeat(1, minmax(auto, 1fr));
       }
     }
   }

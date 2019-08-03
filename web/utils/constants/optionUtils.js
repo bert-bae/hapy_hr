@@ -5,7 +5,7 @@ module.exports = {
       height: h,
       latitude: lat,
       longitude: lon,
-      zoom: zoom
+      zoom: zoom,
     }
   }
 }
