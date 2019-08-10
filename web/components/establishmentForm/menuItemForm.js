@@ -29,7 +29,7 @@ export default function MenuItemForm({ item, menuItems, setMenuItems, menuItemIn
   }
 
   return (
-    <div className="form-section menu-item-form">
+    <div className="menu-item-form">
       <div className="inner-container">
         <div className="form-subgroup">
           <label htmlFor="item-name[val]">Item Name</label>

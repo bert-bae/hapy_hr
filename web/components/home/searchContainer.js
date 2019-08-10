@@ -11,6 +11,7 @@ export default function SearchContainer(props) {
   const { setEstablishments, setViewport, longitude, latitude } = props;
   const [addressInput, setAddressInput] = useState("");
   const [areaSelection, setAreaSelection] = useState("Search by area");
+  
   const getGeoDataFromAddress = async (e, address) => {
     if (e.key === 'Enter') {
       let proximity = '';

@@ -4,6 +4,11 @@
     display: grid;
     grid-template-columns: repeat(1, minmax(100%, 1fr));
     grid-template-rows: repeat(auto, minmax(auto, 1fr));
+    border: 2px solid $secondaryColor;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+    background-color: rgba(255, 153, 20, 0.3);
     .form-subgroup {
       display: grid;
       grid-template-columns: repeat(1, minmax(auto, 1fr));
@@ -39,7 +44,10 @@
         grid-template-rows: repeat(1, minmax(auto, 1fr));
       }
     }
-    &.menu-item-form {
+    .menu-item-form {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(100%, 1fr));
+      grid-template-rows: repeat(auto, minmax(auto, 1fr));
       .inner-container {
         grid-template-columns: repeat(3, minmax(auto, 1fr));
       }
@@ -56,10 +64,18 @@
 @media only screen and (max-width: 768px) {
   .add-establishment-container {
     .form-section {
-      &.menu-item-form {
+      .menu-item-form {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
         .inner-container {
           grid-template-columns: repeat(1, minmax(auto, 1fr));
           grid-template-rows: repeat(3, minmax(auto, 1fr));
+        }
+      }
+      &.time-inputs {
+        .form-subgroup {
+          grid-template-columns:repeat(1, minmax(auto, 1fr));
+          grid-template-rows:repeat(3, minmax(auto, 1fr));
+          border-bottom: 1px solid rgba(0, 0, 0, 0.3);
         }
       }
     }
