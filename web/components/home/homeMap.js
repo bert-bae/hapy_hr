@@ -80,7 +80,9 @@ export default function HomeMap() {
           <SearchContainer 
             setEstablishments={setEstablishments}
             viewport={viewport}
-            setViewport={setViewport}/>
+            setViewport={setViewport}
+            longitude={longitude}
+            latitude={latitude}/>
           <div className="home-listings">
             <Establishments 
               establishments={establishments}
