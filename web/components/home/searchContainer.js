@@ -34,7 +34,7 @@ export default function SearchContainer(props) {
           value={areaSelection}
           onChange={(e) => {
             const latlon = JSON.parse(e.target.value);
-            setViewport(mapBoxConfig('100%', 500, latlon.latitude, latlon.longitude, 15));            
+            setViewport(mapBoxConfig('100%', '100%', latlon.latitude, latlon.longitude, 15));            
             setAreaSelection(e.target.value);
           }}>
           <option disabled>Search by area</option>

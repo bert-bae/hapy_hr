@@ -45,7 +45,7 @@ export default function HomeMap() {
 
       // If permission is true, find the geolocation of user
       if (locationPermission && latitude && longitude) {
-        setViewport(mapBoxConfig('100%', 500, latitude, longitude, 15));
+        setViewport(mapBoxConfig('100%','100%', latitude, longitude, 15));
 
         // Retrieve establishments based on nearest top 10
         result = await axios.get(`http://localhost:5000/establishment/distance?latitude=${latitude}&longitude=${longitude}`);

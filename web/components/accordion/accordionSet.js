@@ -34,7 +34,7 @@ export default function AccordionSet({ index, place, getToday, selection, setSel
         onClick={() => { 
           const longitude = Number(place.longitude);
           const latitude = Number(place.latitude);
-          setViewport(mapBoxConfig('100%', 500, latitude, longitude, 15));
+          setViewport(mapBoxConfig('100%', '100%', latitude, longitude, 15));
           setSelection(index);
         }}>
         <p>{place.name}</p>
