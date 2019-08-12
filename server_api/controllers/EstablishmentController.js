@@ -47,5 +47,14 @@ exports.createNewEstablishmentEntry = async (req, res, next) => {
   //   happyTimes,
   // };
   let { user, establishment, menuItems, happyTimes} = req.body;
-  
+  if (!user || !user.isAdmin) {
+    res.status(404).send({ success: false, error: "You are not authorized to add establishments." });
+  }
+  try {
+    const est = await Establishment.createEstablishment(formattingUtils.formatEstablishmentData(establishment));
+    console.log(est);
+  } catch(err) {
+    console.log(err);
+    res.status(500).send({success: false, error: "Error creating a new establishment entry in the server."});
+  }
 }

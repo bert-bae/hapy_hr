@@ -7,7 +7,18 @@ module.exports = {
     });
     return result.join(" ");
   },
-  uppercasePostalCode: function(string) {
-    return string.join(" ").toUpperCase();
+  uppercaseString: function(string) {
+    return string.split(" ").join(" ").toUpperCase();
+  },
+  formatEstablishmentData: function(establishment, ownerId) {
+    return {
+      address_line: this.capitalCaseString(establishment.address.addressLine),
+      city: this.capitalCaseString(establishment.address.city),
+      province: this.uppercaseString(establishment.address.province),
+      postal_code: this.uppercaseString(establishment.address.postalCode),
+      name: this.capitalCaseString(establishment.name),
+      description: establishment.description,
+      ownerId
+    }
   }
 }

@@ -34,15 +34,40 @@ class Establishment extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['name', 'city', 'addess_line', 'province', 'postal_code'],
+      required: ['name', 'city', 'address_line', 'province', 'postal_code'],
       properties: {
         name: { type: 'string' },
         city: { type: 'string' },
         address_line: { type: 'string' },
         province: { type: 'string' },
         postal_code: { type: 'string' },
+        ownerId: { type: 'number' },
+        description: { type: 'string' }
       }
     }
+  }
+
+  static async getLastInsert() {
+    const retrieveEst = () => {
+      return this.query().where('id', raw('LAST_INSERT_ID()'));
+    }
+    const est = await retrieveEst();
+    if (est.length > 0) {
+      return est[0];
+    }
+    return null;
+  }
+
+  static async createEstablishment(establishment) {
+    const entry = () => {
+      return this.query().insert(establishment);
+    }
+    const result = await entry();
+    if (result) {
+      const entry = await this.getLastInsert();
+      return entry;
+    }
+    return null;
   }
 
   // Get all establishments with their hours of operation and menu items
