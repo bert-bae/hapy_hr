@@ -4,7 +4,7 @@ import { deepCopy } from '../../utils/objectUtils';
 
 export default function TimeInput({ happyTimeIndex, time, happyTimes, setHappyTimes }) {
   const formatWeekdayOptions = weekdays.map((weekday, i) => {
-    return <option value={i}>{weekday}</option>
+    return <option key={`option-${i}`} value={i}>{weekday}</option>
   });
 
   const updateHappyTimes = (e, target, index, objKey) => {

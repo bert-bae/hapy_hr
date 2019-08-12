@@ -40,6 +40,7 @@ export const Auth0Provider = ({
         // Set database user ID with authentication and with current voucher if present
         user.id = authUser.data.user.id;
         user.voucher = authUser.data.user.voucher;
+        user.isAdmin = authUser.data.user.is_admin;
         setUser(user);
       }
 

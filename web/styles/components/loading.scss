@@ -25,3 +25,21 @@
     width: 100px;
   }
 }
+
+.restricted-container {
+  min-height: calc(100vh - 215px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  img {
+    height: 50px;
+  }
+  .subheader {
+    font-weight: bold;
+    width: 90%;
+    text-align: center;
+    max-width: 500px;
+  }
+}

@@ -8,4 +8,6 @@ router.get('/distance', EstablishmentController.getNearbyEstablishmentsByDistanc
 
 router.get('/:establishmentId', EstablishmentController.getSingleEstablishment);
 
+router.post('/create', EstablishmentController.createNewEstablishmentEntry);
+
 module.exports = router;

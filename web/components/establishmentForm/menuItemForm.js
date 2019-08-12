@@ -68,7 +68,7 @@ export default function MenuItemForm({ item, menuItems, setMenuItems, menuItemIn
             onChange={(e) => {
               updateMenuItems(e, menuItems, menuItemIndex, 'type');
             }}>
-            <option value="" disabled selected>Select Type: Food or Drink</option>
+            <option value="" disabled>Select Type: Food or Drink</option>
             <option value="food">Food</option>
             <option value="drink">Drink</option>
           </select>

@@ -38,6 +38,28 @@ body {
   }
 }
 
+.confirm-button {
+  text-decoration: none;
+  padding: 0 15px;
+  height: 27px;
+  width: 150px;
+  box-sizing: content-box;
+  line-height: 1;
+  border: 2px solid $secondaryColor;
+  background-color: $secondaryColor;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s;
+  margin: 14px auto 0 auto;
+  &:hover {
+    transform: scale(1.05);
+    color: #FFF;
+  }
+}
+
 .orange-map-icon {
   @include background-image('/static/icons/orange-map-icon.svg', contain, center);
 }
