@@ -38,5 +38,5 @@ exports.getNearbyEstablishmentsByDistance = async (req, res, next) => {
 }
 
 exports.createNewEstablishmentEntry = async (req, res, next) => {
-  console.log(9123912039192391);
+  console.log(req.body);
 }
