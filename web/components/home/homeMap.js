@@ -19,11 +19,15 @@ export default function HomeMap() {
   const [establishments, setEstablishments] = useState([]);
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
+  const [myLatitude, setMyLatitude] = useState(null);
+  const [myLongitude, setMyLongitude] = useState(null);
   const [viewport, setViewport] = useState(null);
   const [selection, setSelection] = useState(null);
   const successLocation = (position) => {
     setLatitude(position.coords.latitude);
     setLongitude(position.coords.longitude);
+    setMyLatitude(position.coords.latitude);
+    setMyLongitude(position.coords.longitude);
   }
   
   const errorLocation = (error) => {
@@ -82,7 +86,9 @@ export default function HomeMap() {
             viewport={viewport}
             setViewport={setViewport}
             longitude={longitude}
-            latitude={latitude}/>
+            latitude={latitude}
+            myLatitude={myLatitude}
+            myLongitude={myLongitude}/>
           <div className="home-listings">
             <Establishments 
               establishments={establishments}

@@ -8,10 +8,10 @@ import axios from 'axios';
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 export default function SearchContainer(props) {
-  const { setEstablishments, setViewport, longitude, latitude } = props;
+  const { setViewport, longitude, latitude, myLatitude, myLongitude } = props;
   const [addressInput, setAddressInput] = useState("");
   const [areaSelection, setAreaSelection] = useState("Search by area");
-  
+
   const getGeoDataFromAddress = async (e, address) => {
     if (e.key === 'Enter') {
       let proximity = '';
@@ -32,6 +32,7 @@ export default function SearchContainer(props) {
   const formatStations = popularAreas.stations.map((station) => {
     return <option value={`{"latitude": ${station.latitude}, "longitude": ${station.longitude}}`}>{station.name}</option>
   })
+
   return (
     <div className="search-container">
       <div className="form-subgroup">
@@ -55,6 +56,9 @@ export default function SearchContainer(props) {
             setAreaSelection(e.target.value);
           }}>
           <option disabled>Search by area</option>
+          { myLatitude && myLongitude &&
+            <option value={`{"latitude": ${myLatitude}, "longitude": ${myLongitude}}`}>Near Me</option>
+          }
           <optgroup>
             <option disabled>Popular Areas</option>
             {formatAreas}
