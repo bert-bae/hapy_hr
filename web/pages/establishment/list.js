@@ -43,7 +43,7 @@ export default function List() {
 
   const addHappyTime = () => {
     let newTime = deepCopy(happyTimes);
-    newTime.push({ weekday: "", start: "", end: "" });
+    newTime.push({ weekday: "0", start: "", end: "" });
     setHappyTimes(newTime);
   }
   const addMenuItem = () => {

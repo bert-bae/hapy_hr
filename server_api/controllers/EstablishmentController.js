@@ -1,5 +1,6 @@
 'use strict';
 const Establishment = require('../models/establishment');
+const formattingUtils = require('../utils/formattingUtils');
 
 exports.getAllEstablishments = async (req, res, next) => {
   try {
@@ -39,4 +40,12 @@ exports.getNearbyEstablishmentsByDistance = async (req, res, next) => {
 
 exports.createNewEstablishmentEntry = async (req, res, next) => {
   console.log(req.body);
+  // data = {
+  //   user: user,
+  //   establishment: formUtils.createEstablishmentObject(establishmentName, city, streetAddress, province, postalCode, establishmentDescription, null, null),
+  //   menuItems,
+  //   happyTimes,
+  // };
+  let { user, establishment, menuItems, happyTimes} = req.body;
+  
 }
