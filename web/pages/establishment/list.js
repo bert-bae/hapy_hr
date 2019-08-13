@@ -22,7 +22,7 @@ export default function List() {
   const [postalCode, setPostalCode] = useState("");
   const [establishmentName, setEstablishmentName] = useState("");
   const [establishmentDescription, setEstablishmentDescription] = useState("");
-  const [menuItems, setMenuItems] = useState([{ name: "", price: 0.00, weekdays: [], type: "" }]);
+  const [menuItems, setMenuItems] = useState([{ name: "", price: 0.00, weekday: [], type: "" }]);
   const [happyTimes, setHappyTimes] = useState([{ weekday: 0, start: "", end: "" }]);
 
   const addRestaurantToDatabase = async () => {
@@ -48,7 +48,7 @@ export default function List() {
   }
   const addMenuItem = () => {
     let newMenuItems = deepCopy(menuItems);
-    newMenuItems.push({ name: "", price: 0.00, weekdays: [], type: "" })
+    newMenuItems.push({ name: "", price: 0.00, weekday: [], type: "" })
     setMenuItems(newMenuItems);
   }
   return (

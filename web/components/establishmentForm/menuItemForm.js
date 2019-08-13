@@ -6,17 +6,17 @@ export default function MenuItemForm({ item, menuItems, setMenuItems, menuItemIn
     // Create copy of the menuItem object
     let updateMenuWeekday = deepCopy(menuItems);
     // Find if the weekday index number [0-6] exists in weekdays array in object...
-    let indexOf = updateMenuWeekday[menuItemIndex].weekdays.indexOf(weekday);;
+    let indexOf = updateMenuWeekday[menuItemIndex].weekday.indexOf(weekday);;
     if (addWeekday) {
       if (indexOf === -1) {
         // Add the weekday to the weekdays array of the object
-        updateMenuWeekday[menuItemIndex].weekdays.push(weekday);
+        updateMenuWeekday[menuItemIndex].weekday.push(weekday);
         setMenuItems(updateMenuWeekday);
       }
     } else {
       // If it does, remove it and update the menuItems index
       if (indexOf > -1) {
-        updateMenuWeekday[menuItemIndex].weekdays.splice(indexOf, 1);
+        updateMenuWeekday[menuItemIndex].weekday.splice(indexOf, 1);
         setMenuItems(updateMenuWeekday);
       }
     }

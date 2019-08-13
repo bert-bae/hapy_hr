@@ -13,6 +13,11 @@ class OperationalHour extends Model {
       require: ['weekday', 'start', 'end'],
     }
   }
+
+  static async createOperationalHourEntry(data, estId) {
+    data.establishment_id = estId;
+    return this.query().insert(data);
+  }
 }
 
 module.exports = OperationalHour;

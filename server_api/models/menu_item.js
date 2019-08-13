@@ -13,6 +13,11 @@ class MenuItem extends Model {
       require: ['name', 'price', 'description'],
     }
   }
+
+  static async createMenuItemEntry(data, estId) {
+    data.establishment_id = estId;
+    return this.query().insert(data);
+  }
 }
 
 module.exports = MenuItem;
