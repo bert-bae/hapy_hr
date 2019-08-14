@@ -4,7 +4,7 @@ import axios from 'axios';
 import MenuItemForm from '../../components/establishmentForm/menuItemForm';
 import TimeInput from '../../components/establishmentForm/timeInput';
 import RestrictedPage from '../../components/restrictedPage';
-import TextValidator from './textValidator';
+import TextValidator from '../../components/establishmentForm/textValidator';
 import { deepCopy } from '../../utils/objectUtils';
 import formUtils from '../../utils/formUtils';
 import { useAuth0 } from "../../utils/Auth/react-auth0-wrapper";
@@ -25,7 +25,7 @@ export default function List() {
   const [establishmentName, setEstablishmentName] = useState("");
   const [establishmentDescription, setEstablishmentDescription] = useState("");
   const [menuItems, setMenuItems] = useState([{ name: "", price: 0.00, weekday: [], type: "" }]);
-  const [happyTimes, setHappyTimes] = useState([{ weekday: 0, start: "", end: "" }]);
+  const [happyTimes, setHappyTimes] = useState([{ weekday: "", start: "", end: "" }]);
 
   let form = React.createRef();
 
@@ -47,7 +47,7 @@ export default function List() {
 
   const addHappyTime = () => {
     let newTime = deepCopy(happyTimes);
-    newTime.push({ weekday: "0", start: "", end: "" });
+    newTime.push({ weekday: "", start: "", end: "" });
     setHappyTimes(newTime);
   }
   const addMenuItem = () => {
@@ -111,7 +111,7 @@ export default function List() {
                   errorMessages={['This field is required', 'This field is required']}/>
               </div>
               <div className="form-subgroup">
-                <label htmlFor="location-name">Restaurant or Bar Description (required)</label>
+                <label htmlFor="location-description">Restaurant or Bar Description (required)</label>
                 <textarea 
                   className="form-input" 
                   type="text" 
@@ -138,7 +138,7 @@ export default function List() {
                     errorMessages={['This field is required', 'This field is required']}/>
                 </div>
                 <div className="form-subgroup">
-                  <label htmlFor="location-name">City (required)</label>
+                  <label htmlFor="city">City (required)</label>
                   <TextValidator 
                     className="form-input" 
                     type="text" 
@@ -151,7 +151,7 @@ export default function List() {
               </div>
               <div className="inner-container">
                 <div className="form-subgroup">
-                  <label htmlFor="location-name">Province (required)</label>
+                  <label htmlFor="province">Province (required)</label>
                   <TextValidator 
                     className="form-input" 
                     type="text" 
@@ -162,7 +162,7 @@ export default function List() {
                     errorMessages={['This field is required', 'This field is required']}/>
                 </div>
                 <div className="form-subgroup">
-                  <label htmlFor="location-name">Postal Code (required)</label>
+                  <label htmlFor="postal-code">Postal Code (required)</label>
                   {// TODO APPLY POSTAL CODE REGEX HERE
                   }
                   <TextValidator 
@@ -211,10 +211,7 @@ export default function List() {
                 className="add-item link-option"
                 onClick={() => { addMenuItem(); }}>Add Another Item</button>
             </div>
-            <button 
-              type="submit" 
-              className="confirm-button"
-              onClick={() => {addRestaurantToDatabase();}}>Confirm</button>
+            <button type="submit" className="confirm-button">Confirm</button>
           </ValidatorForm>
         </div>
       }

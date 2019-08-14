@@ -1,12 +1,8 @@
-import { useState, useEffect } from 'react';
-import { weekdays } from '../../utils/constants/dateConstants';
+import { weekdays, timeSlots } from '../../utils/constants/selectConstants';
 import { deepCopy } from '../../utils/objectUtils';
+import SelectValidator from './selectValidator';
 
 export default function TimeInput({ happyTimeIndex, time, happyTimes, setHappyTimes }) {
-  const formatWeekdayOptions = weekdays.map((weekday, i) => {
-    return <option key={`option-${i}`} value={i}>{weekday}</option>
-  });
-
   const updateHappyTimes = (e, target, index, objKey) => {
     let copy = deepCopy(target);
     copy[index][objKey] = e.target.value;
@@ -14,18 +10,37 @@ export default function TimeInput({ happyTimeIndex, time, happyTimes, setHappyTi
   }
 
   return (
-    <div className="form-subgroup">
-      <select className="form-input"
-        value={time.weekday}
-        onChange={(e) => { updateHappyTimes(e, happyTimes, happyTimeIndex, 'weekday');}}>
-        {formatWeekdayOptions}
-      </select>
-      <input type="text" name="start-time" placeholder="12:00pm" className="form-input"
-        value={time.start}
-        onChange={(e) => { updateHappyTimes(e, happyTimes, happyTimeIndex, 'start') }}/>
-      <input type="text" name="end-time" placeholder="3:00pm" className="form-input"
-        value={time.end}
-        onChange={(e) => {  updateHappyTimes(e, happyTimes, happyTimeIndex, 'end') }}/>
+    <div className="time-input-container">
+      <div className="form-subgroup">
+        <label htmlFor="weekday">Weekday</label>
+        <SelectValidator 
+          className="form-input"
+          value={time.weekday}
+          onChange={(e) => { updateHappyTimes(e, happyTimes, happyTimeIndex, 'weekday');}}
+          options={weekdays}
+          validators={['required', 'trim']}
+          errorMessages={['This field is required', 'This field is required']}/>
+      </div>
+      <div className="form-subgroup">
+        <label htmlFor="start">Start</label>
+        <SelectValidator 
+          className="form-input"
+          value={time.start}
+          onChange={(e) => { updateHappyTimes(e, happyTimes, happyTimeIndex, 'start') }}
+          options={timeSlots}
+          validators={['required', 'trim']}
+          errorMessages={['This field is required', 'This field is required']}/>
+      </div>
+      <div className="form-subgroup">
+        <label htmlFor="end">End</label>
+        <SelectValidator
+          className="form-input"
+          value={time.end}
+          onChange={(e) => {  updateHappyTimes(e, happyTimes, happyTimeIndex, 'end') }}
+          options={timeSlots}
+          validators={['required', 'trim']}
+          errorMessages={['This field is required', 'This field is required']}/>
+      </div>
     </div>
   )
 }

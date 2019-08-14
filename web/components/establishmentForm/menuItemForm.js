@@ -1,5 +1,6 @@
 import WeekdayCheckbox from './weekdayCheckbox';
 import { deepCopy } from '../../utils/objectUtils';
+import TextValidator from './textValidator';
 
 export default function MenuItemForm({ item, menuItems, setMenuItems, menuItemIndex }) {
   const onCheckboxChange = (weekday, addWeekday) => {
@@ -33,29 +34,30 @@ export default function MenuItemForm({ item, menuItems, setMenuItems, menuItemIn
       <div className="inner-container">
         <div className="form-subgroup">
           <label htmlFor="item-name[val]">Item Name</label>
-          <input
+          <TextValidator
             className="form-input"
             type="text"
-            maxLength="150"
-            name="item-name[val]"
             placeholder="E.g. House Burger and Fries"
             value={item.name}
             onChange={(e) => {
               updateMenuItems(e, menuItems, menuItemIndex, 'name');
-            }}></input>
+            }}
+            validators={['required', 'trim']}
+            errorMessages={['This field is required', 'This field is required']}/>
         </div>
         <div className="form-subgroup">
           <label htmlFor="item-name[val]">Item Price</label>
-          <input
+          <TextValidator
             className="form-input"
             type="number"
             step="0.01"
             value="0.00"
-            name="item-price[val]"
             value={item.price}
             onChange={(e) => {
               updateMenuItems(e, menuItems, menuItemIndex, 'price');
-            }}></input>
+            }}
+            validators={['required', 'trim']}
+            errorMessages={['This field is required', 'This field is required']}/>
         </div>
         <div className="form-subgroup">
           <label htmlFor="item-type[val]">Food or Drink</label>
