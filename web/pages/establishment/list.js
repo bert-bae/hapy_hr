@@ -5,6 +5,7 @@ import MenuItemForm from '../../components/establishmentForm/menuItemForm';
 import TimeInput from '../../components/establishmentForm/timeInput';
 import RestrictedPage from '../../components/restrictedPage';
 import TextValidator from '../../components/establishmentForm/textValidator';
+import TextAreaValidator from '../../components/establishmentForm/textAreaValidator';
 import { deepCopy } from '../../utils/objectUtils';
 import formUtils from '../../utils/formUtils';
 import { useAuth0 } from "../../utils/Auth/react-auth0-wrapper";
@@ -112,14 +113,15 @@ export default function List() {
               </div>
               <div className="form-subgroup">
                 <label htmlFor="location-description">Restaurant or Bar Description (required)</label>
-                <textarea 
+                <TextAreaValidator 
                   className="form-input" 
                   type="text" 
                   maxLength="300" 
-                  name="location-description" 
                   placeholder="Random Establishment specializes in providing a fun, casual, and lively environment with many cocktails, wide variety of craft beers, and games. Our specialty are our seafood dishes which go well with rum based cocktails any day of the week!"
                   value={establishmentDescription}
-                  onChange={(e) => { setEstablishmentDescription(e.target.value); }}></textarea>
+                  onChange={(e) => { setEstablishmentDescription(e.target.value); }}
+                  validators={['required', 'trim']}
+                  errorMessages={['This field is required', 'This field is required']}/>
               </div>
             </div>
             
