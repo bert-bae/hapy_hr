@@ -1,6 +1,8 @@
 import WeekdayCheckbox from './weekdayCheckbox';
 import { deepCopy } from '../../utils/objectUtils';
+import { itemType } from '../../utils/constants/selectConstants';
 import TextValidator from './textValidator';
+import SelectValidator from './selectValidator';
 
 export default function MenuItemForm({ item, menuItems, setMenuItems, menuItemIndex }) {
   const onCheckboxChange = (weekday, addWeekday) => {
@@ -61,19 +63,15 @@ export default function MenuItemForm({ item, menuItems, setMenuItems, menuItemIn
         </div>
         <div className="form-subgroup">
           <label htmlFor="item-type[val]">Food or Drink</label>
-          <select
+          <SelectValidator
             className="form-input"
-            type="text"
-            maxLength="150"
-            name="item-type[val]"
             value={item.type}
             onChange={(e) => {
               updateMenuItems(e, menuItems, menuItemIndex, 'type');
-            }}>
-            <option value="" disabled>Select Type: Food or Drink</option>
-            <option value="food">Food</option>
-            <option value="drink">Drink</option>
-          </select>
+            }}
+            options={itemType}
+            validators={['required', 'trim']}
+            errorMessages={['This field is required', 'This field is required']}/>
         </div>
       </div>
       <div className="weekday-selection">
