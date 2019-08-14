@@ -4,10 +4,12 @@ import axios from 'axios';
 import MenuItemForm from '../../components/establishmentForm/menuItemForm';
 import TimeInput from '../../components/establishmentForm/timeInput';
 import RestrictedPage from '../../components/restrictedPage';
+import TextValidator from './textValidator';
 import { deepCopy } from '../../utils/objectUtils';
 import formUtils from '../../utils/formUtils';
 import { useAuth0 } from "../../utils/Auth/react-auth0-wrapper";
 import { useState, useEffect } from 'react';
+import { ValidatorForm } from 'react-form-validator-core';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
@@ -24,6 +26,8 @@ export default function List() {
   const [establishmentDescription, setEstablishmentDescription] = useState("");
   const [menuItems, setMenuItems] = useState([{ name: "", price: 0.00, weekday: [], type: "" }]);
   const [happyTimes, setHappyTimes] = useState([{ weekday: 0, start: "", end: "" }]);
+
+  let form = React.createRef();
 
   const addRestaurantToDatabase = async () => {
     const data = {
@@ -64,145 +68,154 @@ export default function List() {
       }
       { isAdmin &&
         <div className="add-establishment-container">
-          {/* <div className="form-section about-you">
-            <h2 className="subheader">Your Contact Information</h2>
-            <div className="inner-container">
+          <ValidatorForm
+            ref={form}
+            onSubmit={() => {addRestaurantToDatabase();}}>
+            {/* <div className="form-section about-you">
+              <h2 className="subheader">Your Contact Information</h2>
+              <div className="inner-container">
+                <div className="form-subgroup">
+                  <label htmlFor="location-name">Your Name (required)</label>
+                  <input 
+                    className="form-input" 
+                    type="text" 
+                    name="applicant-name" 
+                    placeholder="E.g. Bert"
+                    value={applicantName}
+                    onChange={(e) => { setApplicantName(e.target.value); }}
+                    ></input>
+                </div>
+                <div className="form-subgroup">
+                  <label htmlFor="location-name">Your Email (required)</label>
+                  <input 
+                    className="form-input" 
+                    type="email" 
+                    name="contact-email" 
+                    placeholder="E.g. bert@happyr.ca"
+                    value={contactEmail}
+                    onChange={(e) => { setContactEmail(e.target.value); }}></input>
+                </div>
+              </div>
+            </div> */}
+            
+            <div className="form-section">
+              <h2 className="subheader">Establishment Information</h2>
+              <div className="form-subgroup restaurant-name">
+                <label htmlFor="location-name">Restaurant or Bar Name (required)</label>
+                <TextValidator
+                  value={establishmentName}
+                  placeholder="Establishment Name"
+                  type="text"
+                  onChange={(e) => {setEstablishmentName(e.target.value);}}
+                  validators={['required', 'trim']}
+                  errorMessages={['This field is required', 'This field is required']}/>
+              </div>
               <div className="form-subgroup">
-                <label htmlFor="location-name">Your Name (required)</label>
-                <input 
+                <label htmlFor="location-name">Restaurant or Bar Description (required)</label>
+                <textarea 
                   className="form-input" 
                   type="text" 
-                  name="applicant-name" 
-                  placeholder="E.g. Bert"
-                  value={applicantName}
-                  onChange={(e) => { setApplicantName(e.target.value); }}
-                  ></input>
-              </div>
-              <div className="form-subgroup">
-                <label htmlFor="location-name">Your Email (required)</label>
-                <input 
-                  className="form-input" 
-                  type="email" 
-                  name="contact-email" 
-                  placeholder="E.g. bert@happyr.ca"
-                  value={contactEmail}
-                  onChange={(e) => { setContactEmail(e.target.value); }}></input>
+                  maxLength="300" 
+                  name="location-description" 
+                  placeholder="Random Establishment specializes in providing a fun, casual, and lively environment with many cocktails, wide variety of craft beers, and games. Our specialty are our seafood dishes which go well with rum based cocktails any day of the week!"
+                  value={establishmentDescription}
+                  onChange={(e) => { setEstablishmentDescription(e.target.value); }}></textarea>
               </div>
             </div>
-          </div> */}
-          
-          <div className="form-section">
-            <h2 className="subheader">Establishment Information</h2>
-            <div className="form-subgroup restaurant-name">
-              <label htmlFor="location-name">Restaurant or Bar Name (required)</label>
-              <input 
-                className="form-input" 
-                type="text" 
-                maxLength="150" 
-                name="location-name" 
-                placeholder="Establishment Name"
-                value={establishmentName}
-                onChange={(e) => { setEstablishmentName(e.target.value); }}></input>
-            </div>
-            <div className="form-subgroup">
-              <label htmlFor="location-name">Restaurant or Bar Description (required)</label>
-              <textarea 
-                className="form-input" 
-                type="text" 
-                maxLength="300" 
-                name="location-description" 
-                placeholder="Random Establishment specializes in providing a fun, casual, and lively environment with many cocktails, wide variety of craft beers, and games. Our specialty are our seafood dishes which go well with rum based cocktails any day of the week!"
-                value={establishmentDescription}
-                onChange={(e) => { setEstablishmentDescription(e.target.value); }}></textarea>
-            </div>
-          </div>
-          
-          <div className="form-section address-group">
-            <h2 className="subheader">Establishment Location</h2>        
-            <div className="inner-container">
-              <div className="form-subgroup">
-                <label htmlFor="address-line">Street Address (required)</label>
-                <input 
-                  className="form-input" 
-                  type="text" 
-                  name="address-line" 
-                  placeholder="E.g. 123 Granville Street"
-                  value={streetAddress}
-                  onChange={(e) => { setStreetAddress(e.target.value); }}></input>
+            
+            <div className="form-section address-group">
+              <h2 className="subheader">Establishment Location</h2>        
+              <div className="inner-container">
+                <div className="form-subgroup">
+                  <label htmlFor="address-line">Street Address (required)</label>
+                  <TextValidator
+                    className="form-input" 
+                    type="text" 
+                    placeholder="E.g. 123 Granville Street"
+                    value={streetAddress}
+                    onChange={(e) => { setStreetAddress(e.target.value); }}
+                    validators={['required', 'trim']}
+                    errorMessages={['This field is required', 'This field is required']}/>
+                </div>
+                <div className="form-subgroup">
+                  <label htmlFor="location-name">City (required)</label>
+                  <TextValidator 
+                    className="form-input" 
+                    type="text" 
+                    placeholder="E.g. Vancouver"
+                    value={city}
+                    onChange={(e) => { setCity(e.target.value); }}
+                    validators={['required', 'trim']}
+                    errorMessages={['This field is required', 'This field is required']}/>
+                </div>
               </div>
-              <div className="form-subgroup">
-                <label htmlFor="location-name">City (required)</label>
-                <input 
-                  className="form-input" 
-                  type="text" 
-                  name="city" 
-                  placeholder="E.g. Vancouver"
-                  value={city}
-                  onChange={(e) => { setCity(e.target.value); }}></input>
-              </div>
-            </div>
-            <div className="inner-container">
-              <div className="form-subgroup">
-                <label htmlFor="location-name">Province (required)</label>
-                <input 
-                  className="form-input" 
-                  type="text" 
-                  name="province" 
-                  placeholder="E.g. BC"
-                  value={province}
-                  onChange={(e) => { setProvince(e.target.value); }}></input>
-              </div>
-              <div className="form-subgroup">
-                <label htmlFor="location-name">Postal Code (required)</label>
-                <input 
-                  className="form-input" 
-                  type="text" 
-                  maxLength="7" 
-                  name="postal-code" 
-                  placeholder="E.g. V9T 1V6"
-                  value={postalCode}
-                  onChange={(e) => { setPostalCode(e.target.value); }}></input>
+              <div className="inner-container">
+                <div className="form-subgroup">
+                  <label htmlFor="location-name">Province (required)</label>
+                  <TextValidator 
+                    className="form-input" 
+                    type="text" 
+                    placeholder="E.g. BC"
+                    value={province}
+                    onChange={(e) => { setProvince(e.target.value); }}
+                    validators={['required', 'trim']}
+                    errorMessages={['This field is required', 'This field is required']}/>
+                </div>
+                <div className="form-subgroup">
+                  <label htmlFor="location-name">Postal Code (required)</label>
+                  {// TODO APPLY POSTAL CODE REGEX HERE
+                  }
+                  <TextValidator 
+                    className="form-input" 
+                    type="text" 
+                    placeholder="E.g. V9T1V6"
+                    value={postalCode}
+                    maxLength="6"
+                    onChange={(e) => { setPostalCode(e.target.value); }}
+                    validators={['required', 'matchRegexp:^[a-z]\\d[a-z]\\d[a-z]\\d$']}
+                    errorMessages={['This field is required', 'Postal code format should be V1V1V1.']}/>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="form-section time-inputs">
-            <h2 className="subheader">Happy Hour Times</h2>
-              { happyTimes.map((time, key) => {
-                return <TimeInput
-                  key={`time${key}`}
-                  time={time}
-                  happyTimes={happyTimes}
-                  setHappyTimes={setHappyTimes}
-                  happyTimeIndex={key}/>
-              })}
-            <button 
-              type="button" 
-              className="add-item link-option"
-              onClick={() => { addHappyTime(); }}>Add Another Time</button>
-          </div>
+            <div className="form-section time-inputs">
+              <h2 className="subheader">Happy Hour Times</h2>
+                { happyTimes.map((time, key) => {
+                  return <TimeInput
+                    key={`time${key}`}
+                    time={time}
+                    happyTimes={happyTimes}
+                    setHappyTimes={setHappyTimes}
+                    happyTimeIndex={key}/>
+                })}
+              <button 
+                type="button" 
+                className="add-item link-option"
+                onClick={() => { addHappyTime(); }}>Add Another Time</button>
+            </div>
 
-          <div className="form-section">
-            <h2 className="subheader">Menu Items</h2>
-            {// Prototype - Form control for menu items below
-              menuItems.map((item, key) => {
-                return <MenuItemForm 
-                  key={`item${key}`} 
-                  item={item} 
-                  menuItems={menuItems}
-                  setMenuItems={setMenuItems}
-                  menuItemIndex={key}/>
-              })
-            }
+            <div className="form-section">
+              <h2 className="subheader">Menu Items</h2>
+              {// Prototype - Form control for menu items below
+                menuItems.map((item, key) => {
+                  return <MenuItemForm 
+                    key={`item${key}`} 
+                    item={item} 
+                    menuItems={menuItems}
+                    setMenuItems={setMenuItems}
+                    menuItemIndex={key}/>
+                })
+              }
+              <button 
+                type="button"
+                className="add-item link-option"
+                onClick={() => { addMenuItem(); }}>Add Another Item</button>
+            </div>
             <button 
-              type="button"
-              className="add-item link-option"
-              onClick={() => { addMenuItem(); }}>Add Another Item</button>
-          </div>
-          <button 
-            type="button" 
-            className="confirm-button"
-            onClick={() => {addRestaurantToDatabase();}}>Confirm</button>
+              type="submit" 
+              className="confirm-button"
+              onClick={() => {addRestaurantToDatabase();}}>Confirm</button>
+          </ValidatorForm>
         </div>
       }
     </div>
