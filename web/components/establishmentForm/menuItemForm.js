@@ -4,7 +4,7 @@ import { itemType } from '../../utils/constants/selectConstants';
 import TextValidator from './textValidator';
 import SelectValidator from './selectValidator';
 
-export default function MenuItemForm({ item, menuItems, setMenuItems, menuItemIndex }) {
+export default function MenuItemForm({ item, menuItems, setMenuItems, menuItemIndex, deleteFromSet }) {
   const onCheckboxChange = (weekday, addWeekday) => {
     // Create copy of the menuItem object
     let updateMenuWeekday = deepCopy(menuItems);
@@ -83,6 +83,7 @@ export default function MenuItemForm({ item, menuItems, setMenuItems, menuItemIn
         <WeekdayCheckbox value={5} weekday={"Sat"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
         <WeekdayCheckbox value={6} weekday={"Sun"} isChecked={false} onCheckboxChange={onCheckboxChange}/>
       </div>
+      <button className="delete-button" onClick={() => {deleteFromSet(menuItemIndex, menuItems, setMenuItems);}}>Remove</button>
     </div>
   )
 }

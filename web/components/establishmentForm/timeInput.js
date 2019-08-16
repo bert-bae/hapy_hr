@@ -2,7 +2,7 @@ import { weekdays, timeSlots } from '../../utils/constants/selectConstants';
 import { deepCopy } from '../../utils/objectUtils';
 import SelectValidator from './selectValidator';
 
-export default function TimeInput({ happyTimeIndex, time, happyTimes, setHappyTimes }) {
+export default function TimeInput({ happyTimeIndex, time, happyTimes, setHappyTimes, deleteFromSet }) {
   const updateHappyTimes = (e, target, index, objKey) => {
     let copy = deepCopy(target);
     copy[index][objKey] = e.target.value;
@@ -41,6 +41,7 @@ export default function TimeInput({ happyTimeIndex, time, happyTimes, setHappyTi
           validators={['required', 'trim']}
           errorMessages={['This field is required', 'This field is required']}/>
       </div>
+      <button className="delete-button" onClick={() => {deleteFromSet(happyTimeIndex, happyTimes, setHappyTimes);}}>Remove</button>
     </div>
   )
 }

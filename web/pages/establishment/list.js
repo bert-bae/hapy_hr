@@ -58,6 +58,12 @@ export default function List() {
     newMenuItems.push({ name: "", price: 0.00, weekday: [], type: "" })
     setMenuItems(newMenuItems);
   }
+  const deleteFromSet = (index, state, cb) => {
+    let copy = deepCopy(state);
+    copy.splice(index, 1);
+    cb(copy);
+  }
+
   return (
     <div className="page-container">
       <Head>
@@ -190,7 +196,8 @@ export default function List() {
                     time={time}
                     happyTimes={happyTimes}
                     setHappyTimes={setHappyTimes}
-                    happyTimeIndex={key}/>
+                    happyTimeIndex={key}
+                    deleteFromSet={deleteFromSet}/>
                 })}
               <button 
                 type="button" 
@@ -207,7 +214,8 @@ export default function List() {
                     item={item} 
                     menuItems={menuItems}
                     setMenuItems={setMenuItems}
-                    menuItemIndex={key}/>
+                    menuItemIndex={key}
+                    deleteFromSet={deleteFromSet}/>
                 })
               }
               <button 

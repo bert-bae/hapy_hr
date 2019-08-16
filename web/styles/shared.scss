@@ -60,6 +60,23 @@ body {
   }
 }
 
+.delete-button {
+  text-decoration: none;
+  text-align: center;
+  height: 27px;
+  width: 75px;
+  box-sizing: content-box;
+  line-height: 1;
+  background-color: $highlightColor;
+  color: #FFF;
+  border: none;
+  font-size: $subFontSize;
+  border-radius: 8px;
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+
 .orange-map-icon {
   @include background-image('/static/icons/orange-map-icon.svg', contain, center);
 }

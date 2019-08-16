@@ -48,6 +48,7 @@
       display: grid;
       grid-template-columns: repeat(1, minmax(100%, 1fr));
       grid-template-rows: repeat(auto, minmax(auto, 1fr));
+      position: relative;
       .inner-container {
         grid-template-columns: repeat(3, minmax(auto, 1fr));
       }
@@ -58,6 +59,7 @@
         grid-gap: 15px;
         grid-template-columns:repeat(3, minmax(auto, 1fr));
         grid-template-rows:repeat(1, minmax(auto, 1fr));
+        position: relative;
       }
     }
   }
