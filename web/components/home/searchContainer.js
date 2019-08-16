@@ -1,9 +1,10 @@
+import axios from 'axios';
 import getConfig from 'next/config';
 import { useState, useEffect } from 'react';
-import popularAreas from '../../utils/constants/popularAreas';
-import { mapBoxConfig } from '../../utils/constants/optionUtils';
+
 import apiConstants from '../../utils/constants/apiConstants';
-import axios from 'axios';
+import { mapBoxConfig } from '../../utils/constants/optionUtils';
+import popularAreas from '../../utils/constants/popularAreas';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 

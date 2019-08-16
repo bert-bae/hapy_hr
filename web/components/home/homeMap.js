@@ -1,15 +1,16 @@
+import axios from 'axios';
 import getConfig from 'next/config';
 import ReactMapGL from 'react-map-gl';
 import { useState, useEffect } from 'react';
+
 import { getUserLocation } from '../../utils/geolocationUtils';
 import { mapBoxConfig } from '../../utils/constants/optionUtils';
-import axios from 'axios';
 
 
-import SearchContainer from './searchContainer';
-import Loading from '../loading';
 import Establishments from '../establishments';
+import Loading from '../loading';
 import MapMarker from '../mapMarker';
+import SearchContainer from './searchContainer';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 

@@ -1,16 +1,18 @@
-import Head from 'next/head';
-import getConfig from 'next/config';
 import axios from 'axios';
+import getConfig from 'next/config';
+import Head from 'next/head';
+import { useState, useEffect } from 'react';
+import { ValidatorForm } from 'react-form-validator-core';
+
 import MenuItemForm from '../../components/establishmentForm/menuItemForm';
 import TimeInput from '../../components/establishmentForm/timeInput';
-import RestrictedPage from '../../components/restrictedPage';
-import TextValidator from '../../components/establishmentForm/textValidator';
 import TextAreaValidator from '../../components/establishmentForm/textAreaValidator';
+import TextValidator from '../../components/establishmentForm/textValidator';
+import RestrictedPage from '../../components/restrictedPage';
+
 import { deepCopy } from '../../utils/objectUtils';
 import formUtils from '../../utils/formUtils';
 import { useAuth0 } from "../../utils/Auth/react-auth0-wrapper";
-import { useState, useEffect } from 'react';
-import { ValidatorForm } from 'react-form-validator-core';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
