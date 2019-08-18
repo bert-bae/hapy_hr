@@ -9,9 +9,18 @@ import popularAreas from '../../utils/constants/popularAreas';
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 export default function SearchContainer(props) {
-  const { setViewport, longitude, latitude, myLatitude, myLongitude } = props;
+  const { setViewport, longitude, latitude, myLatitude, myLongitude, setEstablishments } = props;
   const [addressInput, setAddressInput] = useState("");
   const [areaSelection, setAreaSelection] = useState("Search by area");
+
+  const updateListOfEstablishmentsByLocation = async (latitude, longitude) => {
+    const result = await axios.get(`http://localhost:5000/establishment/distance?latitude=${latitude}&longitude=${longitude}`);
+    if (result) {
+      setEstablishments(result.data.establishments);
+      return true;
+    }
+    return false;
+  }
 
   const getGeoDataFromAddress = async (e, address) => {
     if (e.key === 'Enter') {
@@ -23,6 +32,7 @@ export default function SearchContainer(props) {
       const results = await axios.get(apiConstants.mapboxApi(`geocoding/v5/mapbox.places/${address}.json?proximity=${proximity}`, publicRuntimeConfig.MAPBOX_PK));
       const coord = results.data.features[0].geometry.coordinates;
       setViewport(mapBoxConfig('100%', '100%', coord[1], coord[0], 15))
+      updateListOfEstablishmentsByLocation(coord[1], coord[0]);
       return true;
     }
     return false;
@@ -53,7 +63,8 @@ export default function SearchContainer(props) {
           value={areaSelection}
           onChange={(e) => {
             const latlon = JSON.parse(e.target.value);
-            setViewport(mapBoxConfig('100%', '100%', latlon.latitude, latlon.longitude, 15));            
+            setViewport(mapBoxConfig('100%', '100%', latlon.latitude, latlon.longitude, 15)); 
+            updateListOfEstablishmentsByLocation(latlon.latitude, latlon.longitude);           
             setAreaSelection(e.target.value);
           }}>
           <option disabled>Search by area</option>
