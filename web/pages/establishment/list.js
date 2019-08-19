@@ -15,7 +15,7 @@ import { useAuth0 } from "../../utils/Auth/react-auth0-wrapper";
 
 export default function List() {
   const { user } = useAuth0();
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(null);
   const [applicantName, setApplicantName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
