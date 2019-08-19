@@ -1,14 +1,11 @@
 import App, { Container } from 'next/app';
 import { Auth0Provider } from "../utils/Auth/react-auth0-wrapper";
-import getConfig from 'next/config';
 import Head from 'next/head';
 
 import Navigation from '../components/navigation';
 import Footer from '../components/footer';
 
 import '../styles/index.scss';
-
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 // A function that routes the user to the right place
 // after login
@@ -37,8 +34,8 @@ class MyApp extends App {
 
     return (
       <Auth0Provider
-        domain={publicRuntimeConfig.AUTH0_DOMAIN}
-        client_id={publicRuntimeConfig.AUTH0_CLIENT_ID}
+        domain={process.env.AUTH0_DOMAIN}
+        client_id={process.env.AUTH0_CLIENT_ID}
         onRedirectCallback={onRedirectCallback}>
         <Head>
           <link href="/static/icons/happyr-icon.png" rel="icon" type="image/gif"></link>

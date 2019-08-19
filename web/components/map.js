@@ -1,9 +1,6 @@
-import getConfig from 'next/config';
 import ReactMapGL from 'react-map-gl';
 import { useState, useEffect } from 'react';
 import MapMarker from './mapMarker';
-
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 export default function Map({place}) {
   const options = {
@@ -23,7 +20,7 @@ export default function Map({place}) {
     <div className="map-container">
       <ReactMapGL
         mapStyle="mapbox://styles/mapbox/streets-v11"
-        mapboxApiAccessToken={publicRuntimeConfig.MAPBOX_PK}
+        mapboxApiAccessToken={process.env.MAPBOX_PK}
         {...viewport}
         onViewportChange={(viewport) => setViewport(viewport)}>
         <MapMarker place={place}/>

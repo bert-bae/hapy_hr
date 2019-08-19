@@ -1,12 +1,9 @@
 import axios from 'axios';
-import getConfig from 'next/config';
 import { useState, useEffect } from 'react';
 
 import apiConstants from '../../utils/constants/apiConstants';
 import { mapBoxConfig } from '../../utils/constants/optionUtils';
 import popularAreas from '../../utils/constants/popularAreas';
-
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 export default function SearchContainer(props) {
   const { setViewport, longitude, latitude, myLatitude, myLongitude, setEstablishments } = props;
@@ -14,7 +11,7 @@ export default function SearchContainer(props) {
   const [areaSelection, setAreaSelection] = useState("Search by area");
 
   const updateListOfEstablishmentsByLocation = async (latitude, longitude) => {
-    const result = await axios.get(`${publicRuntimeConfig.DATABASE_URL}/establishment/distance?latitude=${latitude}&longitude=${longitude}`);
+    const result = await axios.get(`${process.env.DATABASE_URL}/establishment/distance?latitude=${latitude}&longitude=${longitude}`);
     if (result) {
       setEstablishments(result.data.establishments);
       return true;
@@ -29,7 +26,7 @@ export default function SearchContainer(props) {
         proximity = `${longitude}, ${latitude}`;
       }
       // https://docs.mapbox.com/api/search/#forward-geocoding
-      const results = await axios.get(apiConstants.mapboxApi(`geocoding/v5/mapbox.places/${address}.json?proximity=${proximity}`, publicRuntimeConfig.MAPBOX_PK));
+      const results = await axios.get(apiConstants.mapboxApi(`geocoding/v5/mapbox.places/${address}.json?proximity=${proximity}`, process.env.MAPBOX_PK));
       const coord = results.data.features[0].geometry.coordinates;
       setViewport(mapBoxConfig('100%', '100%', coord[1], coord[0], 15))
       updateListOfEstablishmentsByLocation(coord[1], coord[0]);

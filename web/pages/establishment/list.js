@@ -1,5 +1,4 @@
 import axios from 'axios';
-import getConfig from 'next/config';
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import { ValidatorForm } from 'react-form-validator-core';
@@ -13,8 +12,6 @@ import RestrictedPage from '../../components/restrictedPage';
 import { deepCopy } from '../../utils/objectUtils';
 import formUtils from '../../utils/formUtils';
 import { useAuth0 } from "../../utils/Auth/react-auth0-wrapper";
-
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 export default function List() {
   const { user } = useAuth0();
@@ -39,7 +36,7 @@ export default function List() {
       menuItems,
       happyTimes,
     };
-    await axios.post(`${publicRuntimeConfig.DATABASE_URL}/establishment/create`, data);
+    await axios.post(`${process.env.DATABASE_URL}/establishment/create`, data);
   }
 
   useEffect(() => {

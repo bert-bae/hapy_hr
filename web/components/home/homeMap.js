@@ -1,5 +1,4 @@
 import axios from 'axios';
-import getConfig from 'next/config';
 import ReactMapGL from 'react-map-gl';
 import { useState, useEffect } from 'react';
 
@@ -11,8 +10,6 @@ import Establishments from '../establishments';
 import Loading from '../loading';
 import MapMarker from '../mapMarker';
 import SearchContainer from './searchContainer';
-
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 export default function HomeMap() {
   const [loading, setLoading] = useState(true);
@@ -53,7 +50,7 @@ export default function HomeMap() {
         setViewport(mapBoxConfig('100%','100%', latitude, longitude, 15));
 
         // Retrieve establishments based on nearest top 10
-        result = await axios.get(`${publicRuntimeConfig.DATABASE_URL}/establishment/distance?latitude=${latitude}&longitude=${longitude}`);
+        result = await axios.get(`${process.env.DATABASE_URL}/establishment/distance?latitude=${latitude}&longitude=${longitude}`);
         setEstablishments(result.data.establishments);
         setTimeout(() => {
           setLoading(false);
@@ -62,7 +59,7 @@ export default function HomeMap() {
 
       // If permission is false, retrieve all data limit to 10
       if (!locationPermission) {
-        result = await axios.get(`${publicRuntimeConfig.DATABASE_URL}/establishment`);
+        result = await axios.get(`${process.env.DATABASE_URL}/establishment`);
         setEstablishments(result.data.establishments);
         setTimeout(() => {
           setLoading(false);
@@ -100,7 +97,7 @@ export default function HomeMap() {
             <div className="map-container">
               <ReactMapGL
                 mapStyle="mapbox://styles/mapbox/streets-v11"
-                mapboxApiAccessToken={publicRuntimeConfig.MAPBOX_PK}
+                mapboxApiAccessToken={process.env.MAPBOX_PK}
                 {...viewport}
                 onViewportChange={(viewport) => setViewport(viewport)}>
                 { establishments.map((place, key) => {

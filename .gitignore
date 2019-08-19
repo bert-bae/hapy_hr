@@ -1,5 +1,7 @@
 server_api/node_modules
 web/node_modules
+web/dist
 server_api/.env
 web/.env
 web/.next
+web/now.json
