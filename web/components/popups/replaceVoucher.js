@@ -1,5 +1,8 @@
 import axios from 'axios';
 import { useAuth0 } from "../../utils/Auth/react-auth0-wrapper";
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig } = getConfig();
 
 export default function ReplaceVoucher({ establishmentId, voucher, setShowReplace, createVoucher }) {
   const { user } = useAuth0();
@@ -10,7 +13,7 @@ export default function ReplaceVoucher({ establishmentId, voucher, setShowReplac
   // If it is false, then creates a new valid voucher to replace the previous one
   const replaceVoucher = async () => {
     try {
-      const invalidate = await axios.post(`http://localhost:5000/voucher/${voucher.id}/invalidate`);
+      const invalidate = await axios.post(`${publicRuntimeConfig.DATABASE_URL}/voucher/${voucher.id}/invalidate`);
       if (invalidate.data.success) {
         createVoucher(establishmentId, user);
         setShowReplace(false);

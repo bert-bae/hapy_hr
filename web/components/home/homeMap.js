@@ -53,7 +53,7 @@ export default function HomeMap() {
         setViewport(mapBoxConfig('100%','100%', latitude, longitude, 15));
 
         // Retrieve establishments based on nearest top 10
-        result = await axios.get(`http://localhost:5000/establishment/distance?latitude=${latitude}&longitude=${longitude}`);
+        result = await axios.get(`${publicRuntimeConfig.DATABASE_URL}/establishment/distance?latitude=${latitude}&longitude=${longitude}`);
         setEstablishments(result.data.establishments);
         setTimeout(() => {
           setLoading(false);
@@ -62,7 +62,7 @@ export default function HomeMap() {
 
       // If permission is false, retrieve all data limit to 10
       if (!locationPermission) {
-        result = await axios.get('http://localhost:5000/establishment');
+        result = await axios.get(`${publicRuntimeConfig.DATABASE_URL}/establishment`);
         setEstablishments(result.data.establishments);
         setTimeout(() => {
           setLoading(false);

@@ -1,8 +1,11 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useAuth0 } from "../utils/Auth/react-auth0-wrapper";
+import getConfig from 'next/config';
 import Accordion from '../components/accordion/accordion';
 import DayVoucher from './dayVoucher';
-import { useAuth0 } from "../utils/Auth/react-auth0-wrapper";
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+
+const {publicRuntimeConfig} = getConfig();
 
 export default function Establishments(props) {
   const [hasFood, setHasFood] = useState(false);
@@ -14,7 +17,7 @@ export default function Establishments(props) {
   // If exists, set the correct establishment's voucher
   useEffect(() => {
     if (isAuthenticated && user.email) {
-      axios.get(`http://localhost:5000/user/${encodeURIComponent(user.email)}/view`).then(res => {
+      axios.get(`${publicRuntimeConfig.DATABASE_URL}/user/${encodeURIComponent(user.email)}/view`).then(res => {
         const userVoucher = res.data.user.voucher;
         if (userVoucher.length > 0) {
           setVoucher(userVoucher[0]);

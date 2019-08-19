@@ -14,7 +14,7 @@ export default function SearchContainer(props) {
   const [areaSelection, setAreaSelection] = useState("Search by area");
 
   const updateListOfEstablishmentsByLocation = async (latitude, longitude) => {
-    const result = await axios.get(`http://localhost:5000/establishment/distance?latitude=${latitude}&longitude=${longitude}`);
+    const result = await axios.get(`${publicRuntimeConfig.DATABASE_URL}/establishment/distance?latitude=${latitude}&longitude=${longitude}`);
     if (result) {
       setEstablishments(result.data.establishments);
       return true;

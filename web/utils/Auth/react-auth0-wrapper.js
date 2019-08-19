@@ -1,6 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
-import createAuth0Client from "@auth0/auth0-spa-js";
 import axios from 'axios';
+import createAuth0Client from "@auth0/auth0-spa-js";
+import React, { useState, useEffect, useContext } from "react";
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig } = getConfig();
 
 const DEFAULT_REDIRECT_CALLBACK = () => {
   window.location.replace('/');
@@ -34,7 +37,7 @@ export const Auth0Provider = ({
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
         // Verify if user is in server database, insert if not
-        const authUser = await axios.post('http://localhost:5000/user/authenticate', {
+        const authUser = await axios.post(`${publicRuntimeConfig.DATABASE_URL}/user/authenticate`, {
           user
         });
         // Set database user ID with authentication and with current voucher if present

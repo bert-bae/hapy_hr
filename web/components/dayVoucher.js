@@ -1,9 +1,12 @@
-import {useState, useEffect} from 'react';
-import { useAuth0 } from "../utils/Auth/react-auth0-wrapper";
 import axios from 'axios';
+import {useState, useEffect} from 'react';
+import getConfig from 'next/config';
 import { setVoucherDate } from '../utils/dateUtils';
+import { useAuth0 } from "../utils/Auth/react-auth0-wrapper";
 import RedeemVoucher from './popups/redeemVoucher';
 import ReplaceVoucher from './popups/replaceVoucher';
+
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 export default function DayVoucher({ establishmentId, voucher, setVoucher }) {
   const { loginWithRedirect, user } = useAuth0();
@@ -16,7 +19,7 @@ export default function DayVoucher({ establishmentId, voucher, setVoucher }) {
     if (!currentUser) {
       loginWithRedirect();
     }
-    const setServer = await axios.post(`http://localhost:5000/voucher/${estId}/set`, {
+    const setServer = await axios.post(`${publicRuntimeConfig.DATABASE_URL}/voucher/${estId}/set`, {
       userId: currentUser.id,
       expiresAt: setVoucherDate(new Date),
     });
